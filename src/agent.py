@@ -209,7 +209,9 @@ class ButceliAjan:
             packet = IncelemePaketi.model_validate(packet.model_dump(mode="python"))
             if packet.basvuru_tarihi is None:
                 raise ValueError("Başvuru tarihi gerekli")
-            if prepare_submission(packet.maskelenmis_basvuru) != packet.maskelenmis_basvuru:
+            # Üye 1 dış boşlukları koruyabilir; kanıtı değiştirmeden yalnız bu
+            # biçim farkını kabul et. PII/Unicode güvenlik dönüşümleri hâlâ reddedilir.
+            if prepare_submission(packet.maskelenmis_basvuru) != packet.maskelenmis_basvuru.strip():
                 raise ValueError("Paket güvenli girdi sınırından geçmemiş")
         except (ValueError, TypeError, AttributeError):
             return state.finish("GIRDI_HATASI")
@@ -310,6 +312,10 @@ class ButceliAjan:
         return done(last_reason)
 
 
+class AgentEvaluationError(RuntimeError):
+    """Operasyonel durma, başarılı uzman önerisi değildir; yalnız güvenli kod taşır."""
+
+
 def make_eval_predictor(agent: ButceliAjan):
     """Mevcut label-free eval girişine açıkça bağla; oluşturmak API çağırmaz.
 
@@ -320,7 +326,14 @@ def make_eval_predictor(agent: ButceliAjan):
     def predictor(value):
         report = agent.run_packet(value.kanit_paketi, sentetik=True)
         if report.draft is None:
-            # Hata/eksik kanıt hiçbir zaman otomatik ret veya kabul değildir.
+            # Beklenen yerel güvenlik/eksik kanıt yönlendirmesini operasyonel
+            # hatadan ayır. Tarife, bütçe, sağlayıcı, süre vb. başarı sayılamaz.
+            if report.reason not in {
+                "GIRDI_ENGELLENDI",
+                "SIPARIS_BULUNAMADI",
+                "KAYNAK_YOK",
+            }:
+                raise AgentEvaluationError(report.reason)
             return {
                 "karar_onerisi": "UZMAN_INCELEMESI_GEREKLI",
                 "kaynaklar": [],
@@ -329,3 +342,20 @@ def make_eval_predictor(agent: ButceliAjan):
         return report.draft.eval_ciktisi()
 
     return predictor
+
+
+def predict_for_eval(value):
+    """Belgelenmiş CLI adaptörü; canlı çağrı için ayrı işletim ortamı onayı gerekir.
+
+    İçe aktarma hiçbir istemci/anahtar yüklemez. Her çağrı kendi istemcisini kapatır.
+    Ağsız testler enjekte edilmiş make_eval_predictor istemcisini kullanmalıdır.
+    """
+    import os
+
+    if os.environ.get("IADEPUSULA_ALLOW_LIVE_EVAL") != "1":
+        raise AgentEvaluationError("CANLI_EVAL_ONAYI_GEREKLI")
+    from src.config import load_configuration
+
+    settings, limits, price = load_configuration()
+    with LLMClient(settings) as client:
+        return make_eval_predictor(ButceliAjan(client, price, limits=limits))(value)

@@ -12,6 +12,16 @@ from src.ui_service import calistir_inceleme
 DAY = date(2026, 10, 31)
 
 
+@pytest.mark.parametrize("padding", ["  ", "\n"])
+def test_prepared_packet_allows_outer_whitespace_without_changing_bound_evidence(padding):
+    result = calistir_inceleme(
+        "SIP-2026-1002", padding + "Kulaklık bozuk iade istiyorum" + padding, DAY, mod="demo"
+    )
+    assert result.rapor.reason == "TASLAK_DOGRULANDI"
+    assert result.rapor.evidence_sha256 == evidence_digest(result.paket)
+    assert result.paket.maskelenmis_basvuru.startswith(padding)
+
+
 def test_report_cannot_be_approved_for_a_different_complaint_with_same_sources():
     result = calistir_inceleme("SIP-2026-1002", "Kulaklık bozuk iade istiyorum", DAY, mod="demo")
     other = result.paket.model_copy(
@@ -107,4 +117,19 @@ def test_packet_without_application_date_cannot_enter_model_workflow():
     report = ButceliAjan(Client(), None).run_packet(
         packet.model_copy(update={"basvuru_tarihi": None}), sentetik=True
     )
+    assert report.reason == "GIRDI_HATASI" and report.model_calls == 0
+
+
+@pytest.mark.parametrize(
+    "unsafe", ["Kulaklık bozuk test@example.invalid", "Kulaklık\u200b bozuk iade istiyorum"]
+)
+def test_packet_whitespace_tolerance_does_not_allow_unprepared_sensitive_or_hidden_text(unsafe):
+    from src.agent import ButceliAjan
+
+    class Client:
+        settings = None
+
+    packet = hazirla_inceleme("SIP-2026-1002", "Kulaklık bozuk iade istiyorum", DAY)
+    changed = packet.model_copy(update={"maskelenmis_basvuru": unsafe})
+    report = ButceliAjan(Client(), None).run_packet(changed, sentetik=True)
     assert report.reason == "GIRDI_HATASI" and report.model_calls == 0
