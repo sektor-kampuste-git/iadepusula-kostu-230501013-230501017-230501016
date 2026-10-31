@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "iadepusula"
-version = "0.2.0"
-description = "Üye 1: kaynaklı Türkçe mevzuat RAG, araçlar ve değerlendirme"
+version = "0.3.0"
+description = "Kaynaklı Türkçe ön inceleme: RAG, sınırlı ajan, doğrulama ve maliyet"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
@@ -24,9 +24,11 @@ mcp = ["mcp>=1.20,<2"]
 
 [project.scripts]
 iadepusula = "src.cli:main"
+iadepusula-maliyet = "maliyet_hesapla:main"
 
 [tool.setuptools]
 packages = ["src", "eval", "iadepusula_data"]
+py-modules = ["maliyet_hesapla"]
 
 [tool.setuptools.package-dir]
 iadepusula_data = "data"
