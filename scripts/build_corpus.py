@@ -44,6 +44,19 @@ def build():
     guide = (SOURCE / "ministry-distance.txt").read_text(encoding="utf-8")
     guide_hash = hashlib.sha256((SOURCE / "ministry-distance.html").read_bytes()).hexdigest()
     chunks = []
+    page_markers = list(re.finditer(r"--- PDF PAGE (\d+) ---", book))
+
+    def source_pages(text, doc):
+        offset = (
+            book.index("Cayma hakkı\nMADDE 9")
+            if doc == "MSY"
+            else book.index("Ayıplı mal\nMADDE 8")
+        )
+        begin = book.index(text.strip(), offset)
+        end = begin + len(text.strip())
+        first = max(int(marker[1]) for marker in page_markers if marker.start() <= begin)
+        last = max(int(marker[1]) for marker in page_markers if marker.start() < end)
+        return list(range(first, last + 1))
 
     def add(
         cid,
@@ -74,6 +87,7 @@ def build():
                 "anahtar_kelimeler": list(keywords),
                 "kaynak_sha256": digest,
                 "baglam": context,
+                "kaynak_sayfalari": source_pages(text, doc) if url == BOOK_URL else [],
             }
         )
 

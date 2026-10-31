@@ -18,7 +18,8 @@
       "akıllı saat"
     ],
     "kaynak_sha256": "7edf7fe61459a3a249456931d493c901291b5b309af36a9c8319ed87cfc1466e",
-    "baglam": null
+    "baglam": null,
+    "kaynak_sayfalari": []
   },
   {
     "chunk_id": "REHBER-KARGO",
@@ -37,7 +38,8 @@
       "masraf"
     ],
     "kaynak_sha256": "7edf7fe61459a3a249456931d493c901291b5b309af36a9c8319ed87cfc1466e",
-    "baglam": null
+    "baglam": null,
+    "kaynak_sayfalari": []
   },
   {
     "chunk_id": "REHBER-IADE-SURE",
@@ -58,7 +60,8 @@
       "geri gönderme"
     ],
     "kaynak_sha256": "7edf7fe61459a3a249456931d493c901291b5b309af36a9c8319ed87cfc1466e",
-    "baglam": null
+    "baglam": null,
+    "kaynak_sayfalari": []
   },
   {
     "chunk_id": "REHBER-HASAR",
@@ -79,6 +82,7 @@
       "teslim"
     ],
     "kaynak_sha256": "7edf7fe61459a3a249456931d493c901291b5b309af36a9c8319ed87cfc1466e",
-    "baglam": null
+    "baglam": null,
+    "kaynak_sayfalari": []
   }
 ]

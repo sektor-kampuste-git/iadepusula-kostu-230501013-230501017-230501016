@@ -12,11 +12,12 @@ jobs:
   offline:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
-        python-version: ['3.12', '3.14']
+        python-version: ['3.11', '3.12', '3.14']
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-python@v7.1.0
         with:
           python-version: ${{ matrix.python-version }}
           cache: pip
@@ -26,8 +27,12 @@ jobs:
       - run: python scripts/check_secrets.py
       - run: python -m pytest -q
       - run: python -m eval.eval_kosucu --min-pass-rate 0.85 --output artifacts/eval.json
-      - uses: actions/upload-artifact@v4
+      - run: python -m pip wheel . --no-deps --wheel-dir artifacts/wheels
+      - run: python scripts/verify_package.py artifacts/wheels
+      - uses: actions/upload-artifact@v7.0.2
         if: always()
         with:
           name: offline-eval-python-${{ matrix.python-version }}
-          path: artifacts/eval.json
+          path: |
+            artifacts/eval.json
+            artifacts/wheels/*.whl

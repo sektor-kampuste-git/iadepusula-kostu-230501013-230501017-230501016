@@ -12,9 +12,11 @@ PATTERNS = (
     ("EPOSTA", re.compile(r"\b[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}\b")),
     (
         "TELEFON",
-        re.compile(r"(?<!\w)(?:\+?90[\s.-]*)?0?5\d{2}[\s().-]*\d{3}[\s.-]*\d{2}[\s.-]*\d{2}(?!\d)"),
+        re.compile(
+            r"(?<!\d)(?:\+?90[\s().-]*)?0?\(?[2-589]\d{2}\)?[\s.-]*\d{3}[\s.-]*\d{2}[\s.-]*\d{2}(?!\d)"
+        ),
     ),
-    ("TCKN", re.compile(r"(?<!\d)[1-9]\d{10}(?!\d)")),
+    ("TCKN", re.compile(r"(?<!\d)[1-9](?:[ .-]?\d){10}(?!\d)")),
 )
 
 
@@ -54,3 +56,17 @@ def obvious_injection(text: str) -> bool:
         r"(?:tum|diger|butun).{0,25}(?:musteri|siparis).{0,30}(?:listele|kimlik|iban|telefon)",
     )
     return any(re.search(pattern, text, re.S) for pattern in patterns)
+
+
+def outside_scope(text: str) -> bool:
+    """Recognize a few explicit unrelated tasks without substring word collisions."""
+    text = normalize_input(text).lower().replace("ı", "i")
+    text = "".join(c for c in unicodedata.normalize("NFKD", text) if not unicodedata.combining(c))
+    patterns = (
+        r"\bise\s+iade\b",
+        r"\bbosanma\w*\b",
+        r"\bceza\s+dava\w*\b",
+        r"\bmaas\s+tablo\w*\b",
+        r"\bkripto(?:\s+para)?\b.{0,50}\b(?:alim.satim|al.sat|ticaret bot\w*|botu|sinyal\w*)\b",
+    )
+    return any(re.search(pattern, text) for pattern in patterns)

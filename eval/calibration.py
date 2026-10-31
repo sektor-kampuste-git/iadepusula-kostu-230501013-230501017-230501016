@@ -5,8 +5,30 @@ import json
 from collections import Counter
 from pathlib import Path
 
+from pydantic import Field, StrictInt, field_validator
+
+from src.contracts import Contract
+
+
+class ReviewRecord(Contract):
+    id: str = Field(min_length=1)
+    reviewer: str = Field(min_length=1)
+    human_score: StrictInt = Field(ge=0, le=1)
+    judge_score: StrictInt = Field(ge=0, le=1)
+
+    @field_validator("id", "reviewer")
+    @classmethod
+    def nonempty_text(cls, value):
+        if not value.strip():
+            raise ValueError("Gerçek insan/hakem skoru ve etiketleyen bilgisi gereklidir")
+        return value.strip()
+
 
 def calibration(records: list[dict]) -> dict:
+    try:
+        records = [ReviewRecord.model_validate(row).model_dump() for row in records]
+    except ValueError:
+        raise ValueError("Gerçek insan/hakem skoru ve etiketleyen bilgisi gereklidir") from None
     ids = [row["id"] for row in records]
     if len(ids) != len(set(ids)):
         raise ValueError("Kalibrasyon kimlikleri tekrarlanamaz")

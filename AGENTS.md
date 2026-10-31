@@ -3,6 +3,8 @@
 - Kullanıcının rolü Üye 1: RAG, derlem, deterministik araçlar ve eval birincil kapsamdır.
 - Geliştirme `develop` üzerinden yürür; `main` doğrulanmış sürümü barındırır.
   Mevcut commit geçmişini koru; force push yapma.
+- Commit mesajlarını normal ve açıklayıcı dille yaz. Caveman, caveman-commit
+  veya sıkıştırılmış commit üslubu kullanma; yapılan değişikliği ve nedenini belirt.
 - `evrenkey.txt`, `.env`, kaynak PDF ve `.local/` gizli/yerel girdilerdir.
   Anahtarı hiçbir çıktıya, test fixture'ına, prompt'a veya commit'e koyma.
 - PDF'teki ölçüm/teslim örneklerini gerçek sonuç olarak kopyalama.

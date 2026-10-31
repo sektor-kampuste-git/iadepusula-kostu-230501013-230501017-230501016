@@ -3,7 +3,7 @@
 [![Üye 1 doğrulama](https://github.com/sektor-kampuste-git/iadepusula-kostu-230501013-230501017-230501016/actions/workflows/ci.yml/badge.svg?branch=develop)](https://github.com/sektor-kampuste-git/iadepusula-kostu-230501013-230501017-230501016/actions/workflows/ci.yml)
 
 Türkçe e-ticaret iade ve ayıplı mal başvuruları için **kaynaklı insan incelemesi**
-projesi. Bu sürüm, Üye 1'in RAG, deterministik araç ve eval temelidir.
+projesi. Sürüm **0.2.0**, Üye 1'in RAG, deterministik araç ve eval temelidir.
 Kanıt paketi üretir; nihai hukuki karar veya ödeme işlemi uygulamaz.
 
 ## Çalışan özellikler
@@ -12,6 +12,8 @@ Kanıt paketi üretir; nihai hukuki karar veya ödeme işlemi uygulamaz.
 - Ağsız Türkçe BM25 araması ve isteğe bağlı EVREN gömme + Qdrant hibrit arama.
 - Salt okunur sipariş, 14 takvim günü ve başvuru yılına göre parasal sınır araçları.
 - Kaynak URL'si, madde, birebir alıntı ve getirilen parça kimliği doğrulaması.
+- Belge/fıkra/bent ayrımı, kaynak türü ve PDF sayfası; atıfta yasal koşulun korunması.
+- Kamusal derlem gömmeleri için 24 saatlik JSON önbelleği; sorgular diske yazılmaz.
 - En fazla dört bileşen çağrısıyla insan inceleme paketi ve araç izleri.
 - Dört araçlı MCP stdio sunucusu, komut satırı arayüzü.
 - 30 vakalık geliştirme eval'i, ağsız testler ve CI.
@@ -60,7 +62,9 @@ komut çıktısında yazdırılmaz. `LLM_BASE_URL`, `LLM_API_KEY`, `LLM_MODEL` v
 `https://evren-llmapi.ssyz.org.tr/v1` olarak doğrulanmıştır.
 
 EVREN yolu gerçek API kotası kullanır. İlk arama derlemi gömer; sonraki
-aramalarda aynı süreç içinde vektörler yeniden kullanılır. Smoke testi yalnız
+aramalarda aynı model ve derlem için disk önbelleği de yeniden kullanılır.
+Önbellek eski/bozuksa yenilenir; kaynak/model değişikliği yeni anahtar oluşturur.
+Sorgu gömmesi her aramada API'ye gider. Smoke testi yalnız
 sentetik senaryo ile birebir alıntı seçen JSON üretir ve alıntıları doğrular. Hukuki
 yorum veya tam ajan başarısı bu testle ölçülmez. Gerçek başvurularda isim/adres
 dahil tam güvenlik katmanı tamamlanana kadar sağlayıcıya yalnız sentetik metin gönderin.
@@ -101,6 +105,20 @@ entegrasyonudur. İsim/adres maskeleme mevcut desenlerle garanti edilmez.
 - [Eval ve gerçek insan kalibrasyonu](eval/README.md)
 - [Red team başlangıç kontrolleri](eval/redteam.md)
 - [Tarihli doğrulama kaydı](docs/dogrulama_2026-10-31.md)
+- [v0.2 denetimi ve düzeltilen sorunlar](docs/denetim_v0.2.md)
+
+## Normal paket kurulumu
+
+Depo kökünde çalışmaya ek olarak sipariş, mevzuat ve varsayılan eval verileri
+wheel paketine dahildir. Kaynak klasörüne bağımlılık olmadan da kullanılabilir:
+
+```powershell
+.venv\Scripts\python.exe -m pip install .
+.venv\Scripts\iadepusula.exe search "MSY Madde 15/1-ç"
+```
+
+Kurulu pakette yerel `.env` ve `artifacts/` için komutun çalıştırıldığı dizin
+kullanılır. Kaynak depo dışındaki paket doğrulaması CI içinde de yürütülür.
 
 ## Geliştirme düzeni
 

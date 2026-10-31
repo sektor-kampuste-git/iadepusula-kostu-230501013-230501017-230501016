@@ -18,6 +18,10 @@ def citation(source, **changes):
         madde=source.madde,
         dogrudan_alinti=source.metin,
         kaynak_url=source.kaynak_url,
+        kaynak_turu=source.kaynak_turu,
+        belge_basligi=source.belge_basligi,
+        baglam=source.baglam,
+        kaynak_sayfalari=source.kaynak_sayfalari,
     )
     return KaynakAtfi(**(data | changes))
 

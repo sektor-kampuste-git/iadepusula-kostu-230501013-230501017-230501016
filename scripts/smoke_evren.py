@@ -10,7 +10,7 @@ from typing import Literal
 
 from pydantic import Field
 
-from src.contracts import Contract, KaynakAtfi
+from src.contracts import Contract
 from src.evren import EvrenAdapter, ProviderSettings
 from src.paths import ROOT
 from src.rag import MevzuatRetriever
@@ -33,7 +33,7 @@ def smoke():
     # Invalidate the previous run before touching the provider.
     path.write_text('{"basarili": false, "durum": "basladi"}\n', encoding="utf-8")
     with EvrenAdapter(ProviderSettings.from_env()) as adapter:
-        retriever = MevzuatRetriever(embedder=adapter)
+        retriever = MevzuatRetriever(embedder=adapter, cache_dir=ROOT / ".cache" / "embeddings")
         try:
             found = retriever.search(
                 "İnternetten alınan gömlekte teslimden 10 gün sonra 14 günlük cayma hakkı"
@@ -46,13 +46,7 @@ def smoke():
             for quote in summary.kaynaklar:
                 source = retriever.by_id.get(quote.chunk_id)
                 if not source or not retriever.verify_citation(
-                    KaynakAtfi(
-                        chunk_id=source.chunk_id,
-                        belge_id=source.belge_id,
-                        madde=source.madde,
-                        dogrudan_alinti=quote.alinti,
-                        kaynak_url=source.kaynak_url,
-                    ),
+                    retriever.citation_for(source.chunk_id, quote.alinti),
                     allowed_ids=allowed,
                 ):
                     raise ValueError("Model alıntısı getirilen kaynakla eşleşmiyor")
@@ -69,6 +63,8 @@ def smoke():
                 "derlem_sha256": retriever.fingerprint,
                 "getirilen_kaynaklar": sorted(allowed),
                 "kanit": summary.model_dump(mode="json"),
+                "derlem_onbellek_durumu": retriever.cache_status,
+                "api_istek_sayilari": dict(adapter.request_counts),
                 **response,
             }
             path.write_text(

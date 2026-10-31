@@ -7,6 +7,7 @@ from datetime import date
 
 from src.evidence import hazirla_inceleme
 from src.evren import EvrenAdapter, ProviderError, ProviderSettings
+from src.paths import ROOT
 from src.rag import MevzuatRetriever
 from src.tools import cayma_suresi_hesapla, parasal_sinir_kontrol, siparis_detay_getir
 
@@ -41,7 +42,9 @@ def main():
         if args.command == "models" or getattr(args, "backend", None) == "evren":
             provider = EvrenAdapter(ProviderSettings.from_env())
         if args.command in {"search", "inspect"}:
-            retriever = MevzuatRetriever(embedder=provider)
+            retriever = MevzuatRetriever(
+                embedder=provider, cache_dir=ROOT / ".cache" / "embeddings" if provider else None
+            )
         if args.command == "search":
             result = [
                 row.model_dump(mode="json") for row in retriever.search(args.query, args.top_k)

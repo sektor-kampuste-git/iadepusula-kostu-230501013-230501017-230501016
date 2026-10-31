@@ -26,10 +26,22 @@ başarısız vakaları gizlemez. Rapor `artifacts/eval.json` dosyasındadır.
 ```
 
 `src.agent` henüz takım entegrasyonu aşamasındadır. Aday fonksiyon bir
-`EvalCase` almalı, `eval/contracts.py` içindeki `AgentPrediction` şemasını
+**etiketsiz `PredictorInput`** almalı, `eval/contracts.py` içindeki `AgentPrediction` şemasını
 karşılayan dict/model döndürmelidir. Anahtar gerekebilen bu yol yalnız açıkça
 seçildiğinde çalışır. Taslak karar uyumu, kaynak doğrulama ve şema kontrolleri
 raporlanır; insan kararı doğruluğu olarak etiketlenmez.
+
+`PredictorInput` alanları: `id`, `siparis_no`, maskelenmiş `basvuru`,
+`basvuru_tarihi`, `kanit_paketi`. `beklenen` ve `taslak_karar` ajana verilmez.
+Bu düzeltme, ilk sürümdeki cevap sızıntısını giderir. Bu bir süreç izolasyonu
+değildir; aynı dosyalara erişen kötü niyetli bir değerlendirilenin veri setini
+okumasını engellemez. Bağımsız test seti hâlâ gereklidir.
+
+Rapor sürümü 2, `bilesen_gecen` ile `ajan_gecen` sayılarını ayrı tutar. Ajan
+şema/API hatası verse bile bileşen kontrolleri kaybolmaz. Kaynak hit@3 paydası,
+kaynak beklenen **tüm** vakalardır; hatalı vakalar paydadan düşmez. Hata aşaması,
+hata sınıfı ve hata süresi raporlanır; sağlayıcının ham hata metni yayımlanmaz.
+Boş, çelişkili veya yazım hatalı beklentiler veri yüklenirken reddedilir.
 
 ## Gerçek hakem kalibrasyonu
 

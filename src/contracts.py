@@ -2,9 +2,12 @@
 
 from datetime import date
 from decimal import Decimal
-from typing import Literal
+from typing import Annotated, Literal
 
 from pydantic import BaseModel, ConfigDict, Field, model_validator
+
+KaynakTuru = Literal["kanun", "yonetmelik", "resmi_rehber", "teblig", "demo_politika"]
+KaynakSayfalari = tuple[Annotated[int, Field(strict=True, ge=1)], ...]
 
 
 class Contract(BaseModel):
@@ -65,7 +68,7 @@ class ParasalSinirSonucu(Contract):
 class KaynakParcasi(Contract):
     chunk_id: str
     belge_id: str
-    kaynak_turu: Literal["kanun", "yonetmelik", "resmi_rehber", "teblig", "demo_politika"]
+    kaynak_turu: KaynakTuru
     belge_basligi: str
     madde: str
     baslik: str
@@ -77,6 +80,7 @@ class KaynakParcasi(Contract):
     anahtar_kelimeler: tuple[str, ...] = ()
     kaynak_sha256: str
     baglam: str | None = None
+    kaynak_sayfalari: KaynakSayfalari = ()
 
     @model_validator(mode="after")
     def gecerlilik_sirasi(self):
@@ -89,6 +93,8 @@ class AramaSonucu(Contract):
     parca: KaynakParcasi
     skor: float
     yontem: Literal["bm25", "hybrid_rrf"]
+    istek_eslesme_sayisi: int | None = Field(default=None, ge=0)
+    istek_kirpildi: bool = False
 
 
 class KaynakAtfi(Contract):
@@ -97,6 +103,10 @@ class KaynakAtfi(Contract):
     madde: str
     dogrudan_alinti: str = Field(min_length=15, max_length=2500)
     kaynak_url: str
+    kaynak_turu: KaynakTuru
+    belge_basligi: str
+    baglam: str | None = None
+    kaynak_sayfalari: KaynakSayfalari = ()
 
 
 class AracIzi(Contract):

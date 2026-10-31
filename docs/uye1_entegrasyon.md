@@ -1,6 +1,6 @@
 # Üye 1 entegrasyon sözleşmesi
 
-Sürüm: `0.1.0`. İadePusula adı kullanılır; PDF'teki İadeHakem AI aynı proje fikrinin adıdır.
+Sürüm: `0.2.0`. İadePusula adı kullanılır; PDF'teki İadeHakem AI aynı proje fikrinin adıdır.
 Bu sürüm **kanıt paketi** üretir. Nihai karar, ödeme, tebligat veya onay işlemi uygulamaz.
 
 ## Python giriş noktaları
@@ -34,6 +34,9 @@ paket = hazirla_inceleme(
 | `MevzuatRetriever.search(sorgu, top_k=3, ...)` | `tuple[AramaSonucu, ...]` | En fazla 10 parça; boş sonuç mümkündür |
 | `hazirla_inceleme(...)` | `IncelemePaketi` | En fazla dört bileşen çağrısı; insan onayı daima `True` |
 
+Başvuru tarihi burada da `date` veya ISO tarih olabilir; `datetime` kabul edilmez.
+Normalleştirme sonrasında da 4000 karakter sınırı uygulanır.
+
 Sipariş numarası `SIP-2026-1001` biçimindedir. `ValueError` geçersiz girdiyi,
 `ProviderError` sağlayıcı erişim/yanıt hatasını belirtir. Araç sonucu bulunamadığında
 modelin tarih veya tutar tahmin etmesine izin verilmemelidir.
@@ -59,28 +62,39 @@ modelin tarih veya tutar tahmin etmesine izin verilmemelidir.
 ## RAG ve atıf doğrulama
 
 ```python
-from src.contracts import KaynakAtfi
-
 rag = MevzuatRetriever()
 bulunan = rag.search("6502 Madde 8 ayıplı mal")
 p = bulunan[0].parca
-atif = KaynakAtfi(
-    chunk_id=p.chunk_id, belge_id=p.belge_id, madde=p.madde,
-    dogrudan_alinti=p.metin, kaynak_url=p.kaynak_url,
-)
+atif = rag.citation_for(p.chunk_id)
 assert rag.verify_citation(atif, allowed_ids={r.parca.chunk_id for r in bulunan})
 ```
 
 Modelin kaynağı yalnız derlemde bulunması yeterli değildir; **o istekte getirilen**
 `allowed_ids` içinde olmalıdır. URL, madde, belge kimliği ve alıntı da eşleşmelidir.
+Atıf ayrıca `kaynak_turu`, `belge_basligi`, `baglam` ve `kaynak_sayfalari`
+taşır; bunları değiştirmek doğrulamayı geçmez. Özellikle MSY 15 istisnalarının
+“taraflarca aksi kararlaştırılmadıkça” koşulu atıfta korunur. Bu alanlar v0.2
+entegrasyon sözleşmesinin parçasıdır; eski elle oluşturulmuş atıflar güncellenmelidir.
 Bu kontrol, gerekçenin tamamının doğru olduğunu ispatlamaz. Anlam sadakati ayrıca
 insan/hakem değerlendirmesi gerektirir.
 
 Yerel yol BM25 ve Türkçe sorgu genişletmesi kullanır. Anlamsal yol,
 EVREN `qwen3-embedding-8b`, bellek içi Qdrant, kosinüs araması ve reciprocal rank
-fusion kullanır. Sıralama skorları güven yüzdesi değildir. Vektörler süreç içinde
-bir kez oluşturulur; yeniden başlatmada tekrar gömme isteği yapılır. Kalıcı indeks,
-yeniden kullanım ve maliyet denetimi Üye 2 ile sonraki entegrasyon konusudur.
+fusion kullanır. Sıralama skorları güven yüzdesi değildir. `MSY`, `TKHK`, `6502`
+ve belge adlarıyla açık madde/fıkra/bent çözülür; `c` ile `ç` farklıdır. Belgesiz
+`Madde 11` sorgusu belirsizdir: belge adı veya tek `belge_ids` filtresi gerekir.
+Birden fazla açık hüküm istendiğinde her birinden sonuç ayrılır; bilinmeyen
+bir hüküm varsa bilinen diğer hükümle sessizce doldurulmaz. Açık madde isteği
+`top_k` nedeniyle kısalıyorsa `istek_kirpildi` ve `istek_eslesme_sayisi` bunu gösterir.
+
+CLI ve smoke testinde yalnız **kamusal derlem vektörleri**, `.cache/embeddings/`
+altında 24 saat geçerli JSON önbelleğinde tutulur. Aynı model/API adresi ve aynı
+başlık/bağlam/metin yeniden kullanılır; kullanıcı sorguları diske yazılmaz.
+Kaynak veya model adı değişirse yeni anahtar oluşur. Bozuk/eski önbellek yeniden
+üretilir; disk yazılamıyorsa arama önbelleksiz sürer. Model sağlayıcısı aynı takma
+adın arkasındaki ağırlıkları değiştirirse önbellek de yenilenmelidir. Sorgu gömmesi
+her aramada API'ye gider; sıfır API maliyeti veya tam yanıt önbelleği iddiası yoktur.
+Kütüphane çağrısında önbellek `cache_dir=...` ile açıkça seçilir.
 
 ## MCP
 

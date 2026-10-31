@@ -4,7 +4,6 @@ Member 2 will own the complete agent/LLM client, budgets and output security.
 No request is made merely by importing this module or constructing settings.
 """
 
-import math
 import os
 from collections.abc import Sequence
 from time import perf_counter
@@ -17,6 +16,7 @@ from pydantic import Field, SecretStr
 from src.contracts import Contract
 from src.paths import ROOT
 from src.privacy import mask_pii
+from src.vector_cache import valid_vectors
 
 
 class ProviderError(RuntimeError):
@@ -67,8 +67,14 @@ class EvrenAdapter:
             transport=transport,
         )
         self.last_usage = {}
+        self.request_counts = {}
+
+    @property
+    def cache_identity(self) -> str:
+        return self.settings.base_url.rstrip("/") + "|" + self.settings.embedding_model
 
     def _request(self, path: str, body: dict | None = None) -> dict:
+        self.request_counts[path] = self.request_counts.get(path, 0) + 1
         try:
             response = (
                 self._client.get(path) if body is None else self._client.post(path, json=body)
@@ -87,26 +93,45 @@ class EvrenAdapter:
 
     def models(self) -> tuple[str, ...]:
         data = self._request("models")
-        return tuple(item["id"] for item in data.get("data", []) if isinstance(item.get("id"), str))
+        rows = data.get("data")
+        if not isinstance(rows, list) or any(
+            not isinstance(item, dict)
+            or not isinstance(item.get("id"), str)
+            or not item["id"].strip()
+            for item in rows
+        ):
+            raise ProviderError("Geçersiz model listesi yanıtı")
+        return tuple(item["id"] for item in rows)
 
     def embed(self, texts: Sequence[str], *, query: bool = False) -> list[list[float]]:
-        if not texts or len(texts) > 64 or any(len(text) > 10000 for text in texts):
+        if (
+            isinstance(texts, (str, bytes))
+            or not isinstance(texts, Sequence)
+            or not 1 <= len(texts) <= 64
+            or any(
+                not isinstance(text, str) or not text.strip() or len(text) > 10000 for text in texts
+            )
+        ):
             raise ValueError("Gömme isteği 1–64 kısa metin içermelidir")
         # Corpus is public law; query input still passes the local masking boundary.
         inputs = [mask_pii(text) if query else text for text in texts]
+        if any(len(text) > 10000 for text in inputs):
+            raise ValueError("Normalleştirilmiş gömme metni en fazla 10000 karakter olabilir")
         data = self._request(
             "embeddings", {"model": self.settings.embedding_model, "input": inputs}
         )
         try:
             rows = sorted(data["data"], key=lambda row: row["index"])
-            if [row["index"] for row in rows] != list(range(len(inputs))):
+            if any(type(row["index"]) is not int for row in rows) or [
+                row["index"] for row in rows
+            ] != list(range(len(inputs))):
                 raise ValueError("Missing embedding indices")
+            if any(type(x) not in (int, float) for row in rows for x in row["embedding"]):
+                raise ValueError("Non-numeric embedding")
             vectors = [[float(x) for x in row["embedding"]] for row in rows]
-            if not vectors[0] or any(
-                len(v) != len(vectors[0]) or any(not math.isfinite(x) for x in v) for v in vectors
-            ):
+            if not valid_vectors(vectors, len(inputs)):
                 raise ValueError("Invalid embedding")
-        except (KeyError, TypeError, ValueError, IndexError):
+        except (KeyError, TypeError, ValueError, IndexError, OverflowError):
             raise ProviderError("Geçersiz veya eksik gömme yanıtı") from None
         self.last_usage = data.get("usage", {})
         return vectors
@@ -151,10 +176,14 @@ class EvrenAdapter:
             if choice.get("finish_reason") != "stop":
                 raise ValueError("Incomplete generation")
             content = choice["message"]["content"]
+            if not isinstance(content, str):
+                raise ValueError("Text content required")
             if content.startswith("```json") and content.rstrip().endswith("```"):
                 content = content.strip()[7:-3].strip()
             parsed = json.loads(content)
-        except (KeyError, TypeError, IndexError, ValueError):
+            if not isinstance(parsed, dict):
+                raise ValueError("JSON object required")
+        except (KeyError, TypeError, IndexError, ValueError, AttributeError):
             raise ProviderError("Model doğrulanabilir, tamamlanmış JSON üretmedi") from None
         return {
             "output": parsed,

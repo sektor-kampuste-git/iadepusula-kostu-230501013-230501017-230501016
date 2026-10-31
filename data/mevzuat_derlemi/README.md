@@ -26,6 +26,10 @@ rehber alıntısına kanun madde numarası uydurulmaz.
 boşlukları normalleştirilmiş fıkra/bent. Yasal sözcükler özetlenmez.
 `baglam`: MSY 15'in genel koşulu; bent tek başına değerlendirilmemelidir.
 `kaynak_sha256`: indirilen asıl PDF/HTML dosyasının özeti; alıntının değil.
+`kaynak_sayfalari`: PDF içindeki 1 tabanlı gerçek sayfalar; web rehberinde boştur.
+Mevzuat kitabı hem 6502 metnini hem yönetmelikleri içerir: kanun pasajları
+8–10, MSY pasajları 147–150. Bu nedenle iki ayrı hukuki metnin aynı PDF URL'si
+ve SHA-256 değerini taşıması beklenir; aynı madde olduğu anlamına gelmez.
 Derlemin tamamının parmak izi eval raporunda ayrıca bulunur.
 
 `gecerli_baslangic` bu **2026 derlem senaryosunun** destek başlangıcıdır;

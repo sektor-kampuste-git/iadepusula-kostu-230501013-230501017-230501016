@@ -1,0 +1,28 @@
+{
+  "basarili": true,
+  "derlem_sha256": "b5ca47edda890065211a5c2f89f3d930e6fa829dae7d644bb7d292ba206423a5",
+  "model": "qwen/qwen3-vl-30b-a3b",
+  "usage": {
+    "prompt_tokens": 442,
+    "total_tokens": 651,
+    "completion_tokens": 209
+  },
+  "latency_ms": 1000.13,
+  "derlem_onbellek_durumu": "stored",
+  "api_istek_sayilari": {
+    "embeddings": 2,
+    "chat/completions": 1
+  },
+  "dogrulanan_alinti_sayisi": 2,
+  "sicak_baslatma": {
+    "basarili": true,
+    "derlem_onbellek_durumu": "hit",
+    "api_istek_sayilari": {
+      "embeddings": 1
+    },
+    "kaynak_ids": [
+      "MSY-M9-F1"
+    ]
+  },
+  "sinir": "Sentetik bağlantı ve alıntı kontrolü; nihai hukuki karar veya insan kalibrasyonu değildir."
+}

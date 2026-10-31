@@ -4,15 +4,15 @@ from datetime import date
 from time import perf_counter
 
 from src.contracts import AracIzi, IncelemePaketi
-from src.privacy import mask_pii, obvious_injection, retrieval_query
+from src.privacy import mask_pii, obvious_injection, outside_scope, retrieval_query
 from src.rag import MevzuatRetriever, normalize
-from src.tools import SiparisDeposu, cayma_suresi_hesapla, parasal_sinir_kontrol
+from src.tools import SiparisDeposu, cayma_suresi_hesapla, parasal_sinir_kontrol, parse_date
 
 
 def hazirla_inceleme(
     siparis_no: str,
     basvuru: str,
-    basvuru_tarihi: date,
+    basvuru_tarihi: date | str,
     *,
     retriever: MevzuatRetriever | None = None,
     depo: SiparisDeposu | None = None,
@@ -20,13 +20,14 @@ def hazirla_inceleme(
     if not isinstance(basvuru, str) or not 3 <= len(basvuru) <= 4000:
         raise ValueError("Başvuru 3–4000 karakter olmalıdır")
     safe = mask_pii(basvuru)
+    if len(safe) > 4000:
+        raise ValueError("Normalleştirilmiş başvuru en fazla 4000 karakter olmalıdır")
+    basvuru_tarihi = parse_date(basvuru_tarihi)
     warnings = []
     logs = []
     norm = normalize(safe)
     blocked = obvious_injection(safe)
-    outside = any(
-        term in norm for term in ["ise iade", "bosanma", "ceza davasi", "kripto", "maas tablosu"]
-    )
+    outside = outside_scope(safe)
     if blocked or outside:
         return IncelemePaketi(
             siparis=None,

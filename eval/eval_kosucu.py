@@ -2,7 +2,7 @@
 
 python -m eval.eval_kosucu --output artifacts/eval.json
 python -m eval.eval_kosucu --predictor src.agent:predict_for_eval
-The predictor receives an EvalCase and returns an AgentPrediction-compatible dict.
+The predictor receives label-free PredictorInput and returns AgentPrediction.
 """
 
 import argparse
@@ -16,14 +16,16 @@ from datetime import UTC, datetime
 from pathlib import Path
 from time import perf_counter
 
-from eval.contracts import AgentPrediction, EvalCase
+from eval.contracts import AgentPrediction, EvalCase, PredictorInput
 from src.evidence import hazirla_inceleme
 from src.paths import ROOT
 from src.rag import MevzuatRetriever
 from src.tools import SiparisDeposu
 
+DEFAULT_DATASET = Path(__file__).with_name("evaller.json")
 
-def load_cases(path: Path = ROOT / "eval" / "evaller.json") -> tuple[EvalCase, ...]:
+
+def load_cases(path: Path = DEFAULT_DATASET) -> tuple[EvalCase, ...]:
     cases = tuple(
         EvalCase.model_validate(row) for row in json.loads(path.read_text(encoding="utf-8"))
     )
@@ -41,15 +43,23 @@ def evaluate(
     retriever: MevzuatRetriever | None = None,
 ) -> dict:
     retriever = retriever or MevzuatRetriever()
+    if not cases or len({case.id for case in cases}) != len(cases):
+        raise ValueError("Eval seti boş olamaz ve vaka kimlikleri benzersiz olmalıdır")
     depo = SiparisDeposu()
     rows = []
     for case in cases:
         start = perf_counter()
+        wanted = case.beklenen
+        checks = {}
+        found = set()
+        component_ok = False
+        agent_ok = None
+        error = {}
+        stage = "bilesen"
         try:
             packet = hazirla_inceleme(
                 case.siparis_no, case.basvuru, case.basvuru_tarihi, retriever=retriever, depo=depo
             )
-            wanted = case.beklenen
             checks = {
                 "insan_onayi": packet.insan_onayi_gerekiyor_mu is True,
                 "adim_siniri": len(packet.arac_izleri) <= 4,
@@ -70,8 +80,20 @@ def evaluate(
                 checks["kaynak_bos"] = not found
             for warning in wanted.uyarilar:
                 checks["uyari_" + warning] = warning in packet.uyarilar
+            component_ok = all(checks.values())
             if predictor:
-                prediction = AgentPrediction.model_validate(predictor(case))
+                stage = "ajan"
+                prediction = AgentPrediction.model_validate(
+                    predictor(
+                        PredictorInput(
+                            id=case.id,
+                            siparis_no=case.siparis_no,
+                            basvuru=packet.maskelenmis_basvuru,
+                            basvuru_tarihi=case.basvuru_tarihi,
+                            kanit_paketi=packet,
+                        )
+                    )
+                )
                 checks["ajan_sema"] = True
                 checks["ajan_atif"] = all(
                     retriever.verify_citation(cite, allowed_ids=found)
@@ -80,45 +102,61 @@ def evaluate(
                 if prediction.karar_onerisi != "UZMAN_INCELEMESI_GEREKLI":
                     checks["karar_kaynagi"] = bool(prediction.kaynaklar)
                 # AI draft labels are not an independent human-calibrated gold standard.
-                checks["ajan_taslak_etiket_uyumu"] = prediction.karar_onerisi == case.taslak_karar
-            rows.append(
-                {
-                    "id": case.id,
-                    "grup": case.grup,
-                    "gecti": all(checks.values()),
-                    "kontroller": checks,
-                    "kaynak_ids": sorted(found),
-                    "sure_ms": round((perf_counter() - start) * 1000, 3),
-                }
-            )
+                label_key = (
+                    "ajan_insan_etiket_uyumu"
+                    if case.etiket_durumu == "insan_dogruladi"
+                    else "ajan_taslak_etiket_uyumu"
+                )
+                checks[label_key] = prediction.karar_onerisi == case.taslak_karar
+                agent_ok = all(
+                    value
+                    for key, value in checks.items()
+                    if key.startswith("ajan_") or key == "karar_kaynagi"
+                )
         except Exception as exc:
             # Error class only; provider exceptions can contain sensitive input data.
-            rows.append(
-                {
-                    "id": case.id,
-                    "grup": case.grup,
-                    "gecti": False,
-                    "hata_turu": type(exc).__name__,
-                    "kontroller": {},
-                }
-            )
+            error = {"hata_turu": type(exc).__name__, "hata_asamasi": stage}
+            checks["ajan_sema" if stage == "ajan" else "bilesen_calisti"] = False
+            if stage == "ajan":
+                agent_ok = False
+            elif wanted.kaynak_any_of:
+                checks["kaynak_hit_at_3"] = False
+        rows.append(
+            {
+                "id": case.id,
+                "grup": case.grup,
+                "gecti": not error and all(checks.values()),
+                "bilesen_gecti": component_ok,
+                "ajan_gecti": agent_ok,
+                "kontroller": checks,
+                "kaynak_ids": sorted(found),
+                "sure_ms": round((perf_counter() - start) * 1000, 3),
+                **error,
+            }
+        )
     groups = {}
     for group in sorted({case.grup for case in cases}):
         subset = [row for row in rows if row["grup"] == group]
         groups[group] = {"n": len(subset), "gecen": sum(row["gecti"] for row in subset)}
     measured = [
-        row["kontroller"]["kaynak_hit_at_3"]
-        for row in rows
-        if "kaynak_hit_at_3" in row["kontroller"]
+        row["kontroller"].get("kaynak_hit_at_3", False)
+        for case, row in zip(cases, rows, strict=True)
+        if case.beklenen.kaynak_any_of
     ]
     return {
         "mod": "ajan_entegrasyonu" if predictor else "arac_ve_rag_bilesenleri",
+        "rapor_surumu": 2,
         "tarih_utc": datetime.now(UTC).isoformat(),
         "derlem_sha256": retriever.fingerprint,
+        "getirme_yapilandirmasi": getattr(retriever, "configuration", {"backend": "unknown"}),
         "n": len(rows),
         "gecen": sum(row["gecti"] for row in rows),
         "gecme_orani": sum(row["gecti"] for row in rows) / len(rows),
         "kaynak_hit_at_3": sum(measured) / len(measured) if measured else None,
+        "kaynak_beklenen_vaka_sayisi": len(measured),
+        "bilesen_gecen": sum(row["bilesen_gecti"] for row in rows),
+        "ajan_gecen": sum(row["ajan_gecti"] is True for row in rows) if predictor else None,
+        "hata_sayisi": sum("hata_turu" in row for row in rows),
         "ortalama_sure_ms": statistics.mean(row.get("sure_ms", 0) for row in rows),
         "gruplar": groups,
         "etiket_durumu": dict(Counter(c.etiket_durumu for c in cases)),
@@ -132,7 +170,7 @@ def main():
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8")
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--dataset", type=Path, default=ROOT / "eval" / "evaller.json")
+    parser.add_argument("--dataset", type=Path, default=DEFAULT_DATASET)
     parser.add_argument("--output", type=Path, default=ROOT / "artifacts" / "eval.json")
     parser.add_argument("--predictor", help="Açıkça seçilen module:function; ağ çağırabilir")
     parser.add_argument(

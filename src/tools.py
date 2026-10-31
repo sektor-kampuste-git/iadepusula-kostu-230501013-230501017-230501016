@@ -7,6 +7,7 @@ import json
 import re
 from datetime import date, datetime, timedelta
 from decimal import Decimal, InvalidOperation
+from functools import lru_cache
 from pathlib import Path
 
 import holidays
@@ -16,7 +17,7 @@ from src.contracts import CaymaSonucu, Contract, ParasalSinirSonucu, Siparis
 from src.paths import DATA
 
 
-def _date(value: date | str) -> date:
+def parse_date(value: date | str) -> date:
     if isinstance(value, datetime):
         raise ValueError("Saat değil YYYY-MM-DD biçiminde takvim tarihi kullanın")
     if isinstance(value, date):
@@ -63,13 +64,21 @@ def siparis_detay_getir(siparis_no: str, *, depo: SiparisDeposu | None = None) -
     return (depo or SiparisDeposu()).getir(siparis_no)
 
 
+@lru_cache(maxsize=16)
+def _holiday_calendar(year: int):
+    return holidays.country_holidays("TR", years=[year, min(year + 1, 9999)])
+
+
 def _calendar_warning(deadline: date) -> tuple[date | None, str | None]:
-    calendar = holidays.country_holidays("TR", years=[deadline.year, deadline.year + 1])
+    calendar = _holiday_calendar(deadline.year)
     if deadline.weekday() < 5 and deadline not in calendar:
         return None, None
     next_day = deadline
     while next_day.weekday() >= 5 or next_day in calendar:
-        next_day += timedelta(days=1)
+        try:
+            next_day += timedelta(days=1)
+        except OverflowError:
+            raise ValueError("Tatil sonrası tarih desteklenen takvim aralığını aşıyor") from None
     return next_day, (
         "Takvim son günü hafta sonu veya resmî tatile rastlıyor. Tatil uzaması hukuki "
         "uygulanabilirliği uzman tarafından incelenmelidir; süre iş günü olarak sayılmadı."
@@ -90,13 +99,13 @@ def cayma_suresi_hesapla(
     Missing notice or a holiday extension ambiguity never produces a final rejection.
     Default notice=True is an explicit calculation assumption; pass actual evidence.
     """
-    basvuru = _date(basvuru_tarihi)
-    teslim = _date(teslim_tarihi) if teslim_tarihi is not None else None
+    basvuru = parse_date(basvuru_tarihi)
+    teslim = parse_date(teslim_tarihi) if teslim_tarihi is not None else None
     if diger_teslim_tarihleri:
         if teslim is None:
             raise ValueError("Parçalı teslim için ana teslim tarihi de gereklidir")
-        teslim = max(teslim, *(_date(day) for day in diger_teslim_tarihleri))
-    bilgi = _date(bilgilendirme_tarihi) if bilgilendirme_tarihi else None
+        teslim = max(teslim, *(parse_date(day) for day in diger_teslim_tarihleri))
+    bilgi = parse_date(bilgilendirme_tarihi) if bilgilendirme_tarihi is not None else None
     if bilgi and bilgi > basvuru:
         raise ValueError("Başvuru tarihinden sonraki bilgilendirme kullanılamaz")
     if teslim is None or basvuru < teslim:
@@ -109,12 +118,18 @@ def cayma_suresi_hesapla(
             kalan_gun=None,
             aciklama="Teslimden önce de cayma bildirimi yapılabilir. İstisnalar ayrıca incelenir.",
         )
-    ordinary = teslim + timedelta(days=14)
+    try:
+        ordinary = teslim + timedelta(days=14)
+    except OverflowError:
+        raise ValueError("14 günlük hesap desteklenen takvim aralığını aşıyor") from None
     deadline = ordinary
     refs = ("MSY-M9",)
     if bilgi and bilgi > teslim:
         # Late notice involves the one-year longstop; preserve facts for legal review.
-        deadline = bilgi + timedelta(days=14)
+        try:
+            deadline = bilgi + timedelta(days=14)
+        except OverflowError:
+            raise ValueError("Bilgilendirme hesabı desteklenen takvim aralığını aşıyor") from None
         refs = ("MSY-M9", "MSY-M10")
     next_workday, warning = _calendar_warning(deadline)
     status = "SURE_ICINDE" if basvuru <= deadline else "SURE_GECTI"
