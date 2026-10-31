@@ -19,9 +19,14 @@ def main():
         for line in environment_file.read_text(encoding="utf-8-sig").splitlines():
             if line.startswith("LLM_API_KEY=") and line.split("=", 1)[1].strip():
                 needles.append(line.split("=", 1)[1].strip().encode())
-    paths = subprocess.check_output(
-        ["git", "ls-files", "--cached", "--others", "--exclude-standard", "-z"], cwd=ROOT,
-    ).decode().split("\0")
+    paths = (
+        subprocess.check_output(
+            ["git", "ls-files", "--cached", "--others", "--exclude-standard", "-z"],
+            cwd=ROOT,
+        )
+        .decode()
+        .split("\0")
+    )
     problems = []
     for name in filter(None, paths):
         path = ROOT / name
@@ -36,7 +41,9 @@ def main():
         print("Secret check failed; inspect these paths locally:")
         print("\n".join(sorted(set(problems))))
         raise SystemExit(1)
-    print(f"Secret check passed ({len(list(filter(None, paths)))} publishable paths). No credential values printed.")
+    print(
+        f"Secret check passed ({len(list(filter(None, paths)))} publishable paths). No credential values printed."
+    )
 
 
 if __name__ == "__main__":
