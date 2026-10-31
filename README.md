@@ -46,6 +46,20 @@ Eval çıktısı `artifacts/eval.json` içindedir. Hedef 14. gün dahil, TL tuta
 kuruş duyarlılığı, tam parasal sınırın dışında kalması, bilinmeyen sipariş/yıl,
 eksik bilgilendirme, sahte madde ve ayıplı mal/cayma ayrımıdır.
 
+## Üye 3 yerel arayüz başlangıcı
+
+Sipariş, hesaplamalar, uyarılar ve kaynaklar Streamlit ekranında incelenebilir:
+
+```powershell
+.venv\Scripts\python.exe -m pip install -r requirements-ui.txt
+.venv\Scripts\python.exe -m streamlit run app.py --server.address 127.0.0.1
+```
+
+Bu ekran yalnız yerel BM25 ve sentetik siparişleri kullanır; API çağrısı yapmaz.
+Karar ajanı, kalıcı insan onayı ve denetim kaydı henüz tamamlanmadı.
+[Kapsam, kullanım ve AI yardımı kaydı](docs/uye3_arayuz.md).
+Arayüz testleri geliştirme bağımlılıklarına dahildir.
+
 ## EVREN bağlantısı
 
 ```powershell
@@ -149,3 +163,24 @@ son gün gösterme davranışını iyileştirdi. Testlerin yakaladığı gerçek
 Türkçe `I/ı` dönüşümünün `API`/`Ignore` saldırı kalıplarını kaçırmasıydı;
 normalleştirme düzeltildi ve regresyon testleri eklendi. Üretilen çalışma,
 ekibin insan incelemesinin yerini tutmaz.
+
+
+## Üye 3 — İnceleme ekranı ve insan değerlendirmesi
+
+Yerel Streamlit ekranı `app.py` ile çalışır. Kurulum için [üye 3 rehberi](docs/uye3_arayuz.md).
+Sipariş, hesaplar ve kaynaklar gösterilir; gerekçeli insan değerlendirmesinden sonra
+serbest metinsiz JSON özeti indirilir. Başarısız yeni istek eski onayı temizler.
+Bu onay kimliği doğrulanmamış sentetik demo kaydıdır; gerçek kabul/ret kararı değildir.
+Üye 2 ajanı henüz entegre değildir. Canlı URL, video ve model maliyeti henüz yoktur.
+
+- [Kullanım senaryosu](docs/kullanim_senaryosu.md)
+- [Sistem kartı](docs/model_karti.md)
+- [Doğrulama](docs/uye3_dogrulama.md)
+- [Red team deneme rehberi](docs/uye3_redteam.md)
+- [Demo planı](docs/demo_metni.md)
+- [Teslim taslağı](TESLIM.md)
+
+Üye 3 ekranı, insan inceleme modülü, test ve belge taslakları Codex yardımıyla hazırlandı.
+Tasarım düzeltmesi: başarısız yeni değerlendirmede önceki onayın rapor indirmeye izin
+vermemesi sağlandı ve regresyon testi eklendi. Bu geliştirme kararı üretim hatası geçmişi
+veya kullanıcının kendi bulduğu hata olarak sunulmamalıdır.
