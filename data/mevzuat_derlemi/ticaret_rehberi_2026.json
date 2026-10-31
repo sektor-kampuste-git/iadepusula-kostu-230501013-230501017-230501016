@@ -1,0 +1,84 @@
+[
+  {
+    "chunk_id": "REHBER-ELEKTRONIK",
+    "belge_id": "TICARET-REHBER-2026",
+    "kaynak_turu": "resmi_rehber",
+    "belge_basligi": "Ticaret Bakanlığı Mesafeli Sözleşmeler Bilgilendirmesi",
+    "madde": "Rehber: Elektronik ürünler",
+    "baslik": "Elektronik ürünler",
+    "metin": "Anılan ürünler cayma hakkının istisnası kapsamında olmayıp bu ürünler için de herhangi bir gerekçe göstermeksizin ve cezai şart ödemeksizin cayma hakkı kullanılabilmektedir. Söz konusu ürünlerin cayma hakkı süresi içinde tüketiciler tarafından mutat biçimde kullanılmış olması, cayma hakkını ortadan kaldırmaz.",
+    "kaynak_url": "https://tuketici.ticaret.gov.tr/yayinlar/tuketici-bilgi-rehberi/mesafeli-sozlesmeler-hakkinda-bilgilendirme",
+    "erisim_tarihi": "2026-10-31",
+    "gecerli_baslangic": "2026-01-01",
+    "gecerli_bitis": null,
+    "anahtar_kelimeler": [
+      "cep telefonu",
+      "tablet",
+      "bilgisayar",
+      "akıllı saat"
+    ],
+    "kaynak_sha256": "7edf7fe61459a3a249456931d493c901291b5b309af36a9c8319ed87cfc1466e",
+    "baglam": null
+  },
+  {
+    "chunk_id": "REHBER-KARGO",
+    "belge_id": "TICARET-REHBER-2026",
+    "kaynak_turu": "resmi_rehber",
+    "belge_basligi": "Ticaret Bakanlığı Mesafeli Sözleşmeler Bilgilendirmesi",
+    "madde": "Rehber: İade kargo masrafı",
+    "baslik": "İade kargo masrafı",
+    "metin": "Tüketicinin malı ön bilgilendirmede belirtilen kargo şirketi aracılığıyla geri göndermesi yahut ön bilgilendirmede iade için bir kargo şirketi belirtilmemesi nedeniyle tüketicinin malı herhangi bir kargo şirketiyle geri göndermesi halinde tüketici iadeye ilişkin masraflardan sorumlu tutulamaz.",
+    "kaynak_url": "https://tuketici.ticaret.gov.tr/yayinlar/tuketici-bilgi-rehberi/mesafeli-sozlesmeler-hakkinda-bilgilendirme",
+    "erisim_tarihi": "2026-10-31",
+    "gecerli_baslangic": "2026-01-01",
+    "gecerli_bitis": null,
+    "anahtar_kelimeler": [
+      "iade kargo",
+      "masraf"
+    ],
+    "kaynak_sha256": "7edf7fe61459a3a249456931d493c901291b5b309af36a9c8319ed87cfc1466e",
+    "baglam": null
+  },
+  {
+    "chunk_id": "REHBER-IADE-SURE",
+    "belge_id": "TICARET-REHBER-2026",
+    "kaynak_turu": "resmi_rehber",
+    "belge_basligi": "Ticaret Bakanlığı Mesafeli Sözleşmeler Bilgilendirmesi",
+    "madde": "Rehber: Bedel iadesi ve geri gönderme süresi",
+    "baslik": "Bedel iadesi ve geri gönderme süresi",
+    "metin": "Tüketici cayma hakkını kullandığında satıcı/sağlayıcı teslimat masrafları dâhil tüm ödemeleri 14 gün içinde iade etmelidir. Aracı hizmet sağlayıcılar ise, satıcı/sağlayıcı adına bedel tahsil etmeleri ve bu bedeli tasarruflarında bulundurdukları süre boyunca bedel iadesinden müteselsilen sorumludurlar. Bu süre, tüketicinin malı kargoya teslim ettiği tarihten itibaren başlar. İade işlemi, ön bilgilendirmede belirtilenden farklı bir kargo ile yapılmışsa bu süre, ürünün satıcıya ulaştığı tarihte başlar. Henüz teslim edilmemiş ürünlerde ve hizmet sözleşmelerinde ise satıcı/sağlayıcının bedeli iade süresi, tüketicinin cayma bildirimini ilettiği tarihten itibaren işlemeye başlar. Tüketici ise cayma bildirimini satıcıya yönelttiği tarihten itibaren on dört gün içerisinde cayma hakkına konu malı geri göndermek zorundadır",
+    "kaynak_url": "https://tuketici.ticaret.gov.tr/yayinlar/tuketici-bilgi-rehberi/mesafeli-sozlesmeler-hakkinda-bilgilendirme",
+    "erisim_tarihi": "2026-10-31",
+    "gecerli_baslangic": "2026-01-01",
+    "gecerli_bitis": null,
+    "anahtar_kelimeler": [
+      "bedel iadesi",
+      "kargoya teslim",
+      "14 gün",
+      "geri gönderme"
+    ],
+    "kaynak_sha256": "7edf7fe61459a3a249456931d493c901291b5b309af36a9c8319ed87cfc1466e",
+    "baglam": null
+  },
+  {
+    "chunk_id": "REHBER-HASAR",
+    "belge_id": "TICARET-REHBER-2026",
+    "kaynak_turu": "resmi_rehber",
+    "belge_basligi": "Ticaret Bakanlığı Mesafeli Sözleşmeler Bilgilendirmesi",
+    "madde": "Rehber: Taşımada hasar",
+    "baslik": "Taşımada hasar",
+    "metin": "Satıcı, ön bilgilendirmede belirtilen kargo vasıtasıyla malın tüketiciye teslimine kadarki süreçte oluşan kayıp ve hasarlardan sorumludur.",
+    "kaynak_url": "https://tuketici.ticaret.gov.tr/yayinlar/tuketici-bilgi-rehberi/mesafeli-sozlesmeler-hakkinda-bilgilendirme",
+    "erisim_tarihi": "2026-10-31",
+    "gecerli_baslangic": "2026-01-01",
+    "gecerli_bitis": null,
+    "anahtar_kelimeler": [
+      "kargo",
+      "kırık",
+      "hasar",
+      "teslim"
+    ],
+    "kaynak_sha256": "7edf7fe61459a3a249456931d493c901291b5b309af36a9c8319ed87cfc1466e",
+    "baglam": null
+  }
+]

@@ -1,0 +1,21 @@
+{
+  "tur": "sentetik_baglanti_ve_atif_smoke",
+  "basarili": true,
+  "sinir": "Birebir alıntı seçimi doğrulandı. Hukuki yorum veya karar üretilmedi.",
+  "derlem_sha256": "15135f9209d8e41c3689b0cac290e8d01b65102fc65850a8bea47668a4fe5b0a",
+  "getirilen_kaynaklar": [
+    "MSY-M10-F2",
+    "MSY-M9-F1",
+    "MSY-M9-F2"
+  ],
+  "model": "qwen/qwen3-vl-30b-a3b",
+  "usage": {
+    "prompt_tokens": 442,
+    "total_tokens": 651,
+    "completion_tokens": 209
+  },
+  "latency_ms": 2038.61,
+  "dogrulanan_alinti_sayisi": 2,
+  "embedding_model": "qwen3-embedding-8b",
+  "olcum_tarihi": "2026-10-31"
+}
