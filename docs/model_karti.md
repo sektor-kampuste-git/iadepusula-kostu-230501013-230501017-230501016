@@ -12,7 +12,7 @@ Kaynak okuma beyanı ve en az 10 karakter gerekçe gerekir. Kaynak ve sipariş y
 SHA-256 özeti kaydı belirli pakete bağlar; kriptografik imza veya değiştirilemez günlük değildir.
 Serbest metinler JSON raporuna alınmaz. Oturumdaki gerekçeye mevcut maskeleme uygulanır;
 maskelenmemiş isim/adres kalabilir. Gerçek kişi verisi girilmemelidir.
-Kimliği doğrulanmış yetkili onayı henüz yoktur. Demo kutucuğu kimlik doğrulama değildir.
+Üye 2 kodu birleştirildi; ekran henüz ajanı çağırmaz. Kimliği doğrulanmış yetkili onayı henüz yoktur. Demo kutucuğu kimlik doğrulama değildir.
 
 ## Hukuk ve yönetişim
 Hukuki ön inceleme kullanımından dolayı uzman gözetimi gerekir. EU AI Act risk sınıfı,
