@@ -19,7 +19,7 @@ Hesaplar kabul/ret kararı olarak sunulmamalı. Kaynak skoru güven yüzdesi de�
 
 ## Sınırlar ve veri
 Mevcut sürüm yerel BM25 kullanır; UI yolunda model API çağrısı yoktur.
-Üye 2 ajanı henüz repoda bulunmadığından karar önerisi entegrasyonu bekler.
+Üye 2 ajanı ortak kodda bulunur; bu ekran yalnız kanıt paketini çağırır. Karar önerisi arayüz entegrasyonu bekler.
 Gerçek kişi/sipariş kullanılmaz. İsim ve adres için maskeleme garantisi yoktur.
 Kimlik doğrulama ve gerçek sipariş sahipliği kontrolü yoktur; internete gerçek veriyle açılmaz.
 İnceleme yalnız oturum belleğindedir; kalıcı denetim sistemi değildir.
