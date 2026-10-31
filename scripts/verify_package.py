@@ -16,10 +16,18 @@ PROBE = """
 import sys
 from pathlib import Path
 sys.path.insert(0, sys.argv[1])
+installed_root = Path(sys.argv[1]).resolve()
 import src
 from src.paths import DATA, ROOT
 from src.tools import SiparisDeposu, parasal_sinir_kontrol
 from src.rag import MevzuatRetriever
+from src.agent import AgentLimits, ButceliAjan
+from src.config import load_configuration
+from src.schemas import KararTaslagi
+from src.llm_client import LLMClient
+from src.tracing import write_trace
+from src.costs import monthly_estimate
+import maliyet_hesapla
 from eval.eval_kosucu import load_cases, evaluate
 assert Path(src.__file__).resolve().is_relative_to(Path(sys.argv[1]).resolve())
 assert DATA.is_relative_to(Path(sys.argv[1]).resolve())
@@ -36,6 +44,9 @@ with contextlib.redirect_stdout(io.StringIO()) as output:
     main()
 assert [item['parca']['chunk_id'] for item in json.loads(output.getvalue())] == ['MSY-M15-ç']
 print('Wheel verified outside checkout: CLI, orders, corpus, threshold and evaluation.')
+assert AgentLimits().max_model_calls == 2
+assert Path(maliyet_hesapla.__file__).resolve().is_relative_to(installed_root)
+print('Member 2 modules and cost entrypoint verified without credentials or API requests.')
 """
 
 
