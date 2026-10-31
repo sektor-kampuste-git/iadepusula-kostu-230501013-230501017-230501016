@@ -3,7 +3,9 @@
 .env.*
 !.env.example
 *key.txt
-*secret*
+.secrets/
+secrets.json
+secrets.*
 *.pdf
 .local/
 
