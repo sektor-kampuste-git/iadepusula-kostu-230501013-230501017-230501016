@@ -11,6 +11,11 @@
 - Kullanıcının oturumda belirttiği üye rolünü esas al. Üye 1: RAG, derlem,
   deterministik araçlar ve eval. Üye 2: istemci, şema, güvenlik, sınırlı ajan,
   maliyet ve CI. Üye 3: arayüz, insan onayı, yönetişim ve sunum.
+- Ana vitrin README'si ve depo/belge denetimi Üye 2 sorumluluğundadır.
+  GitHub'ın .github/README önceliği nedeniyle oraya README ekleme; OTOMASYON.md kullan.
+- Başka üyelerin uygulama/derlem/eval içeriğini kendiliğinden değiştirme.
+  Onların alanlarındaki bulguları sahiplerine yönelik not olarak ayır; yalnız
+  Üye 2 alanını ve mevcut sözleşmeye uyumlu entegrasyon düzeltmelerini geliştir.
 - Geliştirme `develop` üzerinden yürür; `main` doğrulanmış sürümü barındırır.
   Mevcut commit geçmişini koru; force push yapma.
 - Commit mesajlarını normal ve açıklayıcı dille yaz. Caveman, caveman-commit

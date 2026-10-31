@@ -18,3 +18,5 @@ alwaysApply: true
 - İnsan onayı tasarımı nihai hukuki karar/ödeme yetkisi değildir.
 - Not veya kusursuzluk garantisi verme; kalan işleri owner ve kanıtla belirt.
 - README, TESLIM ve kriter listesini güncelle; scripts.check_docs ile kontrol et.
+- Ana vitrin README ve depo denetimi Üye 2'nindir; .github/README ekleme.
+- Üye 1/3 alanındaki bulguları not et; onların kodunu kendiliğinden değiştirme.
