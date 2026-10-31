@@ -1,12 +1,12 @@
 """Üye 3: tek kanıt paketine bağlı, kimlik doğrulamasız demo inceleme kaydı."""
 
-import hashlib
 import json
 from datetime import UTC, datetime
 from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, Field
 
+from src.case_binding import evidence_digest
 from src.contracts import IncelemePaketi
 from src.privacy import mask_pii, obvious_injection
 
@@ -24,7 +24,7 @@ class InsanIncelemesi(BaseModel):
 
 def paket_ozeti(paket: IncelemePaketi) -> str:
     """Gerekçe ve onayın farklı başvurulara taşınmasını önler."""
-    return hashlib.sha256(paket.model_dump_json().encode()).hexdigest()
+    return evidence_digest(paket)
 
 
 def kaydet_inceleme(paket, sonuc, gerekce, kaynaklar_okundu):
