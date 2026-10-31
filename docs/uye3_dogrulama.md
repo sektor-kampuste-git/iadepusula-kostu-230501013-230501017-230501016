@@ -16,3 +16,18 @@ GitHub CI bu paket için henüz koşmadı. Canlı yayın ve video yoktur.
 
 Mevcut geliştirme eval seti bağımsız test değildir; etiketler AI taslağıdır.
 Bu sayılar bireysel not veya gerçek tüketici uyuşmazlığı çözme başarısı iddiası içermez.
+
+
+## Üye 2 ile birleştirme kontrolü — 31 Ekim 2026
+
+Üye 3 dalına develop tabanı 62e722b alındı. README ve CI çakışmaları iki üyenin
+katkıları korunarak çözüldü. CI hem app.py hem maliyet_hesapla.py kontrolünü,
+üye 2 demosunu ve paket doğrulamasını içerir.
+
+- Birleşik test paketi: **290 geçti, 7.24 saniye** (Python 3.11.0, Windows).
+- Ruff kod/biçim kontrolü ve gizli bilgi taraması geçti.
+- Bileşen eval: **30/30**, kaynak beklentili 20 vakada **20/20 hit@3**.
+- Üye 2 ağsız demo: normal, bütçe, adım ve kullanım bilgisi yok senaryoları beklenen şekilde tamamlandı.
+- Maliyet komutu çalıştı; fiyat/token girdileri kullanıcı varsayımı, gerçek sağlayıcı ölçümü değildir.
+- UI hâlâ kanıt paketini kullanır; mevcut karar ajanı henüz ekrana bağlı değildir.
+- GitHub kontrol sonuçları ayrıca takip edilmelidir; yerel test CI sonucu değildir.

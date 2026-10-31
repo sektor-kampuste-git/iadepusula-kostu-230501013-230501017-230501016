@@ -20,8 +20,8 @@ Test: `.venv\Scripts\python.exe -m pip install -r requirements-dev.txt`, ardınd
 Üye 1 çekirdeği değiştirilmedi. Yerelde bulunan ilk ekran korunan bir kopyadan genişletildi.
 
 ## Üye 2 bağlanırken
-Karar ajanının gerçek fonksiyon ve şeması yayımlanınca adapter eklenmeli; dosya ve alan adı
-varsayılmamalı. Ajan sonucu doğrulanmadan kabul/ret butonu açılmamalı. Karar, kaynaklar,
+Üye 2 kodu ortak daldan alındı. docs/uye2_entegrasyon.md içindeki ButceliAjan.run ve
+RunReport sözleşmesine göre adapter eklenmeli. Mevcut ekran ajanı henüz çağırmaz. Ajan sonucu doğrulanmadan kabul/ret butonu açılmamalı. Karar, kaynaklar,
 bütçe durumu ve uyarılar birlikte aynı paket özetine bağlanmalı. Yeni başvuruda önceki
 karar/onay/rapor silinmeli. API çağrıları yalnız sunucuda, ortam değişkenleriyle yapılmalı.
 Üye 2 güvenlik kontrolü UI atlanarak da test edilmeli.
