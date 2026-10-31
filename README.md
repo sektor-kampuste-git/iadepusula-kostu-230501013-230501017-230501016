@@ -193,7 +193,7 @@ Yerel Streamlit ekranı `app.py` ile çalışır. Kurulum için [üye 3 rehberi]
 Sipariş, hesaplar ve kaynaklar gösterilir; gerekçeli insan değerlendirmesinden sonra
 serbest metinsiz JSON özeti indirilir. Başarısız yeni istek eski onayı temizler.
 Bu onay kimliği doğrulanmamış sentetik demo kaydıdır; gerçek kabul/ret kararı değildir.
-Üye 2 ajanı ortak koda eklendi; bu arayüz henüz ajanı çağırmaz. Canlı URL, video ve model maliyeti henüz yoktur.
+Üye 2 ajanı ekrana bağlandı. Varsayılan yerel mod, açıkça etiketli ağsız demo ve açık onaylı gerçek model modu vardır. Canlı URL, video ve model maliyeti henüz yoktur.
 
 - [Kullanım senaryosu](docs/kullanim_senaryosu.md)
 - [Sistem kartı](docs/model_karti.md)
@@ -206,3 +206,18 @@ Bu onay kimliği doğrulanmamış sentetik demo kaydıdır; gerçek kabul/ret ka
 Tasarım düzeltmesi: başarısız yeni değerlendirmede önceki onayın rapor indirmeye izin
 vermemesi sağlandı ve regresyon testi eklendi. Bu geliştirme kararı üretim hatası geçmişi
 veya kullanıcının kendi bulduğu hata olarak sunulmamalıdır.
+
+
+### Ajan ekranını çalıştırma
+
+```powershell
+py -m venv .venv
+.venv\Scripts\python.exe -m pip install -r requirements-ui.txt
+.venv\Scripts\python.exe -m streamlit run app.py --server.address 127.0.0.1
+```
+
+Soldan **Ağsız ajan demosu** seçilerek API anahtarı olmadan öneri/onay akışı denenebilir.
+Bu yoldaki model yanıtı ve token sayıları taklittir. **Gerçek model** modu sunucuda
+anahtar, model ve tarihli tarife ile formda iki açık onay ister. Gerçek API denemesi
+bu geliştirmede yapılmadı. [Bağlantı, test ve sınırlar](docs/uye3_ajan_baglantisi.md).
+Bu katkı Codex yardımıyla hazırlanmıştır; insan incelemesi ve sunum provası gereklidir.

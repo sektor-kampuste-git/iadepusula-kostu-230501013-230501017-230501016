@@ -8,7 +8,7 @@ Video henüz kaydedilmedi. Gerçek ekran ve gerçek sonuçlar kullanılmalı.
 0:50–1:15: Kaynak okuma kutusunu ve gerekçeli insan değerlendirmesini göster; JSON özeti indir.
 1:15–1:35: Bilinmeyen siparişle eski sonuç/onayın silindiğini göster.
 1:35–1:50: Doğrulama raporundan ölçülen test sonucunu söyle. Model maliyeti ölçülmediyse bunu belirt.
-1:50–2:00: Sınırlar: sentetik demo, gerçek kimlik doğrulama ve mevcut üye 2 ajanının ekrana bağlantısı bekliyor.
+1:50–2:00: Sınırlar: sentetik demo, gerçek kimlik doğrulama ve gerçek sağlayıcı doğrulaması bekliyor.
 
-Ajan tamamlanınca akışı gerçek öneri ve ölçülmüş maliyetle güncelle. Video bağlantısını
+Ağsız ajan demosu seçilirse yanıtın taklit olduğunu açıkça söyle. Gerçek model ve maliyet ölçülünce akışı güncelle. Video bağlantısını
 README'ye yalnız video yüklendikten sonra ekle; canlı adres uydurma.
