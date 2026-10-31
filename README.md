@@ -1,10 +1,11 @@
 # İadePusula
 
-[![Üye 1 doğrulama](https://github.com/sektor-kampuste-git/iadepusula-kostu-230501013-230501017-230501016/actions/workflows/ci.yml/badge.svg?branch=develop)](https://github.com/sektor-kampuste-git/iadepusula-kostu-230501013-230501017-230501016/actions/workflows/ci.yml)
+[![İadePusula doğrulama](https://github.com/sektor-kampuste-git/iadepusula-kostu-230501013-230501017-230501016/actions/workflows/ci.yml/badge.svg?branch=develop)](https://github.com/sektor-kampuste-git/iadepusula-kostu-230501013-230501017-230501016/actions/workflows/ci.yml)
 
 Türkçe e-ticaret iade ve ayıplı mal başvuruları için **kaynaklı insan incelemesi**
-projesi. Sürüm **0.2.0**, Üye 1'in RAG, deterministik araç ve eval temelidir.
-Kanıt paketi üretir; nihai hukuki karar veya ödeme işlemi uygulamaz.
+projesi. Sürüm **0.3.0**, Üye 1'in RAG/araç temelini Üye 2'nin doğrulama,
+model istemcisi, sınırlı ajan ve maliyet altyapısıyla birleştirir.
+Kanıt paketi ve insan incelemesine tabi taslak üretir; nihai hukuki karar veya ödeme işlemi uygulamaz.
 
 ## Çalışan özellikler
 
@@ -17,6 +18,14 @@ Kanıt paketi üretir; nihai hukuki karar veya ödeme işlemi uygulamaz.
 - En fazla dört bileşen çağrısıyla insan inceleme paketi ve araç izleri.
 - Dört araçlı MCP stdio sunucusu, komut satırı arayüzü.
 - 30 vakalık geliştirme eval'i, ağsız testler ve CI.
+- Üye 2: kanıta bağlı taslak şeması, genel JSON istemcisi ve ortam yapılandırması.
+- Dört yerel araç ve en fazla iki model denemesi içeren sınırlı iş akışı.
+- Her çağrıdan önce tahmini maliyet rezervasyonu; bilinmeyen fiyat/kullanımda güvenli durma.
+- İçerik taşımayan JSONL izleri ve açık varsayımlı aylık maliyet simülasyonu.
+
+Üye 2'nin model yanıtları bu sürümde ağsız MockTransport ile test edildi.
+İki gerçek sağlayıcı denemesi, gerçek token/fatura ölçümü ve insan kalibrasyonu
+henüz tamamlanmadı. API anahtarı ağsız testlerde ve demoda kullanılmaz.
 
 ## Kurulum
 
@@ -84,7 +93,8 @@ flowchart LR
     MCP --> RAG
 ```
 
-Üye 2 ve Üye 3 kutuları entegrasyon planıdır; bu sürümde tamamlanmış değildir.
+Üye 2'nin sınırlı ajan ve şema kodu mevcuttur; gerçek sağlayıcı/insan doğrulaması
+devam eder. Üye 3'ün arayüz ve gerçek insan onayı iş akışı entegrasyon planıdır.
 
 ## Ölçüm ve sınırlar
 
@@ -95,11 +105,16 @@ aramadan çıkarılması ve Türkçe sorgu genişletmesiyle üç sıralama hatas
 ajan karar doğruluğu değildir.** Tüm etiketler AI taslağıdır.
 
 Resmî kaynaklardan seçilmiş pasajlar tam konsolide mevzuat değildir ve hukuk
-uzmanı onayı bekler. Genel prompt injection savunması, gerçek RBAC, nihai karar
-doğrulayıcıları, USD bütçeli ajan, onay arayüzü ve canlı yayınlama sonraki takım
-entegrasyonudur. İsim/adres maskeleme mevcut desenlerle garanti edilmez.
+uzmanı onayı bekler. Genel prompt injection savunması, gerçek RBAC, insan onayı
+arayüzü ve canlı yayınlama sonraki takım entegrasyonudur. Üye 2'nin USD kontrolü
+tarife ve ihtiyatlı token rezervasyonuna dayanır; sağlayıcı tarafı kesin harcama
+tavanı değildir. İsim/adres maskeleme mevcut desenlerle garanti edilmez.
 
 - [Entegrasyon sözleşmesi ve MCP kurulumu](docs/uye1_entegrasyon.md)
+- [Üye 2: ön inceleme şeması ve ağsız doğrulama demosu](docs/uye2_karar_semasi.md)
+- [Üye 2: istemci, ajan, güvenlik ve maliyet entegrasyonu](docs/uye2_entegrasyon.md)
+- [Üye 2: iç güvenlik regresyonları](docs/uye2_guvenlik_testleri.md)
+- [Üye 2: katkı ve doğrulama kaydı](docs/uye2_katki_kaydi.md)
 - [Geliştirme planı](docs/gelistirme_plani.md)
 - [Derlem kaynakları ve sürüm sınırları](data/mevzuat_derlemi/README.md)
 - [Eval ve gerçek insan kalibrasyonu](eval/README.md)
@@ -149,3 +164,24 @@ son gün gösterme davranışını iyileştirdi. Testlerin yakaladığı gerçek
 Türkçe `I/ı` dönüşümünün `API`/`Ignore` saldırı kalıplarını kaçırmasıydı;
 normalleştirme düzeltildi ve regresyon testleri eklendi. Üretilen çalışma,
 ekibin insan incelemesinin yerini tutmaz.
+
+Üye 2 geliştirmesinde de Codex; şema, istemci, bütçe/güvenlik iş akışı, maliyet,
+test ve dokümantasyon taslağı için kullanıldı. Kullanıcı ilk 45 şema testini ve
+şema demosunu kendi PowerShell'inde çalıştırdı. Sonraki genişletmelerin insan
+kod incelemesi beklenmektedir; otomatik test geçmesi insan onayı sayılmaz.
+Zaman sınırı testi gerçek saatin çok küçük bir aralığına bağlıyken kararsızlık
+gösterdi; saate bağımlılık enjekte edilerek deterministik regresyon testiyle düzeltildi.
+
+## Üye 2 ağsız gösterim ve maliyet
+
+```powershell
+.venv\Scripts\python.exe -m scripts.demo_uye2 --output artifacts/uye2-demo.json
+.venv\Scripts\python.exe -m maliyet_hesapla --input-tokens 2100 --output-tokens 450 --input-price 1 --output-price 2
+.venv\Scripts\python.exe -m pytest -q -p no:cacheprovider
+```
+
+İlk komutta yerel RAG/araçlar çalışır, model HTTP yanıtları taklit edilir.
+İkinci komuttaki fiyatlar kullanıcı senaryosudur: güncel EVREN veya başka bir
+sağlayıcının fiyatı oldukları iddia edilmez. Hosting/işletim giderleri dahil değildir.
+Önbellek yalnız Üye 1'in kamusal derlem katmanındadır; bu sürümde nihai taslak
+önbelleği veya model kademelendirmesi uygulanmadı ve tasarruf yüzdesi ölçülmedi.

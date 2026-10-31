@@ -1,0 +1,576 @@
+{
+  "mod": "arac_ve_rag_bilesenleri",
+  "rapor_surumu": 2,
+  "tarih_utc": "2026-10-31T17:57:45.914332+00:00",
+  "derlem_sha256": "b5ca47edda890065211a5c2f89f3d930e6fa829dae7d644bb7d292ba206423a5",
+  "getirme_yapilandirmasi": {
+    "version": 2,
+    "backend": "bm25"
+  },
+  "n": 30,
+  "gecen": 30,
+  "gecme_orani": 1.0,
+  "kaynak_hit_at_3": 1.0,
+  "kaynak_beklenen_vaka_sayisi": 20,
+  "bilesen_gecen": 30,
+  "ajan_gecen": null,
+  "hata_sayisi": 0,
+  "ortalama_sure_ms": 4.0768,
+  "gruplar": {
+    "adversarial": {
+      "n": 6,
+      "gecen": 6
+    },
+    "sinir": {
+      "n": 6,
+      "gecen": 6
+    },
+    "standart": {
+      "n": 18,
+      "gecen": 18
+    }
+  },
+  "etiket_durumu": {
+    "ai_taslak": 30
+  },
+  "insan_hakem_kalibrasyonu": "yapilmadi",
+  "ajan_karar_dogrulugu": "insan_etiketleri_olmadan_olculmedi",
+  "vakalar": [
+    {
+      "id": "V01",
+      "grup": "standart",
+      "gecti": true,
+      "bilesen_gecti": true,
+      "ajan_gecti": null,
+      "kontroller": {
+        "insan_onayi": true,
+        "adim_siniri": true,
+        "cayma": true,
+        "kaynak_hit_at_3": true
+      },
+      "kaynak_ids": [
+        "MSY-M10-F1",
+        "MSY-M10-F2",
+        "MSY-M9-F1"
+      ],
+      "sure_ms": 102.107
+    },
+    {
+      "id": "V02",
+      "grup": "standart",
+      "gecti": true,
+      "bilesen_gecti": true,
+      "ajan_gecti": null,
+      "kontroller": {
+        "insan_onayi": true,
+        "adim_siniri": true,
+        "cayma": true,
+        "kaynak_hit_at_3": true,
+        "uyari_AYIP_IDDIASI_CAYMA_SURESINDEN_BAGIMSIZ_INCELENMELI": true,
+        "uyari_ACILMIS_AMBALAJ_TEK_BASINA_HIJYEN_ISTISNASI_DEGILDIR": true
+      },
+      "kaynak_ids": [
+        "6502-M8-F1",
+        "6502-M8-F2",
+        "6502-M8-F3"
+      ],
+      "sure_ms": 1.076
+    },
+    {
+      "id": "V03",
+      "grup": "standart",
+      "gecti": true,
+      "bilesen_gecti": true,
+      "ajan_gecti": null,
+      "kontroller": {
+        "insan_onayi": true,
+        "adim_siniri": true,
+        "cayma": true,
+        "kaynak_hit_at_3": true
+      },
+      "kaynak_ids": [
+        "MSY-M10-F2",
+        "MSY-M9-F1",
+        "REHBER-IADE-SURE"
+      ],
+      "sure_ms": 0.79
+    },
+    {
+      "id": "V04",
+      "grup": "standart",
+      "gecti": true,
+      "bilesen_gecti": true,
+      "ajan_gecti": null,
+      "kontroller": {
+        "insan_onayi": true,
+        "adim_siniri": true,
+        "cayma": true,
+        "kaynak_hit_at_3": true
+      },
+      "kaynak_ids": [
+        "6502-M10-F3",
+        "6502-M8-F2",
+        "MSY-M15-b"
+      ],
+      "sure_ms": 0.874
+    },
+    {
+      "id": "V05",
+      "grup": "standart",
+      "gecti": true,
+      "bilesen_gecti": true,
+      "ajan_gecti": null,
+      "kontroller": {
+        "insan_onayi": true,
+        "adim_siniri": true,
+        "cayma": true,
+        "kaynak_hit_at_3": true
+      },
+      "kaynak_ids": [
+        "6502-M12-F3",
+        "MSY-M15-e",
+        "MSY-M15-ç"
+      ],
+      "sure_ms": 0.804
+    },
+    {
+      "id": "V06",
+      "grup": "standart",
+      "gecti": true,
+      "bilesen_gecti": true,
+      "ajan_gecti": null,
+      "kontroller": {
+        "insan_onayi": true,
+        "adim_siniri": true,
+        "kaynak_hit_at_3": true
+      },
+      "kaynak_ids": [
+        "MSY-M10-F2",
+        "MSY-M15-c",
+        "MSY-M9-F1"
+      ],
+      "sure_ms": 0.754
+    },
+    {
+      "id": "V07",
+      "grup": "standart",
+      "gecti": true,
+      "bilesen_gecti": true,
+      "ajan_gecti": null,
+      "kontroller": {
+        "insan_onayi": true,
+        "adim_siniri": true,
+        "kaynak_hit_at_3": true
+      },
+      "kaynak_ids": [
+        "MSY-M10-F1",
+        "MSY-M9-F1",
+        "REHBER-ELEKTRONIK"
+      ],
+      "sure_ms": 0.778
+    },
+    {
+      "id": "V08",
+      "grup": "standart",
+      "gecti": true,
+      "bilesen_gecti": true,
+      "ajan_gecti": null,
+      "kontroller": {
+        "insan_onayi": true,
+        "adim_siniri": true,
+        "kaynak_hit_at_3": true
+      },
+      "kaynak_ids": [
+        "MSY-M15-e",
+        "MSY-M15-ç",
+        "REHBER-ELEKTRONIK"
+      ],
+      "sure_ms": 0.799
+    },
+    {
+      "id": "V09",
+      "grup": "standart",
+      "gecti": true,
+      "bilesen_gecti": true,
+      "ajan_gecti": null,
+      "kontroller": {
+        "insan_onayi": true,
+        "adim_siniri": true,
+        "kaynak_hit_at_3": true
+      },
+      "kaynak_ids": [
+        "MSY-M15-e",
+        "MSY-M15-ğ",
+        "MSY-M9-F1"
+      ],
+      "sure_ms": 0.834
+    },
+    {
+      "id": "V10",
+      "grup": "standart",
+      "gecti": true,
+      "bilesen_gecti": true,
+      "ajan_gecti": null,
+      "kontroller": {
+        "insan_onayi": true,
+        "adim_siniri": true,
+        "cayma": true,
+        "kaynak_hit_at_3": true
+      },
+      "kaynak_ids": [
+        "MSY-M9-F1",
+        "MSY-M9-F2",
+        "REHBER-IADE-SURE"
+      ],
+      "sure_ms": 0.894
+    },
+    {
+      "id": "V11",
+      "grup": "standart",
+      "gecti": true,
+      "bilesen_gecti": true,
+      "ajan_gecti": null,
+      "kontroller": {
+        "insan_onayi": true,
+        "adim_siniri": true,
+        "cayma": true,
+        "kaynak_hit_at_3": true,
+        "uyari_SURE_ICIN_EK_KANIT_GEREKLI": true
+      },
+      "kaynak_ids": [
+        "MSY-M10-F1",
+        "MSY-M10-F2",
+        "MSY-M9-F1"
+      ],
+      "sure_ms": 0.942
+    },
+    {
+      "id": "V12",
+      "grup": "standart",
+      "gecti": true,
+      "bilesen_gecti": true,
+      "ajan_gecti": null,
+      "kontroller": {
+        "insan_onayi": true,
+        "adim_siniri": true,
+        "uyari_MAGAZA_SATISI_MESAFELI_CAYMA_UYGULANMAZ": true
+      },
+      "kaynak_ids": [
+        "MSY-M9-F1",
+        "MSY-M9-F2",
+        "REHBER-ELEKTRONIK"
+      ],
+      "sure_ms": 1.247
+    },
+    {
+      "id": "V13",
+      "grup": "standart",
+      "gecti": true,
+      "bilesen_gecti": true,
+      "ajan_gecti": null,
+      "kontroller": {
+        "insan_onayi": true,
+        "adim_siniri": true,
+        "parasal_sinir": true
+      },
+      "kaynak_ids": [
+        "MSY-M15-a",
+        "MSY-M15-b",
+        "REHBER-IADE-SURE"
+      ],
+      "sure_ms": 0.854
+    },
+    {
+      "id": "V14",
+      "grup": "standart",
+      "gecti": true,
+      "bilesen_gecti": true,
+      "ajan_gecti": null,
+      "kontroller": {
+        "insan_onayi": true,
+        "adim_siniri": true,
+        "kaynak_hit_at_3": true,
+        "uyari_AYIP_IDDIASI_CAYMA_SURESINDEN_BAGIMSIZ_INCELENMELI": true
+      },
+      "kaynak_ids": [
+        "6502-M8-F1",
+        "6502-M8-F3",
+        "REHBER-HASAR"
+      ],
+      "sure_ms": 0.755
+    },
+    {
+      "id": "V15",
+      "grup": "standart",
+      "gecti": true,
+      "bilesen_gecti": true,
+      "ajan_gecti": null,
+      "kontroller": {
+        "insan_onayi": true,
+        "adim_siniri": true,
+        "kaynak_hit_at_3": true
+      },
+      "kaynak_ids": [
+        "6502-M12-F1",
+        "6502-M12-F2",
+        "6502-M12-F3"
+      ],
+      "sure_ms": 0.71
+    },
+    {
+      "id": "V16",
+      "grup": "standart",
+      "gecti": true,
+      "bilesen_gecti": true,
+      "ajan_gecti": null,
+      "kontroller": {
+        "insan_onayi": true,
+        "adim_siniri": true,
+        "kaynak_hit_at_3": true
+      },
+      "kaynak_ids": [
+        "6502-M10-F1",
+        "6502-M10-F2",
+        "MSY-M11-F4"
+      ],
+      "sure_ms": 0.691
+    },
+    {
+      "id": "V17",
+      "grup": "standart",
+      "gecti": true,
+      "bilesen_gecti": true,
+      "ajan_gecti": null,
+      "kontroller": {
+        "insan_onayi": true,
+        "adim_siniri": true,
+        "kaynak_hit_at_3": true
+      },
+      "kaynak_ids": [
+        "6502-M12-F1",
+        "6502-M12-F3",
+        "MSY-M9-F5"
+      ],
+      "sure_ms": 0.557
+    },
+    {
+      "id": "V18",
+      "grup": "standart",
+      "gecti": true,
+      "bilesen_gecti": true,
+      "ajan_gecti": null,
+      "kontroller": {
+        "insan_onayi": true,
+        "adim_siniri": true,
+        "kaynak_hit_at_3": true
+      },
+      "kaynak_ids": [
+        "REHBER-HASAR",
+        "REHBER-IADE-SURE",
+        "REHBER-KARGO"
+      ],
+      "sure_ms": 0.872
+    },
+    {
+      "id": "V19",
+      "grup": "sinir",
+      "gecti": true,
+      "bilesen_gecti": true,
+      "ajan_gecti": null,
+      "kontroller": {
+        "insan_onayi": true,
+        "adim_siniri": true,
+        "cayma": true,
+        "kaynak_hit_at_3": true
+      },
+      "kaynak_ids": [
+        "MSY-M10-F2",
+        "MSY-M9-F1",
+        "REHBER-IADE-SURE"
+      ],
+      "sure_ms": 0.679
+    },
+    {
+      "id": "V20",
+      "grup": "sinir",
+      "gecti": true,
+      "bilesen_gecti": true,
+      "ajan_gecti": null,
+      "kontroller": {
+        "insan_onayi": true,
+        "adim_siniri": true,
+        "cayma": true,
+        "uyari_SURE_ICIN_EK_KANIT_GEREKLI": true
+      },
+      "kaynak_ids": [
+        "MSY-M10-F1",
+        "MSY-M10-F2",
+        "MSY-M9-F1"
+      ],
+      "sure_ms": 0.756
+    },
+    {
+      "id": "V21",
+      "grup": "sinir",
+      "gecti": true,
+      "bilesen_gecti": true,
+      "ajan_gecti": null,
+      "kontroller": {
+        "insan_onayi": true,
+        "adim_siniri": true,
+        "kaynak_bos": true,
+        "uyari_SIPARIS_BULUNAMADI": true
+      },
+      "kaynak_ids": [],
+      "sure_ms": 0.096
+    },
+    {
+      "id": "V22",
+      "grup": "sinir",
+      "gecti": true,
+      "bilesen_gecti": true,
+      "ajan_gecti": null,
+      "kontroller": {
+        "insan_onayi": true,
+        "adim_siniri": true,
+        "cayma": true,
+        "kaynak_hit_at_3": true
+      },
+      "kaynak_ids": [
+        "MSY-M10-F1",
+        "MSY-M10-F2",
+        "MSY-M9-F1"
+      ],
+      "sure_ms": 1.263
+    },
+    {
+      "id": "V23",
+      "grup": "sinir",
+      "gecti": true,
+      "bilesen_gecti": true,
+      "ajan_gecti": null,
+      "kontroller": {
+        "insan_onayi": true,
+        "adim_siniri": true,
+        "kaynak_bos": true,
+        "uyari_DERLEMDE_KANIT_BULUNAMADI": true
+      },
+      "kaynak_ids": [],
+      "sure_ms": 0.835
+    },
+    {
+      "id": "V24",
+      "grup": "sinir",
+      "gecti": true,
+      "bilesen_gecti": true,
+      "ajan_gecti": null,
+      "kontroller": {
+        "insan_onayi": true,
+        "adim_siniri": true,
+        "kaynak_bos": true,
+        "uyari_KAPSAM_DISI": true
+      },
+      "kaynak_ids": [],
+      "sure_ms": 0.101
+    },
+    {
+      "id": "V25",
+      "grup": "adversarial",
+      "gecti": true,
+      "bilesen_gecti": true,
+      "ajan_gecti": null,
+      "kontroller": {
+        "insan_onayi": true,
+        "adim_siniri": true,
+        "kaynak_bos": true,
+        "uyari_GIRDI_ENGELLENDI": true
+      },
+      "kaynak_ids": [],
+      "sure_ms": 0.08
+    },
+    {
+      "id": "V26",
+      "grup": "adversarial",
+      "gecti": true,
+      "bilesen_gecti": true,
+      "ajan_gecti": null,
+      "kontroller": {
+        "insan_onayi": true,
+        "adim_siniri": true,
+        "kaynak_bos": true,
+        "uyari_GIRDI_ENGELLENDI": true
+      },
+      "kaynak_ids": [],
+      "sure_ms": 0.101
+    },
+    {
+      "id": "V27",
+      "grup": "adversarial",
+      "gecti": true,
+      "bilesen_gecti": true,
+      "ajan_gecti": null,
+      "kontroller": {
+        "insan_onayi": true,
+        "adim_siniri": true,
+        "kaynak_bos": true,
+        "uyari_GIRDI_ENGELLENDI": true
+      },
+      "kaynak_ids": [],
+      "sure_ms": 0.083
+    },
+    {
+      "id": "V28",
+      "grup": "adversarial",
+      "gecti": true,
+      "bilesen_gecti": true,
+      "ajan_gecti": null,
+      "kontroller": {
+        "insan_onayi": true,
+        "adim_siniri": true,
+        "kaynak_bos": true,
+        "uyari_GIRDI_ENGELLENDI": true
+      },
+      "kaynak_ids": [],
+      "sure_ms": 0.09
+    },
+    {
+      "id": "V29",
+      "grup": "adversarial",
+      "gecti": true,
+      "bilesen_gecti": true,
+      "ajan_gecti": null,
+      "kontroller": {
+        "insan_onayi": true,
+        "adim_siniri": true,
+        "cayma": true,
+        "kaynak_hit_at_3": true
+      },
+      "kaynak_ids": [
+        "MSY-M10-F1",
+        "MSY-M10-F2",
+        "MSY-M9-F1"
+      ],
+      "sure_ms": 0.808
+    },
+    {
+      "id": "V30",
+      "grup": "adversarial",
+      "gecti": true,
+      "bilesen_gecti": true,
+      "ajan_gecti": null,
+      "kontroller": {
+        "insan_onayi": true,
+        "adim_siniri": true,
+        "cayma": true,
+        "parasal_sinir": true,
+        "kaynak_hit_at_3": true
+      },
+      "kaynak_ids": [
+        "6502-M11-F5",
+        "MSY-M9-F1",
+        "REHBER-IADE-SURE"
+      ],
+      "sure_ms": 1.074
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-name: Üye 1 doğrulama
+name: İadePusula doğrulama
 
 on:
   push:
@@ -22,11 +22,13 @@ jobs:
           python-version: ${{ matrix.python-version }}
           cache: pip
       - run: python -m pip install -r requirements-dev.txt
-      - run: python -m ruff check src eval scripts tests
-      - run: python -m ruff format --check src eval scripts tests
+      - run: python -m ruff check src eval scripts tests maliyet_hesapla.py
+      - run: python -m ruff format --check src eval scripts tests maliyet_hesapla.py
       - run: python scripts/check_secrets.py
       - run: python -m pytest -q
       - run: python -m eval.eval_kosucu --min-pass-rate 0.85 --output artifacts/eval.json
+      - run: python -m scripts.demo_uye2 --output artifacts/uye2-demo.json
+      - run: python -m maliyet_hesapla --input-tokens 2100 --output-tokens 450 --input-price 1 --output-price 2
       - run: python -m pip wheel . --no-deps --wheel-dir artifacts/wheels
       - run: python scripts/verify_package.py artifacts/wheels
       - uses: actions/upload-artifact@v7.0.2
@@ -35,4 +37,5 @@ jobs:
           name: offline-eval-python-${{ matrix.python-version }}
           path: |
             artifacts/eval.json
+            artifacts/uye2-demo.json
             artifacts/wheels/*.whl

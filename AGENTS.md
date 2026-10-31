@@ -1,6 +1,8 @@
 # İadePusula geliştirme kuralları
 
-- Kullanıcının rolü Üye 1: RAG, derlem, deterministik araçlar ve eval birincil kapsamdır.
+- Kullanıcının oturumda belirttiği üye rolünü esas al. Üye 1: RAG, derlem,
+  deterministik araçlar ve eval. Üye 2: istemci, şema, güvenlik, sınırlı ajan,
+  maliyet ve CI. Üye 3: arayüz, insan onayı, yönetişim ve sunum.
 - Geliştirme `develop` üzerinden yürür; `main` doğrulanmış sürümü barındırır.
   Mevcut commit geçmişini koru; force push yapma.
 - Commit mesajlarını normal ve açıklayıcı dille yaz. Caveman, caveman-commit
@@ -14,6 +16,9 @@
 - Değişiklikten sonra `python -m pytest -q`, `python -m ruff check src eval scripts tests`,
   `python -m ruff format --check src eval scripts tests` ve
   `python -m eval.eval_kosucu --min-pass-rate 0.85` çalıştır.
+- Kök `maliyet_hesapla.py` dosyasını da Ruff kontrolüne dahil et.
+- Üye 2 demosu `python -m scripts.demo_uye2` ile tamamen ağsız çalışır.
+  Test tarifesini gerçek istemciye bağlama; bilinmeyen maliyeti sıfır yazma.
 - Ağsız testler gerçek API çağrısı yapmamalı. EVREN smoke testi yalnız açıkça
   çalıştırıldığında sentetik senaryo kullanır; tam ajan eval'i değildir.
 - Delegasyon faydalıysa ücretsiz OpenCode MCP çalışanlarını kullan;
