@@ -1,0 +1,26 @@
+# Local secrets and source attachments
+.env
+.env.*
+!.env.example
+*key.txt
+*secret*
+*.pdf
+.local/
+
+# Python and generated output
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+build/
+dist/
+artifacts/
+traces/
+.qdrant/
+.cache/
+.DS_Store
+Thumbs.db
