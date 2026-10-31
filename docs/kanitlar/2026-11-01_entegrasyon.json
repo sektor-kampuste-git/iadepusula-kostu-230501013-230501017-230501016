@@ -1,0 +1,42 @@
++{
+  "recorded_on_local": "2026-11-01",
+  "timezone": "Europe/Istanbul",
+  "version": "0.3.1",
+  "base_sha": "bedc0179e41f6603530cdd052a69f4c2f5a8fd78",
+  "kind": "LOCAL_OFFLINE_VERIFICATION_NOT_MODEL_ACCURACY",
+  "python": "3.12.14",
+  "tests": {
+    "passed": 321,
+    "seconds": 6.79,
+    "new_case_binding_tests": 12,
+    "new_documentation_tests": 5
+  },
+  "ruff": {
+    "passed": true,
+    "files": 61
+  },
+  "component_eval": {
+    "utc": "2026-10-31T22:41:01.075029+00:00",
+    "passed": 30,
+    "total": 30,
+    "source_hit_at_3": 20,
+    "source_expected": 20,
+    "label_status": "ai_taslak",
+    "human_calibration": false
+  },
+  "demo": {
+    "mock_model": true,
+    "scenarios": 4,
+    "matched": 4
+  },
+  "secret_check": "passed_no_values_printed",
+  "documentation_check": "passed_local_paths_and_C1_C8",
+  "wheel": "0.3.1_verified_outside_checkout",
+  "real_provider_requests": 0,
+  "limitations": [
+    "İki gerçek sağlayıcı doğrulanmadı",
+    "İnsan kalibrasyonu ve dış red team yok",
+    "Canlı URL ve video yok",
+    "Yerel kontrol GitHub CI veya insan incelemesi değildir"
+  ]
+}

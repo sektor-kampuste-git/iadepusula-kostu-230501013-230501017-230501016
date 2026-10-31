@@ -1,6 +1,7 @@
 # İadePusula kullanım senaryosu
 
-Üye 3 katkısı, 31 Ekim 2026. Hedef kullanıcı: iade başvurularını ön inceleyen müşteri temsilcisi.
+Üye 3 katkısı, ortak güncelleme 1 Kasım 2026 / 0.3.1.
+Hedef kullanıcı: iade başvurularını ön inceleyen müşteri temsilcisi/uzman.
 Problem: sipariş, süre ve kaynakları ayrı yerlerde incelemek zaman alır.
 
 ## Kullanıcı akışı
@@ -10,6 +11,9 @@ Problem: sipariş, süre ve kaynakları ayrı yerlerde incelemek zaman alır.
 4. İnsan kaynakları okuduğunu belirtir; ek bilgi, uzmana yönlendirme veya ön inceleme tamamlama seçer ve gerekçe yazar.
 5. Geçerli değerlendirmeden sonra serbest metin içermeyen JSON özeti indirilir.
 6. Yeni başvuru veya başarısız yeni değerlendirme eski onayı temizler.
+7. Ajan seçilmişse aynı kanıt paketi model yoluna verilir; başvuru tarihi/metni
+   değişirse eski taslak kullanılamaz. İnsan öneriyi değiştirse de şema ve kaynak
+   kontrolünden geçer. Kaynaklar okundu ve gerekçe girildi beyanı gerekir.
 
 ## Kabul koşulları
 Boş metin, bilinmeyen sipariş ve engellenen girdi eski sonuç göstermemeli.

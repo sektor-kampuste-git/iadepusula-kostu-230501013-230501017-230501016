@@ -1,5 +1,14 @@
 # Üye 2 entegrasyonu - v0.3.0
 
+## Güncel ortak sürüm — 0.3.1 / 1 Kasım 2026
+
+Bu belgenin alt kısmı ilk v0.3.0 teslim kapsamını korur.
+Artık Üye 3 ekranı ajana bağlıdır. UI/eval hazır kanıtı run_packet ile tekrar
+hazırlamadan kullanır; paket başvuru tarihi taşır. Başarılı RunReport kanıt özeti
+gerektirir; başka başvurunun taslağı onay/raporda kullanılamaz. Eski, özetsiz
+başarılı raporlar onaylanmaz. Ortak contracts/evidence alanları bu değişiklik için
+genişletildi. [Mimari](mimari.md), [güncel doğrulama](gelistirme_kaydi_2026-11-01.md).
+
 Hazırlama tarihi: 31 Ekim 2026. Temel: Üye 1 `cfc3e2c` sürümü.
 Geliştirme Codex yardımıyla hazırlandı; Zeynep ve ekip kod incelemesi bekleniyor.
 

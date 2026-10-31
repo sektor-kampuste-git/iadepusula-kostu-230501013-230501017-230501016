@@ -14,9 +14,10 @@ from time import monotonic
 from typing import Literal
 from uuid import uuid4
 
-from pydantic import Field, StrictInt, field_validator
+from pydantic import Field, StrictInt, field_validator, model_validator
 
-from src.contracts import Contract
+from src.case_binding import evidence_digest
+from src.contracts import Contract, IncelemePaketi
 from src.costs import BudgetExceeded, PriceCard, RequestBudget, TokenUsage, money, request_cost
 from src.evidence import hazirla_inceleme
 from src.llm_client import LLMClient, LLMError
@@ -81,6 +82,17 @@ class RunReport(Contract):
     elapsed_ms: float = Field(ge=0)
     events: tuple[TraceEvent, ...]
     insan_onayi_gerekiyor_mu: Literal[True] = True
+    evidence_sha256: str | None = Field(default=None, pattern=r"^[a-f0-9]{64}$")
+
+    @model_validator(mode="after")
+    def successful_report_needs_bound_draft(self):
+        """Başarılı taslak başvuruya bağlı olmalı; durdurulan rapor taslak taşıyamaz."""
+        if self.reason == "TASLAK_DOGRULANDI":
+            if self.draft is None or self.evidence_sha256 is None:
+                raise ValueError("Doğrulanmış taslak ve başvuru özeti birlikte gereklidir")
+        elif self.draft is not None:
+            raise ValueError("Tamamlanmamış rapor onaylanabilir taslak taşıyamaz")
+        return self
 
 
 def prompt_token_estimate(messages: list[dict[str, str]]) -> int:
@@ -99,6 +111,7 @@ class _RunState:
     attempts: int = 0
     tools: int = 0
     events: list[TraceEvent] = field(default_factory=list)
+    evidence_sha256: str | None = None
 
     def finish(self, reason: StopReason, draft: KararTaslagi | None = None) -> RunReport:
         return RunReport(
@@ -115,6 +128,7 @@ class _RunState:
                 *self.events,
                 TraceEvent(event="BITIS", attempt=self.attempts, tools=self.tools),
             ),
+            evidence_sha256=self.evidence_sha256,
         )
 
 
@@ -172,19 +186,64 @@ class ButceliAjan:
                 )
             except ValueError:
                 return finish("GIRDI_HATASI")
-            state.tools = len(packet.arac_izleri)
-            if state.tools > 4 or any(row.arac not in ALLOWED_TOOLS for row in packet.arac_izleri):
-                return finish("GIRDI_ENGELLENDI")
-            state.events.append(TraceEvent(event="KANIT_HAZIRLANDI", attempt=0, tools=state.tools))
-            if packet.siparis is None:
-                return finish("SIPARIS_BULUNAMADI")
-            if not packet.kaynaklar:
-                return finish("KAYNAK_YOK")
-            if self.price is None:
-                return finish("TARIFE_YOK")
-            return self._generate(packet, with_retriever, state)
+            return self._use_packet(packet, with_retriever, state)
         finally:
             with_retriever.close()
+
+    def run_packet(
+        self,
+        packet: IncelemePaketi,
+        *,
+        retriever: MevzuatRetriever | None = None,
+        sentetik: bool = False,
+    ) -> RunReport:
+        """UI/eval'in sunucuda hazırladığı paketi yeniden araç çalıştırmadan kullan.
+
+        Bu bir dış API girişi değildir: paket model/kullanıcıdan alınmamalıdır.
+        Çağıran retriever verirse onun yaşam döngüsünü kendisi yönetir.
+        """
+        state = _RunState(RequestBudget(self.limits.max_usd), self._clock(), self._clock)
+        if sentetik is not True:
+            return state.finish("SENTETIK_ONAY_GEREKLI")
+        try:
+            packet = IncelemePaketi.model_validate(packet.model_dump(mode="python"))
+            if packet.basvuru_tarihi is None:
+                raise ValueError("Başvuru tarihi gerekli")
+            if prepare_submission(packet.maskelenmis_basvuru) != packet.maskelenmis_basvuru:
+                raise ValueError("Paket güvenli girdi sınırından geçmemiş")
+        except (ValueError, TypeError, AttributeError):
+            return state.finish("GIRDI_HATASI")
+        if blocked_submission(packet.maskelenmis_basvuru):
+            return state.finish("GIRDI_ENGELLENDI")
+        owned = retriever is None
+        rag = retriever if retriever is not None else MevzuatRetriever()
+        try:
+            return self._use_packet(packet, rag, state)
+        finally:
+            if owned:
+                rag.close()
+
+    def _use_packet(self, packet, retriever, state):
+        """Tek kanıt paketini, kaynak bütünlüğünü ve araç sayısını doğrula."""
+        finish = state.finish
+        if len(packet.arac_izleri) > 4 or any(
+            row.arac not in ALLOWED_TOOLS for row in packet.arac_izleri
+        ):
+            return finish("GIRDI_ENGELLENDI")
+        state.tools = len(packet.arac_izleri)
+        state.evidence_sha256 = evidence_digest(packet)
+        state.events.append(TraceEvent(event="KANIT_HAZIRLANDI", attempt=0, tools=state.tools))
+        if state.tools > self.limits.max_tool_calls or state.tools >= self.limits.max_steps:
+            return finish("ADIM_SINIRI")
+        if packet.siparis is None:
+            return finish("SIPARIS_BULUNAMADI")
+        if not packet.kaynaklar:
+            return finish("KAYNAK_YOK")
+        if any(retriever.by_id.get(row.parca.chunk_id) != row.parca for row in packet.kaynaklar):
+            return finish("GIRDI_HATASI")
+        if self.price is None:
+            return finish("TARIFE_YOK")
+        return self._generate(packet, retriever, state)
 
     def _generate(self, packet, retriever, state: _RunState):
         """Retry dahil her denemeyi adım ve maliyet hesabına kat."""
@@ -259,7 +318,7 @@ def make_eval_predictor(agent: ButceliAjan):
     """
 
     def predictor(value):
-        report = agent.run(value.siparis_no, value.basvuru, value.basvuru_tarihi, sentetik=True)
+        report = agent.run_packet(value.kanit_paketi, sentetik=True)
         if report.draft is None:
             # Hata/eksik kanıt hiçbir zaman otomatik ret veya kabul değildir.
             return {

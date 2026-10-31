@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "updated_on": "2026-11-01",
+  "scope": "Geliştirme durumu; implemented nihai rubrikte tam puan veya insan onayı değildir.",
+  "criteria": [
+    {
+      "id": "C1",
+      "title": "Tipli ve doğrulanmış çıktı",
+      "status": "implemented",
+      "owner": "Üye 2",
+      "evidence": [
+        "src/schemas.py",
+        "tests/test_schemas.py"
+      ],
+      "next_action": "Gerçek iki sağlayıcı çıktısında aynı şemayı doğrula."
+    },
+    {
+      "id": "C2",
+      "title": "Türkçe RAG ve sınırlı araçlar",
+      "status": "implemented",
+      "owner": "Üye 1 + Üye 2",
+      "evidence": [
+        "src/rag.py",
+        "src/evidence.py",
+        "src/agent.py",
+        "src/mcp_server.py",
+        "data/mevzuat_derlemi/README.md"
+      ],
+      "next_action": "Kaynak güncelliğini uzmanla kontrol et; gerçek ajan başarısını ölç."
+    },
+    {
+      "id": "C3",
+      "title": "Sıfır maliyetli herkese açık deploy",
+      "status": "pending",
+      "owner": "Üye 3 + ekip",
+      "evidence": [
+        "app.py",
+        "requirements-ui.txt",
+        "docs/proje_isterleri.md"
+      ],
+      "next_action": "Yalnız sentetik demoyu yayınla; gizli pencerede URL ve soğuk başlangıç ölç."
+    },
+    {
+      "id": "C4",
+      "title": "Eval, kalibrasyon, red team ve iz",
+      "status": "partial",
+      "owner": "Üye 1 + Üye 3; CI Üye 2",
+      "evidence": [
+        "eval/evaller.json",
+        "eval/eval_kosucu.py",
+        "eval/calibration.py",
+        "eval/redteam.md",
+        "src/tracing.py",
+        ".github/workflows/ci.yml"
+      ],
+      "next_action": "30+ kökeni belgeli bağımsız vaka, 5+ zorlayıcı, insan-hakem kalibrasyonu ve 8+ gerçek saldırıyı tarihli ölç."
+    },
+    {
+      "id": "C5",
+      "title": "Maliyet ve optimizasyon",
+      "status": "partial",
+      "owner": "Üye 2",
+      "evidence": [
+        "src/costs.py",
+        "maliyet_hesapla.py",
+        "src/vector_cache.py",
+        "docs/uye2_entegrasyon.md"
+      ],
+      "next_action": "Gerçek kullanım/tarife ile istek ve 1000 kullanıcı/ay tablosu; önbellek/kademe/max_tokens karşılaştır."
+    },
+    {
+      "id": "C6",
+      "title": "Güvenlik ve yönetişim",
+      "status": "partial",
+      "owner": "Üye 2 + Üye 3",
+      "evidence": [
+        "src/security.py",
+        "src/case_binding.py",
+        "src/agent_review.py",
+        "docs/kullanim_senaryosu.md",
+        "docs/model_karti.md"
+      ],
+      "next_action": "Resmi kaynaklarla risk/takvim/KVKK değerlendirmesi; kimlik/rol/saklama/kalıcı audit ve dış red team."
+    },
+    {
+      "id": "C7",
+      "title": "İki gerçek sağlayıcı",
+      "status": "partial",
+      "owner": "Üye 2",
+      "evidence": [
+        ".env.example",
+        "src/config.py",
+        "src/llm_client.py",
+        "tests/test_member2_client.py"
+      ],
+      "next_action": "Aynı sentetik vakayı iki gerçek sağlayıcıda çalıştır; sır içermeyen tarihli sonuç ekle."
+    },
+    {
+      "id": "C8",
+      "title": "Dürüst AI kullanım beyanı",
+      "status": "implemented",
+      "owner": "Tüm ekip",
+      "evidence": [
+        "README.md",
+        "docs/gelistirme_kaydi_2026-11-01.md"
+      ],
+      "next_action": "Her PR'da kullanılan araç, insan incelemesi ve düzeltilen gerçek hatayı güncelle."
+    }
+  ]
+}

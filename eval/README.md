@@ -25,7 +25,8 @@ başarısız vakaları gizlemez. Rapor `artifacts/eval.json` dosyasındadır.
 .venv\Scripts\python.exe -m eval.eval_kosucu --predictor src.agent:predict_for_eval
 ```
 
-`src.agent` henüz takım entegrasyonu aşamasındadır. Aday fonksiyon bir
+`src.agent:predict_for_eval` ortak entegrasyona bağlıdır; gerçek model çağrısı
+açıkça seçilmelidir. Hazır kanıt run_packet ile bir kez kullanılır. Aday fonksiyon bir
 **etiketsiz `PredictorInput`** almalı, `eval/contracts.py` içindeki `AgentPrediction` şemasını
 karşılayan dict/model döndürmelidir. Anahtar gerekebilen bu yol yalnız açıkça
 seçildiğinde çalışır. Taslak karar uyumu, kaynak doğrulama ve şema kontrolleri

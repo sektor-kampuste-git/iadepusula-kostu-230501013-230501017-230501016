@@ -1,5 +1,13 @@
 # İadePusula geliştirme kuralları
 
+- Her geliştirmeden önce SPEC.md, README.md ve docs/proje_kriterleri.json oku.
+  Güncel develop/açık PR durumunu kontrol et; eski yükleme paketiyle kodu ezme.
+- Kod/kabul koşulu, test ve ortak belgeleri birlikte güncelle. Klasör rehberleri
+  sade olmalı; tüm ekip tüm dosyaları açıklayabilmeli.
+- Mock test, gerçek sağlayıcı, insan etiketi ve deploy ayrı kanıttır. Hiçbirini
+  diğerinin yerine sayma; tamamlanmayan teslimi veya not garantisini yazma.
+- Belge yolları ve kriter kanıtlarını `python -m scripts.check_docs` ile doğrula.
+
 - Kullanıcının oturumda belirttiği üye rolünü esas al. Üye 1: RAG, derlem,
   deterministik araçlar ve eval. Üye 2: istemci, şema, güvenlik, sınırlı ajan,
   maliyet ve CI. Üye 3: arayüz, insan onayı, yönetişim ve sunum.
