@@ -4,17 +4,19 @@ from datetime import date
 
 import streamlit as st
 
-from src.evidence import hazirla_inceleme
+from src.config import ConfigurationError
 from src.human_review import kaydet_inceleme, rapor_json
+from src.ui_agent_panel import goster_ajan_paneli
+from src.ui_service import calistir_inceleme
 
 st.set_page_config(page_title="İadePusula | Başvuru inceleme", page_icon="🧭", layout="wide")
 
 st.markdown(
     """<style>
-.stApp {background: #f5f7fa;}
-[data-testid="stSidebar"] {background: #e9eff4;}
-[data-testid="stMetric"] {background:white; padding:18px; border-radius:12px;
-border:1px solid #dce4eb;}
+.stApp {background: var(--background-color);}
+[data-testid="stSidebar"] {background: var(--secondary-background-color);}
+[data-testid="stMetric"] {background:var(--secondary-background-color);
+color:var(--text-color); padding:18px; border-radius:12px; border:1px solid #72808b66;}
 .stButton > button {border-radius:8px;}
 </style>""",
     unsafe_allow_html=True,
@@ -23,7 +25,7 @@ st.title("İadePusula")
 st.caption("İade ve ayıplı mal başvuruları için kaynaklı ön inceleme")
 st.info(
     "Geliştirme demosu · Yalnızca örnek siparişler ve kişisel bilgi içermeyen metinler kullanın. "
-    "Bu ekran yerel arama yapar; yapay zekâ sağlayıcısına veri göndermez."
+    "Varsayılan yerel mod ve ağsız demo dışarı veri göndermez. Gerçek model modu açık onay ister."
 )
 
 with st.sidebar:
@@ -33,9 +35,39 @@ with st.sidebar:
     st.write("3. Eksik bilgileri belirleyin.")
     st.divider()
     st.caption(
-        "Bu sürüm karar önerisi üretmez. Kaynak incelemesi ve insan değerlendirmesi "
-        "sentetik demo olarak kaydedilir. Para iadesi veya tebligat yapılmaz."
+        "Yerel mod karar önerisi üretmez. Ajan modlarında öneri insan incelemesine sunulur. "
+        "Kimliği doğrulanmamış sentetik demo; para iadesi veya tebligat yapılmaz."
     )
+
+MODLAR = {"Yerel kanıt": "yerel", "Ağsız ajan demosu": "demo", "Gerçek model": "model"}
+mode_label = st.sidebar.radio("Çalışma biçimi", list(MODLAR), key="calisma_bicimi")
+mode = MODLAR[mode_label]
+
+
+def clear_case():
+    for key in (
+        "inceleme",
+        "insan_kaydi",
+        "ajan_raporu",
+        "taslak_insan_kaydi",
+        "taslak_yeni_oneri",
+        "taslak_eylem",
+        "taslak_yeni_tutar",
+        "taslak_gerekce",
+        "taslak_okundu",
+    ):
+        st.session_state.pop(key, None)
+    st.session_state["kaynak_okundu"] = False
+    st.session_state["inceleme_gerekcesi"] = ""
+
+
+if st.session_state.get("son_mod") != mode:
+    clear_case()
+    st.session_state.son_mod = mode
+if mode == "demo":
+    st.info("Ağsız ajan demosu: yanıt taklittir, API anahtarı ve gerçek model kullanmaz.")
+elif mode == "model":
+    st.warning("Gerçek model seçildi. Yalnız sentetik veri kullanın. İşlem API kotası tüketebilir.")
 
 with st.form("basvuru"):
     st.subheader("Başvuru bilgileri")
@@ -51,22 +83,36 @@ with st.form("basvuru"):
         height=130,
         help="Ürünü ve yaşanan sorunu açıklayın. İsim, adres, TCKN veya IBAN yazmayın.",
     )
+    synthetic = False
+    api_allowed = False
+    if mode == "model":
+        synthetic = st.checkbox("Yalnız sentetik ve kişisel bilgi içermeyen veri girdim")
+        api_allowed = st.checkbox("Bu istek için model API kullanımını onaylıyorum")
     submitted = st.form_submit_button("Başvuruyu incele", type="primary")
 
 if submitted:
     # Yeni istek başarısızsa önceki başvurunun sonucu ekranda kalmamalı.
-    st.session_state.pop("inceleme", None)
-    st.session_state.pop("insan_kaydi", None)
-    st.session_state["kaynak_okundu"] = False
-    st.session_state["inceleme_gerekcesi"] = ""
+    clear_case()
     if len(complaint.strip()) < 3:
         st.error("Lütfen en az 3 karakterlik bir şikâyet açıklaması yazın.")
     else:
         try:
             with st.spinner("Sipariş bilgileri ve ilgili kaynaklar hazırlanıyor…"):
-                st.session_state.inceleme = hazirla_inceleme(
-                    order_id.strip(), complaint.strip(), application_date
+                result = calistir_inceleme(
+                    order_id.strip(),
+                    complaint.strip(),
+                    application_date,
+                    mod=mode,
+                    sentetik_onay=synthetic,
+                    api_onay=api_allowed,
                 )
+                st.session_state.inceleme = result.paket
+                st.session_state.ajan_raporu = result.rapor
+        except ConfigurationError:
+            st.error(
+                "Gerçek model hazır değil. İki onayı işaretleyin; sunucuda API anahtarı, "
+                "model ve tarihli tarife ayarlarını tamamlayın. Anahtarı ekrana veya GitHub'a yazmayın."
+            )
         except ValueError:
             st.error(
                 "Başvuru incelenemedi. Sipariş numarasını, açıklamayı ve tarihi kontrol edin. "
@@ -147,7 +193,12 @@ if package is not None:
 
     st.caption("İnsan incelemesi gereklidir. Bu demo kesin hukuki karar vermez.")
 
-    if package.siparis and package.kaynaklar:
+    report = st.session_state.get("ajan_raporu")
+    if report is not None:
+        st.divider()
+        goster_ajan_paneli(package, report, mod=mode)
+
+    if mode == "yerel" and package.siparis and package.kaynaklar:
         st.divider()
         st.subheader("İnsan değerlendirmesi")
         st.caption(

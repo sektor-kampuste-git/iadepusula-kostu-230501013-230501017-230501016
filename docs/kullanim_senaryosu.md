@@ -18,8 +18,8 @@ Onaysız veya başka başvuruya ait kayıtla rapor üretilememeli.
 Hesaplar kabul/ret kararı olarak sunulmamalı. Kaynak skoru güven yüzdesi değildir.
 
 ## Sınırlar ve veri
-Mevcut sürüm yerel BM25 kullanır; UI yolunda model API çağrısı yoktur.
-Üye 2 ajanı ortak kodda bulunur; bu ekran yalnız kanıt paketini çağırır. Karar önerisi arayüz entegrasyonu bekler.
+Varsayılan mod yerel BM25 kullanır. Ağsız demo model taklididir; gerçek model modu ayrı onay ve yapılandırma ister.
+Üye 2 ajanı ekrana bağlandı; doğrulanmış öneri için insan onayı ve gerekçeli değişiklik vardır. Gerçek sağlayıcı denemesi yapılmadı.
 Gerçek kişi/sipariş kullanılmaz. İsim ve adres için maskeleme garantisi yoktur.
 Kimlik doğrulama ve gerçek sipariş sahipliği kontrolü yoktur; internete gerçek veriyle açılmaz.
 İnceleme yalnız oturum belleğindedir; kalıcı denetim sistemi değildir.

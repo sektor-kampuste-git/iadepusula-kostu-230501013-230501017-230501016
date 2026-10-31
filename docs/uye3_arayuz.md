@@ -21,7 +21,7 @@ Test: `.venv\Scripts\python.exe -m pip install -r requirements-dev.txt`, ardınd
 
 ## Üye 2 bağlanırken
 Üye 2 kodu ortak daldan alındı. docs/uye2_entegrasyon.md içindeki ButceliAjan.run ve
-RunReport sözleşmesine göre adapter eklenmeli. Mevcut ekran ajanı henüz çağırmaz. Ajan sonucu doğrulanmadan kabul/ret butonu açılmamalı. Karar, kaynaklar,
+RunReport sözleşmesine göre adapter eklenmeli. Güncel ekran ajanı çağırabilir; ayrıntılar docs/uye3_ajan_baglantisi.md içindedir. Ajan sonucu doğrulanmadan kabul/ret butonu açılmamalı. Karar, kaynaklar,
 bütçe durumu ve uyarılar birlikte aynı paket özetine bağlanmalı. Yeni başvuruda önceki
 karar/onay/rapor silinmeli. API çağrıları yalnız sunucuda, ortam değişkenleriyle yapılmalı.
 Üye 2 güvenlik kontrolü UI atlanarak da test edilmeli.
@@ -30,4 +30,4 @@ karar/onay/rapor silinmeli. API çağrıları yalnız sunucuda, ortam değişken
 Değerlendirme yalnız mevcut tarayıcı oturumunda, yeni kayıtta değiştirilerek tutulur.
 JSON özeti onay sonrası indirilebilir; ham şikâyet/gerekçe içermez. Girdi formundaki ham
 metin tarayıcıda kalabilir. Kalıcı, çok kullanıcılı DB, kimlik/rol/sipariş sahipliği kontrolü,
-değiştirilemez denetim kaydı ve model kararı entegrasyonu tamamlanmamıştır.
+değiştirilemez denetim kaydı tamamlanmamıştır. Ajan taslağı entegrasyonu eklendi; gerçek sağlayıcı çağrısı henüz denenmedi.

@@ -5,14 +5,14 @@ Tarih: 31 Ekim 2026. Taban: cfc3e2cf041485a4cb9159168289d5344f5ec20f.
 ## Çalışan kapsam
 Streamlit ekranı, Üye 1 kanıt paketi, yerel mevzuat araması, kaynak bağlamı ve işlem izleri,
 insan değerlendirme formu, gerekçeli kayıt değiştirme, onay sonrası veri azaltılmış rapor.
-UI otomatik hukuki karar, tebligat veya ödeme yapmaz. Çalışan yol LLM kullanmaz.
+UI otomatik hukuki karar, tebligat veya ödeme yapmaz. Varsayılan yol LLM kullanmaz. Gerçek model modu ancak açık onay ve sunucu yapılandırmasıyla çağrı yapar; geliştirmede gerçek API denenmedi.
 
 ## Güvenlik ve insan gözetimi
 Kaynak okuma beyanı ve en az 10 karakter gerekçe gerekir. Kaynak ve sipariş yoksa kayıt yoktur.
 SHA-256 özeti kaydı belirli pakete bağlar; kriptografik imza veya değiştirilemez günlük değildir.
 Serbest metinler JSON raporuna alınmaz. Oturumdaki gerekçeye mevcut maskeleme uygulanır;
 maskelenmemiş isim/adres kalabilir. Gerçek kişi verisi girilmemelidir.
-Üye 2 kodu birleştirildi; ekran henüz ajanı çağırmaz. Kimliği doğrulanmış yetkili onayı henüz yoktur. Demo kutucuğu kimlik doğrulama değildir.
+Üye 2 ajanı ekrana bağlıdır; ağsız demo ve gerçek model yolları ayrıdır. Kimliği doğrulanmış yetkili onayı henüz yoktur. Demo kutucuğu kimlik doğrulama değildir.
 
 ## Hukuk ve yönetişim
 Hukuki ön inceleme kullanımından dolayı uzman gözetimi gerekir. EU AI Act risk sınıfı,
