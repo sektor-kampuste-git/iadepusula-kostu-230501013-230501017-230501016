@@ -338,7 +338,67 @@ def test_agent_adapter_connects_to_existing_eval_without_using_expected_labels(c
     assert result["insan_hakem_kalibrasyonu"] == "yapilmadi"
 
 
+@pytest.mark.parametrize("failure", ["tarife", "saglayici", "butce", "kullanim"])
+def test_operational_stop_is_not_a_successful_expert_prediction(client_factory, failure):
+    def handle(request):
+        if failure == "saglayici":
+            return httpx.Response(503, json={"error": "private provider detail"})
+        return reply(request, usage=failure != "kullanim")
+
+    client = client_factory(handle)
+    agent = ButceliAjan(
+        client,
+        None if failure == "tarife" else fixture_price(),
+        limits=AgentLimits(max_usd="0" if failure == "butce" else "0.015"),
+    )
+    result = evaluate(load_cases()[:2], predictor=make_eval_predictor(agent))
+    assert result["ajan_gecen"] == 0
+    assert result["hata_sayisi"] == 2
+    assert result["bilesen_gecen"] == 2
+    assert all(row["hata_asamasi"] == "ajan" for row in result["vakalar"])
+    assert "private provider detail" not in json.dumps(result)
+
+
 @pytest.mark.parametrize("text", ["", "x" * 4001, "\u200b" * 20, "㍿" * 1500])
 def test_security_input_normalization_limits(text):
     with pytest.raises(ValueError):
         prepare_submission(text)
+
+
+def test_invalid_evidence_packet_is_not_a_successful_expert_prediction(client_factory):
+    from types import SimpleNamespace
+
+    from src.agent import AgentEvaluationError
+
+    client = client_factory(lambda request: pytest.fail("Bozuk kanıtta model çağrılmamalı"))
+    packet = hazirla_inceleme("SIP-2026-1002", "Kulaklık bozuk, iade istiyorum.", DAY)
+    broken = packet.model_copy(update={"basvuru_tarihi": None})
+    predictor = make_eval_predictor(ButceliAjan(client, fixture_price()))
+    with pytest.raises(AgentEvaluationError, match="GIRDI_HATASI"):
+        predictor(SimpleNamespace(kanit_paketi=broken))
+
+
+def test_documented_live_eval_entry_requires_separate_consent_before_loading_config(monkeypatch):
+    from src.agent import AgentEvaluationError, predict_for_eval
+
+    monkeypatch.delenv("IADEPUSULA_ALLOW_LIVE_EVAL", raising=False)
+
+    def forbidden():
+        pytest.fail("Onay olmadan yapılandırma/anahtar okunmamalı")
+
+    monkeypatch.setattr("src.config.load_configuration", forbidden)
+    with pytest.raises(AgentEvaluationError, match="CANLI_EVAL_ONAYI_GEREKLI"):
+        predict_for_eval(None)
+
+
+def test_documented_eval_entry_uses_explicitly_configured_client(monkeypatch, client_factory):
+    from src.agent import predict_for_eval
+
+    client = client_factory(lambda request: reply(request))
+    monkeypatch.setenv("IADEPUSULA_ALLOW_LIVE_EVAL", "1")
+    monkeypatch.setattr(
+        "src.config.load_configuration", lambda: (client.settings, AgentLimits(), fixture_price())
+    )
+    monkeypatch.setattr("src.agent.LLMClient", lambda settings: client)
+    result = evaluate(load_cases()[:1], predictor=predict_for_eval)
+    assert result["hata_sayisi"] == 0

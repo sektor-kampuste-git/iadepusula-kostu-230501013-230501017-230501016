@@ -23,6 +23,9 @@ Güncel ortak durum [proje_isterleri.md](proje_isterleri.md) ve
 
 ## Kanıt ve tarih
 
+[Üye 2 kapsam ve depo denetimi](uye2_denetim_2026-11-01.md) güncel incelemeyi ve
+başka üyelere bırakılan işleri ayırır. [GitHub otomasyonu](../.github/OTOMASYON.md)
+ürün vitrini yerine geçmeyecek adla saklanır.
 [1 Kasım 2026 geliştirme kaydı](gelistirme_kaydi_2026-11-01.md) bu sürüme aittir.
 Tarihli eski raporlar ve kanitlar/ dosyaları tarihsel ölçümdür; yeni sürümün
 başarısı diye yeniden etiketlenmez. Önceki v0.2/v0.3 notları silinmez.

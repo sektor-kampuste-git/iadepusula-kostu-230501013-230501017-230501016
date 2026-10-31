@@ -1,6 +1,6 @@
 # İadePusula ürün şartnamesi
 
-Sürüm 0.3.1 · 1 Kasım 2026 · Takım Şarjör.
+Sürüm 0.3.2 · 1 Kasım 2026 · Takım Şarjör.
 Kapsam burada, kanıt/durum [gereksinim listesinde](docs/proje_isterleri.md),
 uygulama akışı [mimaride](docs/mimari.md) tutulur.
 

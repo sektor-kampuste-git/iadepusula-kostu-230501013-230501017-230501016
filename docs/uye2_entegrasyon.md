@@ -1,5 +1,18 @@
 # Üye 2 entegrasyonu - v0.3.0
 
+## 0.3.2 — eval ve entegrasyon sınırı
+
+Tarife/sağlayıcı/bütçe/süre/kullanım belirsizliği veya geçersiz taslak, eval'de
+başarılı uzman önerisine çevrilmez; AgentEvaluationError ile mevcut koşucuya
+hata olarak iletilir. Paket doğrulama/iç sözleşme hatası (GIRDI_HATASI) da başarı
+sayılmaz; engellenmiş girdi, bilinmeyen sipariş ve kaynaksızlık ayrı tutulur.
+Hazır pakette yalnız dış boşluk farkı kabul edilir; özgün başvuru özeti korunur.
+Güncel kanıt [denetim kaydındadır](uye2_denetim_2026-11-01.md).
+
+Belgelenmiş src.agent:predict_for_eval girişi eklendi. Gerçek çağrı için
+IADEPUSULA_ALLOW_LIVE_EVAL=1 işletim ortamı onayı gerekir; içe aktarma API çağırmaz.
+Anahtarsız test yolu make_eval_predictor(enjekte_edilen_istemci) olmaya devam eder.
+
 ## Güncel ortak sürüm — 0.3.1 / 1 Kasım 2026
 
 Bu belgenin alt kısmı ilk v0.3.0 teslim kapsamını korur.
