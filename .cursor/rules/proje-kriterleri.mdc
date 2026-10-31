@@ -1,0 +1,20 @@
+---
+description: İadePusula ortak kapsam, kanıt ve ekip senkronizasyonu
+alwaysApply: true
+---
+
+# Ortak proje kuralları
+
+- Önce AGENTS.md, SPEC.md, README.md ve docs/proje_kriterleri.json oku.
+- Kullanıcının rolünü koru; Üye 1 RAG/eval, Üye 2 ajan/güvenlik/maliyet/CI,
+  Üye 3 UI/insan incelemesi/yönetişim. Herkes tüm akışı açıklayabilmeli.
+- Güncel develop ve açık PR'ları kontrol et; eski paketle arkadaşının kodunu ezme.
+- Kapsam/kabul koşulu, kod, anlamlı test ve belgeleri aynı PR'da güncelle.
+- Kanıtı bir kez hazırla; taslak/onayı aynı başvuru-tarih-kaynak özetine bağla.
+- AI yardımı, gerçek hata/düzeltme, insan incelemesi ve sınırlar dürüstçe yazılır.
+- Mock test, gerçek iki sağlayıcı, insan kalibrasyonu ve deploy ayrı kanıtlardır.
+- 30+ eval, 5+ zorlayıcı, 8+ gerçek saldırı hedeflerini sentetik testle tamamlandı sayma.
+- Gerçek kişisel veri, anahtar veya ham başvuru/yanıtı repoya/izlere yazma.
+- İnsan onayı tasarımı nihai hukuki karar/ödeme yetkisi değildir.
+- Not veya kusursuzluk garantisi verme; kalan işleri owner ve kanıtla belirt.
+- README, TESLIM ve kriter listesini güncelle; scripts.check_docs ile kontrol et.

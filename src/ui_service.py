@@ -9,6 +9,7 @@ import httpx
 from pydantic import SecretStr
 
 from src.agent import ButceliAjan, RunReport
+from src.case_binding import require_packet_binding
 from src.config import ConfigurationError, load_configuration
 from src.contracts import IncelemePaketi
 from src.costs import PriceCard
@@ -61,7 +62,7 @@ def calistir_inceleme(
         raise ValueError("Geçersiz çalışma modu")
     if mod == "model" and (sentetik_onay is not True or api_onay is not True):
         raise ConfigurationError("Sentetik veri ve API kullanımı açıkça onaylanmalıdır.")
-    # Ekrandaki kanıt ayrı hazırlanır; ajan çıktısı bu gösterilen pakete yeniden bağlanır.
+    # Üç katman aynı sunucu paketini kullanır; araçlar ikinci kez çalıştırılmaz.
     retriever = MevzuatRetriever()
     try:
         packet = hazirla_inceleme(siparis_no, basvuru, tarih, retriever=retriever)
@@ -90,10 +91,11 @@ def calistir_inceleme(
                 raise ConfigurationError("Model çağrısından önce tarihli tarife tanımlanmalıdır.")
             client = LLMClient(settings)
         with client:
-            report = ButceliAjan(client, price, limits=limits).run(
-                siparis_no, basvuru, tarih, sentetik=True
+            report = ButceliAjan(client, price, limits=limits).run_packet(
+                packet, retriever=retriever, sentetik=True
             )
         if report.draft is not None:
+            require_packet_binding(packet, report.evidence_sha256)
             draft = dogrula_karar_taslagi(report.draft, packet, retriever=retriever)
             report = report.model_copy(update={"draft": draft})
         return EkranIncelemesi(packet, report, mod)

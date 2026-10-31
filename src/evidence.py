@@ -30,6 +30,7 @@ def hazirla_inceleme(
     outside = outside_scope(safe)
     if blocked or outside:
         return IncelemePaketi(
+            basvuru_tarihi=basvuru_tarihi,
             siparis=None,
             cayma=None,
             parasal_sinir=None,
@@ -56,6 +57,7 @@ def hazirla_inceleme(
     order = measured("siparis_detay_getir", lambda: depo.getir(siparis_no))
     if order is None:
         return IncelemePaketi(
+            basvuru_tarihi=basvuru_tarihi,
             siparis=None,
             cayma=None,
             parasal_sinir=None,
@@ -95,6 +97,7 @@ def hazirla_inceleme(
     if not sources:
         warnings.append("DERLEMDE_KANIT_BULUNAMADI")
     return IncelemePaketi(
+        basvuru_tarihi=basvuru_tarihi,
         siparis=order,
         cayma=withdrawal,
         parasal_sinir=threshold,

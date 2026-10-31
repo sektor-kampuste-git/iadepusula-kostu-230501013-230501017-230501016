@@ -116,6 +116,7 @@ class AracIzi(Contract):
 
 
 class IncelemePaketi(Contract):
+    basvuru_tarihi: date | None = None
     siparis: Siparis | None
     cayma: CaymaSonucu | None
     parasal_sinir: ParasalSinirSonucu | None

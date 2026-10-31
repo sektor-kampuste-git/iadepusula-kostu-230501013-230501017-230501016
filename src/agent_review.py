@@ -9,6 +9,7 @@ from typing import Literal
 from pydantic import BaseModel, ConfigDict
 
 from src.agent import RunReport
+from src.case_binding import require_packet_binding
 from src.contracts import IncelemePaketi
 from src.human_review import paket_ozeti
 from src.privacy import mask_pii, obvious_injection
@@ -46,6 +47,7 @@ def kaydet_taslak_incelemesi(
     yeni_oneri: str | None = None,
     yeni_tutar: str | None = None,
 ) -> TaslakIncelemesi:
+    require_packet_binding(paket, rapor.evidence_sha256)
     digest = _taslak_ozeti(rapor)
     if not paket.siparis or not paket.kaynaklar or kaynaklar_okundu is not True:
         raise ValueError("Önce siparişi, kaynakları ve uyarıları inceleyin.")
@@ -87,6 +89,7 @@ def kaydet_taslak_incelemesi(
 
 
 def taslak_raporu(paket, rapor, kayit: TaslakIncelemesi, *, mod: str) -> str:
+    require_packet_binding(paket, rapor.evidence_sha256)
     if (
         kayit.paket_ozeti != paket_ozeti(paket)
         or kayit.taslak_ozeti != _taslak_ozeti(rapor)

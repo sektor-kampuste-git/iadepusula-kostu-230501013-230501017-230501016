@@ -1,223 +1,224 @@
 # İadePusula
 
-[![İadePusula doğrulama](https://github.com/sektor-kampuste-git/iadepusula-kostu-230501013-230501017-230501016/actions/workflows/ci.yml/badge.svg?branch=develop)](https://github.com/sektor-kampuste-git/iadepusula-kostu-230501013-230501017-230501016/actions/workflows/ci.yml)
+[![Doğrulama](https://github.com/sektor-kampuste-git/iadepusula-kostu-230501013-230501017-230501016/actions/workflows/ci.yml/badge.svg?branch=develop)](https://github.com/sektor-kampuste-git/iadepusula-kostu-230501013-230501017-230501016/actions/workflows/ci.yml)
 
-Türkçe e-ticaret iade ve ayıplı mal başvuruları için **kaynaklı insan incelemesi**
-projesi. Sürüm **0.3.0**, Üye 1'in RAG/araç temelini Üye 2'nin doğrulama,
-model istemcisi, sınırlı ajan ve maliyet altyapısıyla birleştirir.
-Kanıt paketi ve insan incelemesine tabi taslak üretir; nihai hukuki karar veya ödeme işlemi uygulamaz.
+**Türkçe e-ticaret iade başvurularını kaynaklarıyla inceleyen uzman çalışma alanı.**
+Sipariş bilgisi, süre hesabı ve ilgili mevzuat aynı ekranda toplanır. İsteğe bağlı
+model bu kanıtlara bağlı bir ön inceleme taslağı önerir. İnsan kaynakları okuyup
+gerekçeli değerlendirme yapar; uygulama ödeme, tebligat veya kesin hukuki karar üretmez.
 
-## Çalışan özellikler
+**0.3.1 · Sentetik verili geliştirme prototipi · 1 Kasım 2026**
 
-- 100 sentetik sipariş, 40 kaynak/madde bilgili mevzuat pasajı.
-- Ağsız Türkçe BM25 araması ve isteğe bağlı EVREN gömme + Qdrant hibrit arama.
-- Salt okunur sipariş, 14 takvim günü ve başvuru yılına göre parasal sınır araçları.
-- Kaynak URL'si, madde, birebir alıntı ve getirilen parça kimliği doğrulaması.
-- Belge/fıkra/bent ayrımı, kaynak türü ve PDF sayfası; atıfta yasal koşulun korunması.
-- Kamusal derlem gömmeleri için 24 saatlik JSON önbelleği; sorgular diske yazılmaz.
-- En fazla dört bileşen çağrısıyla insan inceleme paketi ve araç izleri.
-- Dört araçlı MCP stdio sunucusu, komut satırı arayüzü.
-- 30 vakalık geliştirme eval'i, ağsız testler ve CI.
-- Üye 2: kanıta bağlı taslak şeması, genel JSON istemcisi ve ortam yapılandırması.
-- Dört yerel araç ve en fazla iki model denemesi içeren sınırlı iş akışı.
-- Her çağrıdan önce tahmini maliyet rezervasyonu; bilinmeyen fiyat/kullanımda güvenli durma.
-- İçerik taşımayan JSONL izleri ve açık varsayımlı aylık maliyet simülasyonu.
+Takım **Şarjör** — Kocaeli Sağlık ve Teknoloji Üniversitesi, Bilgisayar Mühendisliği.
 
-Üye 2'nin model yanıtları bu sürümde ağsız MockTransport ile test edildi.
-İki gerçek sağlayıcı denemesi, gerçek token/fatura ölçümü ve insan kalibrasyonu
-henüz tamamlanmadı. API anahtarı ağsız testlerde ve demoda kullanılmaz.
+## Demo ve video
 
-## Kurulum
+Canlı URL ve video henüz hazırlanmadı. Yerel ekran aşağıdaki komutlarla anahtarsız
+çalışır. Nihai hedef giriş gerektirmeyen sentetik demo ve **en fazla 2 dakikalık video**;
+ders sunumu ayrıca 3 dakikadır. Bunlar tamamlanmış teslim kanıtı değildir.
 
-Python 3.11+ gerekir. Windows PowerShell:
+## Problem ve kullanım
+
+Hedef kullanıcı başvuruyu ön inceleyen müşteri temsilcisi/uzmandır.
+İadePusula, farklı yerlerde bulunan sipariş, tarih ve kaynak koşullarını izlenebilir
+bir kanıt paketinde birleştirir. Üç çalışma biçimi vardır:
+
+- **Yerel kanıt:** varsayılan; BM25 araması ve yerel araçlar çalışır, model çağrılmaz.
+- **Ağsız ajan demosu:** gerçek iş akışı; model yanıtı ve token sayıları kontrollü taklit.
+- **Gerçek model:** açık sentetik veri/API onayı ve sunucuda anahtar, model,
+  bütçe ve tarife gerekir. İki gerçek sağlayıcı doğrulaması henüz tamamlanmadı.
+
+Başarılı taslak insan incelemesi gerektirir. Demo onayı kimliği doğrulanmış
+kurumsal yetki veya gerçek iade işlemi değildir.
+
+## Kurulum ve çalıştırma
+
+Python **3.11+** gerekir. Git ile klonlayın veya **Code → Download ZIP** ile indirip
+açın. Komutları proje kökünde çalıştırın. Geliştirme dalı `develop`, doğrulanmış dal
+`main`dir. İlk kurulum bağlantıya bağlıdır; 5 dakikalık kurulum süresi henüz ölçülmedi.
 
 ```powershell
-git clone https://github.com/sektor-kampuste-git/iadepusula-kostu-230501013-230501017-230501016.git
-cd iadepusula-kostu-230501013-230501017-230501016
-git switch develop
 python -m venv .venv
 .venv\Scripts\python.exe -m pip install -r requirements-dev.txt
+.venv\Scripts\python.exe -m streamlit run app.py --server.address 127.0.0.1
 ```
+
+Terminalin gösterdiği yerel adresi açın. **SIP-2026-1002**, **2026-10-31**,
+“**Kulaklık bozuk, ayıplı mal nedeniyle iade istiyorum.**” ile başlayın.
+Yerel kanıtı veya ağsız ajan demosunu seçin. Kaynakları okuyup gerekçe girin;
+geçerli değerlendirmeden sonra veri azaltılmış JSON raporu indirilebilir.
+Tarih sabit test senaryosudur; gelişigüzel bugünün tarihiyle değiştirmeyin.
 
 macOS/Linux'ta `.venv\Scripts\python.exe` yerine `.venv/bin/python` kullanılır.
-Komutlar depo kökünde çalıştırılır. Anahtar olmadan:
+
+### Ağsız doğrulama
 
 ```powershell
-.venv\Scripts\python.exe -m src.cli inspect SIP-2026-1002 "Kulaklık bozuk, ayıplı mal nedeniyle iade istiyorum" --date 2026-10-31
-.venv\Scripts\python.exe -m src.cli search "14 günlük cayma hakkı"
-.venv\Scripts\python.exe -m src.cli deadline 2026-10-01 2026-10-15
-.venv\Scripts\python.exe -m src.cli threshold 186000.00 2026
 .venv\Scripts\python.exe -m pytest -q
-.venv\Scripts\python.exe -m eval.eval_kosucu
+.venv\Scripts\python.exe -m eval.eval_kosucu --min-pass-rate 0.85 --output artifacts/eval.json
+.venv\Scripts\python.exe -m scripts.demo_uye2 --output artifacts/uye2-demo.json
+.venv\Scripts\python.exe -m scripts.check_docs --output artifacts/docs.json
+.venv\Scripts\python.exe scripts/check_secrets.py
+.venv\Scripts\python.exe -m ruff check app.py src eval scripts tests maliyet_hesapla.py
+.venv\Scripts\python.exe -m ruff format --check app.py src eval scripts tests maliyet_hesapla.py
 ```
 
-Eval çıktısı `artifacts/eval.json` içindedir. Hedef 14. gün dahil, TL tutarında
-kuruş duyarlılığı, tam parasal sınırın dışında kalması, bilinmeyen sipariş/yıl,
-eksik bilgilendirme, sahte madde ve ayıplı mal/cayma ayrımıdır.
+CI aynı kontrolleri Python 3.11, 3.12 ve 3.14 üzerinde çalıştırır; wheel paketini
+de depo dışında doğrular. Yeşil rozet hukuki doğruluk veya insan onayı değildir.
 
-## EVREN bağlantısı
+### Ortam değişkenleri ve sağlayıcılar
 
-```powershell
-Copy-Item .env.example .env
-# .env içindeki LLM_API_KEY alanını yerel olarak doldurun.
-.venv\Scripts\python.exe -m src.cli models
-.venv\Scripts\python.exe -m src.cli search "14 günlük cayma hakkı" --backend evren
-.venv\Scripts\python.exe -m scripts.smoke_evren
-```
+Ağsız yolda `.env` gerekmez. Gerçek model için [.env.example](.env.example)
+alanlarını yerel `.env` veya barındırıcı sır ayarlarına aktarın; mevcut dosyayı ezmeyin.
+`LLM_BASE_URL`, `LLM_API_KEY`, `LLM_MODEL` istemciyi belirler.
+`AGENT_*` sınırlar; `PRICE_*` tarihli ve kaynaklı tarifedir.
+Tarife yoksa model çağrısından önce durulur. Test tarifesi gerçek ağ istemcisinde reddedilir.
 
-Mevcut yerel `.env` varsa ilk komutla üzerine yazmayın. Anahtar Git'e girmez ve
-komut çıktısında yazdırılmaz. `LLM_BASE_URL`, `LLM_API_KEY`, `LLM_MODEL` ve
-`EMBEDDING_MODEL` ortam ayarlarıdır; EVREN adresi
-`https://evren-llmapi.ssyz.org.tr/v1` olarak doğrulanmıştır.
-
-EVREN yolu gerçek API kotası kullanır. İlk arama derlemi gömer; sonraki
-aramalarda aynı model ve derlem için disk önbelleği de yeniden kullanılır.
-Önbellek eski/bozuksa yenilenir; kaynak/model değişikliği yeni anahtar oluşturur.
-Sorgu gömmesi her aramada API'ye gider. Smoke testi yalnız
-sentetik senaryo ile birebir alıntı seçen JSON üretir ve alıntıları doğrular. Hukuki
-yorum veya tam ajan başarısı bu testle ölçülmez. Gerçek başvurularda isim/adres
-dahil tam güvenlik katmanı tamamlanana kadar sağlayıcıya yalnız sentetik metin gönderin.
+Örnek EVREN ayarı iki sağlayıcıda başarı kanıtı değildir. Diğer OpenAI uyumlu uçlarda
+aynı ortam sözleşmesi kullanılır; JSON desteği ve özellikler ayrıca sınanmalıdır.
+Gerçek API çağrısı kota tüketebilir. [İstemci ve bütçe ayrıntıları](docs/uye2_entegrasyon.md).
 
 ## Mimari
 
 ```mermaid
-flowchart LR
-    CLI[Komut satırı / gelecekte UI] --> Boundary[Yerel başlangıç girdi sınırı]
-    Boundary --> Evidence[Üye 1 kanıt paketi]
-    Evidence --> Tools[Sipariş / süre / parasal sınır]
-    Evidence --> RAG[BM25 veya EVREN + Qdrant]
-    RAG --> Corpus[Kaynaklı 40 mevzuat pasajı]
-    Evidence --> Agent[Üye 2: bütçeli ajan ve karar şeması]
-    Agent --> Human[Üye 3: insan onayı ve arayüz]
-    MCP[MCP stdio] --> Tools
+flowchart TD
+    UI[Streamlit: app.py] --> Service[ui_service: çalışma biçimi ve onaylar]
+    Service --> Evidence[evidence: tek kanıt paketi]
+    Evidence --> Tools[Sipariş / takvim / parasal sınır]
+    Evidence --> RAG[BM25 / isteğe bağlı EVREN + Qdrant]
+    RAG --> Data[100 sentetik sipariş / 40 kaynaklı pasaj]
+    Evidence --> Binding[case_binding: başvuru + tarih + kanıt özeti]
+    Service --> Agent[agent: adım / süre / USD sınırı]
+    Binding --> Agent
+    Agent --> Client[llm_client: sağlayıcı istemcisi]
+    Client --> Schema[schemas: tür / kaynak / tutar doğrulaması]
+    Schema --> Review[agent_review: gerekçeli insan incelemesi]
+    Binding --> Review
+    Review --> Report[Serbest metinsiz rapor]
+    CLI[CLI] --> Evidence
+    MCP[MCP sunucusu] --> Tools
     MCP --> RAG
 ```
 
-Üye 2'nin sınırlı ajan ve şema kodu mevcuttur; gerçek sağlayıcı/insan doğrulaması
-devam eder. Üye 3'ün arayüz ve gerçek insan onayı iş akışı entegrasyon planıdır.
+Arayüz model istemcisini doğrudan çağırmaz. Üye 1'in kanıtı, Üye 2'nin taslağı ve
+Üye 3'ün incelemesi **aynı başvuru özetiyle** bağlanır. Metin, tarih veya kaynak
+değişirse eski taslak/onay kullanılamaz. Ölçüm süreleri kimlikten dışlanır.
+SHA-256 özeti imza, yetkilendirme veya anonimleştirme değildir.
+[Mimari ve veri sözleşmeleri](docs/mimari.md).
 
-## Ölçüm ve sınırlar
+## Klasörler ve dosyalar
 
-31 Ekim 2026 tarihli yerel bileşen eval'inde 30/30 vaka ve kaynak beklentili 20
-vakada hit@3 20/20 elde edildi. İlk koşum 27/30 idi; maskeleme alanlarının
-aramadan çıkarılması ve Türkçe sorgu genişletmesiyle üç sıralama hatası düzeltildi.
-**Aynı set geliştirmede kullanıldı; bağımsız test, insan kalibrasyonu veya nihai
-ajan karar doğruluğu değildir.** Tüm etiketler AI taslağıdır.
-
-Resmî kaynaklardan seçilmiş pasajlar tam konsolide mevzuat değildir ve hukuk
-uzmanı onayı bekler. Genel prompt injection savunması, gerçek RBAC, insan onayı
-arayüzü ve canlı yayınlama sonraki takım entegrasyonudur. Üye 2'nin USD kontrolü
-tarife ve ihtiyatlı token rezervasyonuna dayanır; sağlayıcı tarafı kesin harcama
-tavanı değildir. İsim/adres maskeleme mevcut desenlerle garanti edilmez.
-
-- [Entegrasyon sözleşmesi ve MCP kurulumu](docs/uye1_entegrasyon.md)
-- [Üye 2: ön inceleme şeması ve ağsız doğrulama demosu](docs/uye2_karar_semasi.md)
-- [Üye 2: istemci, ajan, güvenlik ve maliyet entegrasyonu](docs/uye2_entegrasyon.md)
-- [Üye 2: iç güvenlik regresyonları](docs/uye2_guvenlik_testleri.md)
-- [Üye 2: katkı ve doğrulama kaydı](docs/uye2_katki_kaydi.md)
-- [Geliştirme planı](docs/gelistirme_plani.md)
-- [Derlem kaynakları ve sürüm sınırları](data/mevzuat_derlemi/README.md)
-- [Eval ve gerçek insan kalibrasyonu](eval/README.md)
-- [Red team başlangıç kontrolleri](eval/redteam.md)
-- [Tarihli doğrulama kaydı](docs/dogrulama_2026-10-31.md)
-- [v0.2 denetimi ve düzeltilen sorunlar](docs/denetim_v0.2.md)
-
-## Normal paket kurulumu
-
-Depo kökünde çalışmaya ek olarak sipariş, mevzuat ve varsayılan eval verileri
-wheel paketine dahildir. Kaynak klasörüne bağımlılık olmadan da kullanılabilir:
-
-```powershell
-.venv\Scripts\python.exe -m pip install .
-.venv\Scripts\iadepusula.exe search "MSY Madde 15/1-ç"
+```text
+app.py                  Streamlit giriş ekranı
+src/                    İş kuralları, RAG, istemci, ajan ve inceleme
+data/                   Sentetik siparişler ve kaynaklı mevzuat parçaları
+eval/                   Geliştirme vakaları, koşucu ve kalibrasyon
+tests/                  Ağsız birim ve entegrasyon testleri
+scripts/                Demo, veri hazırlama ve depo kontrolleri
+docs/                   Tasarım, ekip rehberi ve tarihli kanıtlar
+.github/workflows/      Otomatik doğrulama
+.streamlit/             Arayüz tema ayarları
+SPEC.md                 Ürün kapsamı ve kabul koşulları
+TESLIM.md               Teslim durumu ve sorumluluk kanıtları
+.env.example            Ortam değişkeni sözleşmesi
+maliyet_hesapla.py       Varsayımlı istek/aylık maliyet hesabı
 ```
 
-Kurulu pakette yerel `.env` ve `artifacts/` için komutun çalıştırıldığı dizin
-kullanılır. Kaynak depo dışındaki paket doğrulaması CI içinde de yürütülür.
+[Kaynak kod](src/README.md), [veri](data/README.md), [test](tests/README.md),
+[script](scripts/README.md) ve [belge rehberleri](docs/README.md) klasörlerin amacını açıklar.
+[Dosyaları anlatma rehberi](docs/kodu_anlama_rehberi.md) tüm ekibin soru-cevap hazırlığı içindir.
 
-## Geliştirme düzeni
+## Eval ve ölçüm
 
-- `main`: doğrulanmış, paylaşılabilir sürüm.
-- `develop`: sürekli geliştirme ve ekip entegrasyonu.
-- Özellikler `develop` üzerinden geliştirilir; testlerden sonra `main`e alınır.
-- API anahtarı `.env` içinde tutulur; kaynak PDF ve anahtar dosyası Git'e eklenmez.
+31 Ekim 2026 kaydı: **30/30 geliştirme bileşen vakası**, kaynak beklenen
+20 vakada **20/20 hit@3**. İlk koşum 27/30 idi; Türkçe sorgu genişletmesi ve
+maskeleme alanlarının aramadan çıkarılması üç sıralama hatasını düzeltti.
+Hakem otomatik bileşen beklentileridir; etiketler AI taslağıdır, insan onaylı değildir.
+[Ham rapor](eval/sonuclar/2026-10-31_v0.2_bilesenler.json).
 
-## İş bölümü
+Güncel birleşik sürümün test/eval sayıları ve komutları
+[1 Kasım geliştirme kaydındadır](docs/gelistirme_kaydi_2026-11-01.md).
+Test, bileşen eval'i ve gerçek model karar başarısı ayrı ölçümlerdir.
+Geliştirmede kullanılan set bağımsız test sayılamaz.
 
-| Üye | Sorumluluk |
-| --- | --- |
-| 1 | Ürün kapsamı, mevzuat derlemi, RAG, deterministik araçlar, 30 vaka ve eval koşucusu |
-| 2 | Ajan, sağlayıcı istemcisi, karar şemaları, güvenlik, maliyet ve CI |
-| 3 | Streamlit arayüzü, insan onayı, yönetişim, red team ve sunum |
+Tam puan hedefi: **30+** gerçek/anonim kökeni belgelenmiş vaka, en az 5 zorlayıcı
+vaka, insan etiketleriyle hakem kalibrasyonu, en az 8 gerçek red-team denemesi
+ve CI'da tarihli ajan eval'i. Mevcut 30 sentetik vaka bu şartların hepsini karşılamaz.
+[Eval yöntemi](eval/README.md), [red-team planı](eval/redteam.md).
 
-Bu ilk kurulum Üye 1 kapsamını temel alır. Proje dokümanındaki örnek skorlar,
-kalibrasyon sonuçları, canlı demo adresleri ve tamamlanmış teslim iddiaları ölçüm
-veya gerçek teslim kanıtı olarak kullanılmaz.
-
-## Yapay zeka kullanımı
-
-Geliştirmede Codex; kaynak araştırma, uygulama, test, dokümantasyon ve doğrulama
-için kullanıldı. Ücretsiz OpenCode DeepSeek ile ilk doküman incelemesi zaman
-aşımına uğradı; ikinci dar kod incelemesi tamamlandı ve bulgular ana ajan
-tarafından kontrol edildi. İnceleme para/tarih doğrulamaları ve eksik bilgiyle
-son gün gösterme davranışını iyileştirdi. Testlerin yakaladığı gerçek hata,
-Türkçe `I/ı` dönüşümünün `API`/`Ignore` saldırı kalıplarını kaçırmasıydı;
-normalleştirme düzeltildi ve regresyon testleri eklendi. Üretilen çalışma,
-ekibin insan incelemesinin yerini tutmaz.
-
-Üye 2 geliştirmesinde de Codex; şema, istemci, bütçe/güvenlik iş akışı, maliyet,
-test ve dokümantasyon taslağı için kullanıldı. Kullanıcı ilk 45 şema testini ve
-şema demosunu kendi PowerShell'inde çalıştırdı. Sonraki genişletmelerin insan
-kod incelemesi beklenmektedir; otomatik test geçmesi insan onayı sayılmaz.
-Zaman sınırı testi gerçek saatin çok küçük bir aralığına bağlıyken kararsızlık
-gösterdi; saate bağımlılık enjekte edilerek deterministik regresyon testiyle düzeltildi.
-
-## Üye 2 ağsız gösterim ve maliyet
+## Maliyet
 
 ```powershell
-.venv\Scripts\python.exe -m scripts.demo_uye2 --output artifacts/uye2-demo.json
-.venv\Scripts\python.exe -m maliyet_hesapla --input-tokens 2100 --output-tokens 450 --input-price 1 --output-price 2
-.venv\Scripts\python.exe -m pytest -q -p no:cacheprovider
+.venv\Scripts\python.exe -m maliyet_hesapla --input-tokens 2100 --output-tokens 450 --input-price 1 --output-price 2 --users 1000 --requests-per-user 10
 ```
 
-İlk komutta yerel RAG/araçlar çalışır, model HTTP yanıtları taklit edilir.
-İkinci komuttaki fiyatlar kullanıcı senaryosudur: güncel EVREN veya başka bir
-sağlayıcının fiyatı oldukları iddia edilmez. Hosting/işletim giderleri dahil değildir.
-Önbellek yalnız Üye 1'in kamusal derlem katmanındadır; bu sürümde nihai taslak
-önbelleği veya model kademelendirmesi uygulanmadı ve tasarruf yüzdesi ölçülmedi.
+**Simülasyon:** 1M girdi token için 1 USD ve çıktı için 2 USD varsayılır.
+2.100 girdi + 450 çıktı = **0.003 USD/istek**; 1.000 kullanıcı × ayda 10 istek =
+**30 USD/ay**. Gerçek fiyat/fatura veya ücretsiz kota ölçümü değildir.
+Barındırma, gömme ve işletim giderleri dahil değildir.
 
+Çağrı öncesi rezervasyon yapılır; bilinmeyen kullanım sıfır yazılmaz.
+Rezervasyon sağlayıcının kesin harcama tavanı değildir. Kamusal derlem gömmelerinde
+önbellek vardır. Taslak önbelleği, model kademesi ve çıktı uzunluğu optimizasyonunun
+gerçek maliyet/kalite etkisi ölçülmedi. Sağlayıcı doğrulamasından sonra tarihli tablo eklenecek.
 
-## Üye 3 — İnceleme ekranı ve insan değerlendirmesi
+## Güvenlik ve yönetişim
 
-Yerel Streamlit ekranı `app.py` ile çalışır. Kurulum için [üye 3 rehberi](docs/uye3_arayuz.md).
-Sipariş, hesaplar ve kaynaklar gösterilir; gerekçeli insan değerlendirmesinden sonra
-serbest metinsiz JSON özeti indirilir. Başarısız yeni istek eski onayı temizler.
-Bu onay kimliği doğrulanmamış sentetik demo kaydıdır; gerçek kabul/ret kararı değildir.
-Üye 2 ajanı ekrana bağlandı. Varsayılan yerel mod, açıkça etiketli ağsız demo ve açık onaylı gerçek model modu vardır. Canlı URL, video ve model maliyeti henüz yoktur.
+- Yalnız sentetik sipariş ve kişisel bilgi içermeyen metin kullanılır.
+  Maskeleme isim/adres dahil tüm kişisel veriyi garanti etmez.
+- Anahtarlar sunucu ortamında kalır; ham başvuru/model metni izlere yazılmaz.
+  İndirilen rapor serbest metinleri dışarıda bırakır.
+- URL, madde, getirilen parça, birebir alıntı ve fatura sınırı doğrulanır.
+- Model ödeme, bildirim veya keyfî araç yetkisi taşımaz. Giriş filtresi tek başına
+  tam prompt injection savunması değildir.
+- İnsan kaynak okuma beyanı ve gerekçe verir; değiştirilen öneri de doğrulanır.
+  Demo kutucuğu kimlik doğrulama değildir.
+- Gerçek RBAC, sipariş sahipliği, kalıcı denetim, saklama/silme politikası, oran
+  sınırı ve yük testi olmadan gerçek veriye açılmaz.
 
-- [Kullanım senaryosu](docs/kullanim_senaryosu.md)
-- [Sistem kartı](docs/model_karti.md)
-- [Doğrulama](docs/uye3_dogrulama.md)
-- [Red team deneme rehberi](docs/uye3_redteam.md)
-- [Demo planı](docs/demo_metni.md)
-- [Teslim taslağı](TESLIM.md)
+EU AI Act sınıfı/takvimi ve KVKK hukuki uygunluğu bu sürümde doğrulanmadı.
+Sınıf kullanım amacına ve güncel resmi kaynaklara göre gerekçelendirilecektir.
+[Kullanım senaryosu](docs/kullanim_senaryosu.md), [model kartı](docs/model_karti.md).
 
-Üye 3 ekranı, insan inceleme modülü, test ve belge taslakları Codex yardımıyla hazırlandı.
-Tasarım düzeltmesi: başarısız yeni değerlendirmede önceki onayın rapor indirmeye izin
-vermemesi sağlandı ve regresyon testi eklendi. Bu geliştirme kararı üretim hatası geçmişi
-veya kullanıcının kendi bulduğu hata olarak sunulmamalıdır.
+## Ekip ve katkı
 
+- **Emre Berk Güç — 230501013 / Üye 1:** derlem, RAG, deterministik araçlar, eval.
+- **Zeynep Zehra Kocatürk — 230501017 / Üye 2:** şemalar, istemci, bütçeli ajan,
+  güvenlik/maliyet, CI; başvuru bağlama ve ortak belge kontrolleri.
+- **Beste Tuana Çuhadar — 230501016 / Üye 3:** arayüz, insan incelemesi,
+  UI–ajan bağlantısı, yönetişim ve sunum hazırlığı.
 
-### Ajan ekranını çalıştırma
+Sahiplik tamamlanma iddiası değildir. Katkı commit/PR, test ve [TESLIM.md](TESLIM.md)
+ile gösterilir. AI yardımlı kod ekip tarafından okunmalı ve açıklanabilmelidir.
+[Birlikte geliştirme düzeni](docs/ekip_calisma_rehberi.md).
 
-```powershell
-py -m venv .venv
-.venv\Scripts\python.exe -m pip install -r requirements-ui.txt
-.venv\Scripts\python.exe -m streamlit run app.py --server.address 127.0.0.1
-```
+## AI kullanımı ve düzeltilen hatalar
 
-Soldan **Ağsız ajan demosu** seçilerek API anahtarı olmadan öneri/onay akışı denenebilir.
-Bu yoldaki model yanıtı ve token sayıları taklittir. **Gerçek model** modu sunucuda
-anahtar, model ve tarihli tarife ile formda iki açık onay ister. Gerçek API denemesi
-bu geliştirmede yapılmadı. [Bağlantı, test ve sınırlar](docs/uye3_ajan_baglantisi.md).
-Bu katkı Codex yardımıyla hazırlanmıştır; insan incelemesi ve sunum provası gereklidir.
+Codex; araştırma, kod, test, inceleme ve belge taslaklarında kullanıldı.
+Önceki ücretsiz OpenCode incelemesinin zaman aşımı başarı sayılmadı.
+İnsan onayı verilmemiş kod “ekip inceledi” şeklinde gösterilmez.
+
+Gerçek geliştirme hataları: Türkçe I/ı normalleştirmesi bazı saldırı kalıplarını
+kaçırdı; düzeltildi. Zaman testi gerçek saate bağımlıydı; saat enjekte edildi.
+UI'da başarısız yeni başvurunun eski raporu koruması engellendi.
+Bu sürümde **kanıtın iki kez hazırlanması** ve **aynı siparişte başka başvuru
+metnine ait taslağın onaylanabilmesi** başarısız testle gösterilip düzeltildi.
+[Tekrar üretim ve kanıt](docs/gelistirme_kaydi_2026-11-01.md).
+Bunlar gerçek müşteri olayları değildir. İnsan kod incelemesi otomatik testten ayrıdır.
+
+## Sınırlar ve teslim durumu
+
+Canlı URL, soğuk başlangıç, gerçek iki sağlayıcı, insan kalibrasyonu, bağımsız eval,
+ekipler arası red team, gerçek maliyet, video ve teslim PDF'i henüz tamamlanmadı.
+Derlem tam konsolide mevzuat değildir; güncellik/uzman kontrolü gerekir.
+Çok kullanıcılı üretim kapasitesi ölçülmedi.
+
+[Şartname](SPEC.md), [gereksinimler](docs/proje_isterleri.md),
+[kanıt listesi](docs/proje_kriterleri.json) ve [teslim taslağı](TESLIM.md)
+her PR'da birlikte güncellenir. Belge kontrolü gerçek uyum/not değerlendirmesi değildir.
+
+## Lisans
+
+Ekip dağıtım lisansı seçmedi; LICENSE henüz yok.
+Herkese açık görünüm serbest kullanım izni anlamına gelmez. Üçüncü taraf kod/veri
+koşulları, atıflar ve ekip lisansı teslimden önce kararlaştırılmalıdır.

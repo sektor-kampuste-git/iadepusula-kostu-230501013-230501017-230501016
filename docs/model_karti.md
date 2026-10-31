@@ -1,6 +1,16 @@
-# Sistem kartı — Üye 3 entegrasyon durumu
+# İadePusula sistem/model kartı
 
-Tarih: 31 Ekim 2026. Taban: cfc3e2cf041485a4cb9159168289d5344f5ec20f.
+Güncelleme: 1 Kasım 2026, sürüm 0.3.1. Taban: develop bedc0179.
+Üye 3'ün kartı ortak başvuru bağıyla güncellendi. Bu belge model sağlayıcısının
+eğitim model kartının yerine geçmez; uygulama sistem kartıdır.
+
+## Model ve veri
+
+Model seçimi LLM_BASE_URL / LLM_API_KEY / LLM_MODEL ortam alanlarından yapılır.
+Varsayılan yerel kanıt modunda model yoktur; ağsız demoda yanıt/token taklittir.
+Gerçek sağlayıcı/model sürümü ve kullanım ölçümleri henüz bu sürüm için raporlanmadı.
+100 sipariş sentetik, 40 pasaj resmi kaynaklardan seçilmiştir; tam konsolide
+mevzuat değildir. Eğitim/fine-tuning yapılmadı. 30 eval etiketi AI taslağıdır.
 
 ## Çalışan kapsam
 Streamlit ekranı, Üye 1 kanıt paketi, yerel mevzuat araması, kaynak bağlamı ve işlem izleri,
@@ -10,6 +20,8 @@ UI otomatik hukuki karar, tebligat veya ödeme yapmaz. Varsayılan yol LLM kulla
 ## Güvenlik ve insan gözetimi
 Kaynak okuma beyanı ve en az 10 karakter gerekçe gerekir. Kaynak ve sipariş yoksa kayıt yoktur.
 SHA-256 özeti kaydı belirli pakete bağlar; kriptografik imza veya değiştirilemez günlük değildir.
+Özet başvuru metni, başvuru tarihi ve kaynakları kapsar. Süre/skor kapsanmaz.
+Taslaktan onaya geçerken aynı başvuru kontrol edilir; başka başvurunun taslağı reddedilir.
 Serbest metinler JSON raporuna alınmaz. Oturumdaki gerekçeye mevcut maskeleme uygulanır;
 maskelenmemiş isim/adres kalabilir. Gerçek kişi verisi girilmemelidir.
 Üye 2 ajanı ekrana bağlıdır; ağsız demo ve gerçek model yolları ayrıdır. Kimliği doğrulanmış yetkili onayı henüz yoktur. Demo kutucuğu kimlik doğrulama değildir.

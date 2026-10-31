@@ -1,5 +1,9 @@
 # Üye 3 — Paketi kullanma ve GitHub'a yükleme
 
+Bu, 31 Ekim yükleme paketinin tarihsel rehberidir. Ortak depoda artık UI–ajan
+bağlantısı vardır. Güncel başlangıç README.md, ekip düzeni
+docs/ekip_calisma_rehberi.md içindedir. Eski paketin tümünü yeniden yüklemeyin.
+
 Bu klasör tam proje kopyasıdır; .git, .env, API anahtarı ve sanal ortam içermez.
 Taban commit cfc3e2cf041485a4cb9159168289d5344f5ec20f. Önce docs/uye3_arayuz.md ile çalıştır.
 Kaynakları ve testleri incele; AI yardımıyla hazırlanan kodu açıklayabilmeden teslim etme.

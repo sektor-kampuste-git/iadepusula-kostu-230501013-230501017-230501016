@@ -1,5 +1,14 @@
 # Üye 3 — Ajan ve insan onayı bağlantısı
 
+## Güncel ortak düzeltme — 1 Kasım 2026 / 0.3.1
+
+UI kanıtı artık yalnız bir kez hazırlar; ajan aynı paketi run_packet ile kullanır.
+Başvuru tarihi pakete dahil edilir. Rapor/onay aynı başvuru özetine bağlanır;
+metin veya tarih değişirse eski taslak onaylanamaz. Süre/skor kimlikten dışlanır.
+Kaynak sahipliği doğrulaması korunur. Aşağıdaki 31 Ekim ölçümleri tarihsel kayıttır;
+çift hazırlama açıklaması o eski sürümün davranışıdır. Yeni kanıt ve komutlar
+[1 Kasım geliştirme kaydındadır](gelistirme_kaydi_2026-11-01.md).
+
 31 Ekim 2026. Temel: develop / 860b55a (PR #5 sonrası).
 
 ## Çalışan üç yol
