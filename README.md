@@ -185,3 +185,24 @@ gösterdi; saate bağımlılık enjekte edilerek deterministik regresyon testiyl
 sağlayıcının fiyatı oldukları iddia edilmez. Hosting/işletim giderleri dahil değildir.
 Önbellek yalnız Üye 1'in kamusal derlem katmanındadır; bu sürümde nihai taslak
 önbelleği veya model kademelendirmesi uygulanmadı ve tasarruf yüzdesi ölçülmedi.
+
+
+## Üye 3 — İnceleme ekranı ve insan değerlendirmesi
+
+Yerel Streamlit ekranı `app.py` ile çalışır. Kurulum için [üye 3 rehberi](docs/uye3_arayuz.md).
+Sipariş, hesaplar ve kaynaklar gösterilir; gerekçeli insan değerlendirmesinden sonra
+serbest metinsiz JSON özeti indirilir. Başarısız yeni istek eski onayı temizler.
+Bu onay kimliği doğrulanmamış sentetik demo kaydıdır; gerçek kabul/ret kararı değildir.
+Üye 2 ajanı ortak koda eklendi; bu arayüz henüz ajanı çağırmaz. Canlı URL, video ve model maliyeti henüz yoktur.
+
+- [Kullanım senaryosu](docs/kullanim_senaryosu.md)
+- [Sistem kartı](docs/model_karti.md)
+- [Doğrulama](docs/uye3_dogrulama.md)
+- [Red team deneme rehberi](docs/uye3_redteam.md)
+- [Demo planı](docs/demo_metni.md)
+- [Teslim taslağı](TESLIM.md)
+
+Üye 3 ekranı, insan inceleme modülü, test ve belge taslakları Codex yardımıyla hazırlandı.
+Tasarım düzeltmesi: başarısız yeni değerlendirmede önceki onayın rapor indirmeye izin
+vermemesi sağlandı ve regresyon testi eklendi. Bu geliştirme kararı üretim hatası geçmişi
+veya kullanıcının kendi bulduğu hata olarak sunulmamalıdır.
