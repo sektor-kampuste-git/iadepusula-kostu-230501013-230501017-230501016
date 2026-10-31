@@ -1,5 +1,10 @@
 # Üye 3 doğrulama kaydı
 
+Bu dosya 31 Ekim sürümlerinin tarihsel sonuçlarıdır. Sonraki ajan bağlantısı
+[entegrasyon notunda](uye3_ajan_baglantisi.md), güncel ortak sürüm ise
+[1 Kasım kaydında](gelistirme_kaydi_2026-11-01.md) açıklanır.
+Alttaki "henüz bağlı değil" ifadesi eski sürüme aittir.
+
 31 Ekim 2026, Windows / Python 3.11.0, taban cfc3e2cf041485a4cb9159168289d5344f5ec20f.
 
 - Tam test paketi: **153 geçti, 6.83 saniye**. Bunun 12 testi UI/insan inceleme katkısına aittir.

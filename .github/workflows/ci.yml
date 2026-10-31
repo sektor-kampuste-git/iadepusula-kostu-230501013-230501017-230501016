@@ -25,6 +25,7 @@ jobs:
       - run: python -m ruff check app.py src eval scripts tests maliyet_hesapla.py
       - run: python -m ruff format --check app.py src eval scripts tests maliyet_hesapla.py
       - run: python scripts/check_secrets.py
+      - run: python -m scripts.check_docs --output artifacts/docs.json
       - run: python -m pytest -q
       - run: python -m eval.eval_kosucu --min-pass-rate 0.85 --output artifacts/eval.json
       - run: python -m scripts.demo_uye2 --output artifacts/uye2-demo.json
@@ -38,4 +39,5 @@ jobs:
           path: |
             artifacts/eval.json
             artifacts/uye2-demo.json
+            artifacts/docs.json
             artifacts/wheels/*.whl

@@ -1,1 +1,1 @@
-"""İadePusula Üye 1 bileşenleri. Modül yüklenirken ağ isteği yapılmaz."""
+"""İadePusula ortak uygulama katmanları. Modül yüklenirken ağ isteği yapılmaz."""
