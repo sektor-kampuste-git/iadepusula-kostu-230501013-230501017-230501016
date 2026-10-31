@@ -1,0 +1,38 @@
+{
+  "recorded_on_local": "2026-11-01",
+  "timezone": "Europe/Istanbul",
+  "version": "0.3.2",
+  "base_sha": "db139c97239392029fa1a334229974a575204838",
+  "kind": "LOCAL_OFFLINE_VERIFICATION_NOT_MODEL_ACCURACY",
+  "tests": {
+    "status": "passed",
+    "passed": 333,
+    "seconds": 7.31,
+    "python": "3.12.14",
+    "platform": "Windows",
+    "regression_before_fix": "Eksik tarihli paket eval'de hata yerine uzman tahminine dönüşüyordu; yeni test önce başarısızdı"
+  },
+  "ruff": "passed",
+  "secret_check": "passed_known_patterns_not_a_complete_leak_guarantee",
+  "documentation_check": "passed_including_showcase_shadowing_regression",
+  "component_eval": {
+    "utc": "2026-10-31T23:18:00.442147+00:00",
+    "passed": 30,
+    "total": 30,
+    "source_hit_at_3": "20/20",
+    "labels": "ai_taslak",
+    "human_calibration": false
+  },
+  "mock_agent_demo": "4/4_expected_stop_reasons",
+  "showcase_before_fix": {
+    "github_readme_selected_path": ".github/README.md",
+    "home_contains_product": false,
+    "home_is_automation": true
+  },
+  "real_provider_requests": 0,
+  "ownership": "Üye 2; Üye 1/3 uygulama ve veri dosyaları korunur",
+  "limitations": [
+    "İki gerçek sağlayıcı doğrulanmadı",
+    "İnsan kalibrasyonu, dış red team, gerçek maliyet, deploy/video bekliyor"
+  ]
+}

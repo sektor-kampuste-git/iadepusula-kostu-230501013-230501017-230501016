@@ -68,6 +68,20 @@ Belge kontrolü dosya ve bağlantıları doğrular; hukuki uyum veya not vermez.
 Kaynak depo dışındaki wheel doğrulaması; CLI, veriler, eval ve temel ajan/istemci
 modüllerini sınar. Paket dizininde tek İadePusula wheel dosyası bulunmalıdır.
 
+## İsteğe bağlı gerçek ajan eval'i
+
+Bu adım kota tüketebilir; günlük ağsız kontrollerin parçası değildir. Yalnız
+sentetik veriler, geçerli model/anahtar ve tarihli tarife ile açıkça başlatılır:
+
+```powershell
+$env:IADEPUSULA_ALLOW_LIVE_EVAL = "1"
+.venv\Scripts\python.exe -m eval.eval_kosucu --predictor src.agent:predict_for_eval --output artifacts/gercek-ajan-eval.json
+Remove-Item Env:IADEPUSULA_ALLOW_LIVE_EVAL
+```
+
+Onay olmadan istemci/anahtar yüklenmez. Operasyonel durma eval başarısı sayılmaz.
+Bu komutun mevcut olması gerçek iki sağlayıcıda test edildiği anlamına gelmez.
+
 ## Maliyet
 
 ```powershell

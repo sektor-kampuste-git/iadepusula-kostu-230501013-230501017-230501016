@@ -1,5 +1,8 @@
 # Depo otomasyonu
 
+Bu dosya README olarak adlandırılmaz: GitHub .github/README dosyasını kökteki
+ürün README'sinden önce gösterir. Ana vitrin kökteki README.md'dir.
+
 workflows/ci.yml; PR'larda ve main/develop push'larında Python 3.11/3.12/3.14
 için biçim/kod, sır, belge, test, bileşen eval, ağsız demo ve wheel kontrolü yapar.
 Gerçek model anahtarı kullanılmaz. artifacts raporları çalıştırma kanıtıdır.

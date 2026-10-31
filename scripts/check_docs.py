@@ -23,7 +23,7 @@ REQUIRED = (
     "eval/README.md",
     "tests/README.md",
     "scripts/README.md",
-    ".github/README.md",
+    ".github/OTOMASYON.md",
     ".streamlit/README.md",
 )
 STATUSES = {"implemented", "partial", "pending"}
@@ -118,10 +118,23 @@ def registry_errors(root: Path, data: dict) -> list[str]:
     return errors
 
 
+def showcase_errors(root: Path) -> list[str]:
+    """GitHub'ın ürün README'si yerine otomasyon belgesini seçmesini engelle."""
+    github = root / ".github"
+    if not github.is_dir():
+        return []
+    return [
+        f"Ana vitrin gölgeleniyor: {p.relative_to(root)}; otomasyon belgesini yeniden adlandırın"
+        for p in github.iterdir()
+        if p.is_file() and (p.name.casefold() == "readme" or p.stem.casefold() == "readme")
+    ]
+
+
 def check(root: Path) -> dict:
     """Mevcut depoyu tara; harici ağa veya gizli dosyalara erişme."""
     root = root.resolve()
     errors = [f"Zorunlu belge eksik: {p}" for p in REQUIRED if not (root / p).is_file()]
+    errors.extend(showcase_errors(root))
     docs = sorted(p for p in root.rglob("*.md") if not set(p.relative_to(root).parts) & EXCLUDED)
     for path in docs:
         errors.extend(markdown_errors(root, path))

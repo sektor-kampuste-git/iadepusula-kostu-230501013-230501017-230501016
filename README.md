@@ -10,7 +10,7 @@
 
 [Hızlı başlangıç](#hızlı-başlangıç) · [Mimari](#mimari) · [Ölçüm](#ölçüm-ve-değerlendirme) · [Belgeler](#proje-yapısı-ve-belgeler)
 
-**Sürüm 0.3.1 — geliştirme prototipi.** Uygulama sentetik siparişlerle yerelde
+**Sürüm 0.3.2 — geliştirme prototipi.** Uygulama sentetik siparişlerle yerelde
 çalışır. Canlı demo ve tanıtım videosu yayın hazırlığındadır.
 
 ## Neyi çözüyor?
@@ -99,14 +99,14 @@ Arayüz, iş kuralları ve model erişimi ayrı katmanlardır.
 
 | Kontrol | Sonuç | Ölçülen kapsam |
 | --- | --- | --- |
-| Otomatik test | 321 geçti | Şema, araç, istemci, bütçe, UI ve entegrasyon |
+| Otomatik test | 333 geçti | Şema, araç, istemci, bütçe, UI ve entegrasyon |
 | Bileşen eval | 30/30 | Sentetik geliştirme vakaları; 6'sı adversarial |
 | Kaynak hit@3 | 20/20 | Kaynak beklenen vakalarda ilk üç sonuç |
 | CI | Python 3.11 / 3.12 / 3.14 | Kod, belge, sır, test, eval ve paket kontrolü |
 
 Eval hakemi otomatik beklenti kontrolüdür; etiketler AI taslağıdır.
 Bu sonuçlar bağımsız insan değerlendirmesi veya gerçek model karar doğruluğu değildir.
-[Ham kanıt](docs/kanitlar/2026-11-01_entegrasyon.json) ·
+[Ham kanıt](docs/kanitlar/2026-11-01_uye2_denetim.json) ·
 [Eval yöntemi](eval/README.md) · [Doğrulama kaydı](docs/gelistirme_kaydi_2026-11-01.md).
 
 ## Maliyet
@@ -178,6 +178,9 @@ Somut geliştirme hatası: aynı siparişte farklı başvuruya ait taslak onayla
 Başvuru/tarih/kanıt bağı eklenerek düzeltildi ve regresyon testleriyle korundu.
 AI çıktılarının ekip tarafından anlaşılması ve insan incelemesi ayrıca gereklidir.
 [Hata, düzeltme ve kanıt](docs/gelistirme_kaydi_2026-11-01.md).
+
+Son Üye 2 incelemesinde GitHub'ın otomasyon README'sini öne seçmesi ve operasyonel
+ajan hatalarının eval'de öneri gibi sayılması düzeltildi. [Denetim kaydı](docs/uye2_denetim_2026-11-01.md).
 
 ## Sınırlar ve yayın planı
 

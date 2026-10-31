@@ -1,5 +1,10 @@
 # Üye 2 katkı ve doğrulama kaydı
 
+Güncel not — 1 Kasım 2026: aşağıdaki v0.3.0 paket bilgileri tarihsel kayıttır.
+GitHub yüklemesi ve UI bağlantısı artık mevcuttur. PR #8, #10, #11 ve #12
+birleştirildi; ilgili otomatik kontroller geçti. Güncel kapsam ve sınırlar
+[Üye 2 denetim kaydında](uye2_denetim_2026-11-01.md) tutulur.
+
 Hazırlama: 31 Ekim 2026. Üye 2: Zeynep Zehra Kocatürk, 230501017.
 Temel: Üye 1 `cfc3e2cf041485a4cb9159168289d5344f5ec20f`.
 Durum: yerel paket hazır; GitHub'a yükleme/CI ve ekip kod incelemesi bekliyor.

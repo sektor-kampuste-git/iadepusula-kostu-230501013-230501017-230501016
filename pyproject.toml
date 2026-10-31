@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "iadepusula"
-version = "0.3.1"
+version = "0.3.2"
 description = "Kaynaklı Türkçe ön inceleme: RAG, sınırlı ajan, doğrulama ve maliyet"
 readme = "README.md"
 requires-python = ">=3.11"

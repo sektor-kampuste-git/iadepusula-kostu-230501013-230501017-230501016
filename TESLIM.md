@@ -1,6 +1,6 @@
 # İadePusula — TESLIM
 
-**Ara geliştirme kaydı; nihai teslim değildir.** 1 Kasım 2026 · sürüm 0.3.1.
+**Ara geliştirme kaydı; nihai teslim değildir.** 1 Kasım 2026 · sürüm 0.3.2.
 Kocaeli Sağlık ve Teknoloji Üniversitesi · Takım Şarjör.
 
 ## 1. Takım ve sorumluluk
@@ -53,6 +53,9 @@ Durumlar [gereksinim kanıt listesinde](docs/proje_kriterleri.json) izlenir.
 31 Ekim bileşen geliştirme eval'i 30/30; kaynak beklenen 20 vakada hit@3 20/20.
 Etiket AI taslağıdır; insan onaylı altın standart veya nihai ajan doğruluğu değildir.
 1 Kasım test/komut kayıtları [geliştirme kaydında](docs/gelistirme_kaydi_2026-11-01.md).
+
+Sonraki Üye 2 düzeltmeleri ve güncel testler [denetim kaydındadır](docs/uye2_denetim_2026-11-01.md).
+Operasyonel model hataları artık başarılı uzman yönlendirmesi sayılmaz.
 
 Simülasyon: 2100 girdi/450 çıktı, 1M için 1/2 USD varsayımıyla 0.003 USD/istek;
 1000 kullanıcı × 10 istek = 30 USD/ay. Gerçek sağlayıcı fiyatı/faturası değildir.

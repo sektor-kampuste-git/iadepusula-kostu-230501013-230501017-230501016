@@ -4,13 +4,24 @@ import copy
 import json
 from pathlib import Path
 
-from scripts.check_docs import check, markdown_errors, registry_errors
+from scripts.check_docs import check, markdown_errors, registry_errors, showcase_errors
 
 ROOT = Path(__file__).resolve().parents[1]
 
 
 def test_repository_documentation_is_consistent():
     assert check(ROOT)["errors"] == []
+
+
+def test_github_automation_readme_cannot_replace_product_showcase(tmp_path):
+    (tmp_path / "README.md").write_text("# İadePusula", encoding="utf-8")
+    github = tmp_path / ".github"
+    github.mkdir()
+    automation = github / "README.md"
+    automation.write_text("# Depo otomasyonu", encoding="utf-8")
+    assert "Ana vitrin gölgeleniyor" in showcase_errors(tmp_path)[0]
+    automation.rename(github / "OTOMASYON.md")
+    assert showcase_errors(tmp_path) == []
 
 
 def test_missing_link_is_reported_but_external_fragment_and_code_are_ignored(tmp_path):
