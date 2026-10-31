@@ -6,6 +6,7 @@ Güncel ortak durum [proje_isterleri.md](proje_isterleri.md) ve
 
 ## Ürünü ve kodu anlamak
 
+- [Kurulum ve doğrulama](kurulum_ve_dogrulama.md): ortam ayarları, komutlar ve sorun giderme.
 - [Mimari](mimari.md): tek kanıt paketi, katmanlar, veri ve bütçe sınırları.
 - [Kod anlatma rehberi](kodu_anlama_rehberi.md): tüm ekibin açıklayacağı dosyalar.
 - [Ekip çalışma rehberi](ekip_calisma_rehberi.md): dal, PR, inceleme ve sorumluluk.
