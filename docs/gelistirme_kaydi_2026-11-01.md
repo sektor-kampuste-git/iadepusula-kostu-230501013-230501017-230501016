@@ -67,3 +67,11 @@ standart izole derleme ile geçti. Bu uygulama testi hatası değildi.
 Koşum UTC tarihi 31 Ekim 22:41, İstanbul tarihi 1 Kasım'dır; tarih alanları bu nedenle
 bir gün farklı görünebilir. Ham değerlendirmede UTC bilgisi korunur.
 GitHub CI sonucu bu yerel sonuçlardan ayrıdır; PR kontrollerinde görülebilir.
+
+## Ana README sunumu
+
+Ana README ürün, kullanım akışı ve hızlı başlangıçla açılacak biçimde düzenlendi.
+Ölçüm/maliyet tabloları kısa kapsam açıklamalarıyla korundu; ayrıntılı komutlar
+docs/kurulum_ve_dogrulama.md içine taşındı. AI kullanımı, sınırlar, ekip ve kanıt
+bağlantıları korunur. Bu değişiklik yeni ürün özelliği veya yeni gerçek model
+başarı ölçümü değildir.
