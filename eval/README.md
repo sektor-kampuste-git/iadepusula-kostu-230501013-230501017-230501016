@@ -1,5 +1,9 @@
 # Değerlendirme
 
+Getirme kalitesini ayrı ölçmek için 44 sorguluk [RAG karşılaştırmasını](../docs/rag_olcumleri_v0.3.md)
+ve yöntemleri gizleyen [insan inceleme paketini](insan_incelemesi.md) kullanın.
+Bu set geliştirme amaçlı AI taslağıdır; bağımsız insan testi değildir.
+
 `evaller.json`: 18 standart, 6 sınır, 6 adversarial = 30 sentetik geliştirme vakası.
 Her etiketi AI taslağıdır; insan incelemesi henüz yapılmadı. Boş insan etiketi
 veya örnek PDF sonucu, gerçek insan değerlendirmesi gibi sunulmaz.

@@ -30,6 +30,7 @@ jobs:
       - run: python -m eval.eval_kosucu --min-pass-rate 0.85 --output artifacts/eval.json
       - run: python -m scripts.demo_uye2 --output artifacts/uye2-demo.json
       - run: python -m maliyet_hesapla --input-tokens 2100 --output-tokens 450 --input-price 1 --output-price 2
+      - run: python -m eval.retrieval_benchmark --backend lexical --output artifacts/retrieval_benchmark.json
       - run: python -m pip wheel . --no-deps --wheel-dir artifacts/wheels
       - run: python scripts/verify_package.py artifacts/wheels
       - uses: actions/upload-artifact@v7.0.2
@@ -40,4 +41,6 @@ jobs:
             artifacts/eval.json
             artifacts/uye2-demo.json
             artifacts/docs.json
+            artifacts/retrieval_benchmark.json
+            artifacts/retrieval_benchmark.md
             artifacts/wheels/*.whl

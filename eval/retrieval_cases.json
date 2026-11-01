@@ -1,0 +1,515 @@
+[
+{
+  "id": "RQ01",
+  "category": "cayma",
+  "query": "İnternetten aldığım gömlekten vazgeçtim. Gerekçesiz cayma için kaç günlük süre var?",
+  "relevant_ids": [
+    "MSY-M9-F1",
+    "MSY-M9-F2"
+  ],
+  "expected_empty": false,
+  "label_status": "ai_taslak",
+  "reviewer": null,
+  "synthetic": true
+},
+{
+  "id": "RQ02",
+  "category": "cayma",
+  "query": "Siparişim henüz elime ulaşmadı. Teslim edilmeden cayma bildiriminde bulunabilir miyim?",
+  "relevant_ids": [
+    "MSY-M9-F2"
+  ],
+  "expected_empty": false,
+  "label_status": "ai_taslak",
+  "reviewer": null,
+  "synthetic": true
+},
+{
+  "id": "RQ03",
+  "category": "cayma",
+  "query": "Aynı siparişin parçaları ayrı kargolarla geldi; cayma süresinde son parçanın teslimi mi esas alınır?",
+  "relevant_ids": [
+    "MSY-M9-F3"
+  ],
+  "expected_empty": false,
+  "label_status": "ai_taslak",
+  "reviewer": null,
+  "synthetic": true
+},
+{
+  "id": "RQ04",
+  "category": "cayma",
+  "query": "Satıcının ürünü kargo şirketine vermesi tüketiciye teslim sayılır mı?",
+  "relevant_ids": [
+    "MSY-M9-F4"
+  ],
+  "expected_empty": false,
+  "label_status": "ai_taslak",
+  "reviewer": null,
+  "synthetic": true
+},
+{
+  "id": "RQ05",
+  "category": "cayma",
+  "query": "Mal teslimi ile hizmet ifasının birlikte olduğu sözleşmede hangi cayma hükümleri uygulanır?",
+  "relevant_ids": [
+    "MSY-M9-F5"
+  ],
+  "expected_empty": false,
+  "label_status": "ai_taslak",
+  "reviewer": null,
+  "synthetic": true
+},
+{
+  "id": "RQ06",
+  "category": "cayma",
+  "query": "Cayma hakkı konusunda bilgilendirilmedim. On dört günlük süreyle bağlı mıyım, bir yıllık süre nedir?",
+  "relevant_ids": [
+    "MSY-M10-F1"
+  ],
+  "expected_empty": false,
+  "label_status": "ai_taslak",
+  "reviewer": null,
+  "synthetic": true
+},
+{
+  "id": "RQ07",
+  "category": "cayma",
+  "query": "Cayma bilgilendirmesi sonradan yapılırsa yeni on dört günlük süre hangi gün başlar?",
+  "relevant_ids": [
+    "MSY-M10-F2"
+  ],
+  "expected_empty": false,
+  "label_status": "ai_taslak",
+  "reviewer": null,
+  "synthetic": true
+},
+{
+  "id": "RQ08",
+  "category": "cayma",
+  "query": "Cayma bildirimini yazılı olarak veya kalıcı veri saklayıcısıyla yöneltmek yeterli midir?",
+  "relevant_ids": [
+    "MSY-M11-F1"
+  ],
+  "expected_empty": false,
+  "label_status": "ai_taslak",
+  "reviewer": null,
+  "synthetic": true
+},
+{
+  "id": "RQ09",
+  "category": "cayma",
+  "query": "Cayma hakkının kullanıldığını ispat etme yükümlülüğü tüketiciye mi aittir?",
+  "relevant_ids": [
+    "MSY-M11-F4"
+  ],
+  "expected_empty": false,
+  "label_status": "ai_taslak",
+  "reviewer": null,
+  "synthetic": true
+},
+{
+  "id": "RQ10",
+  "category": "istisna",
+  "query": "İsmime özel ölçü ve baskıyla hazırlanan ürünün cayma istisnası hangisidir?",
+  "relevant_ids": [
+    "MSY-M15-b"
+  ],
+  "expected_empty": false,
+  "label_status": "ai_taslak",
+  "reviewer": null,
+  "synthetic": true
+},
+{
+  "id": "RQ11",
+  "category": "istisna",
+  "query": "Sağlık ve hijyen açısından geri alınamayan üründe koruyucu mühür açılmışsa hangi koşul uygulanır?",
+  "relevant_ids": [
+    "MSY-M15-ç"
+  ],
+  "expected_empty": false,
+  "label_status": "ai_taslak",
+  "reviewer": null,
+  "synthetic": true
+},
+{
+  "id": "RQ12",
+  "category": "istisna",
+  "query": "Çabuk bozulabilen yaş pasta gibi gıdaların tesliminde cayma istisnası var mı?",
+  "relevant_ids": [
+    "MSY-M15-c"
+  ],
+  "expected_empty": false,
+  "label_status": "ai_taslak",
+  "reviewer": null,
+  "synthetic": true
+},
+{
+  "id": "RQ13",
+  "category": "istisna",
+  "query": "Ambalajı açılan kitap, maddi ortamda dijital içerik ve kartuş hangi istisna kapsamındadır?",
+  "relevant_ids": [
+    "MSY-M15-e"
+  ],
+  "expected_empty": false,
+  "label_status": "ai_taslak",
+  "reviewer": null,
+  "synthetic": true
+},
+{
+  "id": "RQ14",
+  "category": "istisna",
+  "query": "Abonelik kapsamında olmayan gazete ve dergilerin tesliminde cayma hakkı kullanılabilir mi?",
+  "relevant_ids": [
+    "MSY-M15-f"
+  ],
+  "expected_empty": false,
+  "label_status": "ai_taslak",
+  "reviewer": null,
+  "synthetic": true
+},
+{
+  "id": "RQ15",
+  "category": "istisna",
+  "query": "Belirli tarihte otel konaklaması ve araba kiralama rezervasyonlarının cayma istisnasını arıyorum.",
+  "relevant_ids": [
+    "MSY-M15-g"
+  ],
+  "expected_empty": false,
+  "label_status": "ai_taslak",
+  "reviewer": null,
+  "synthetic": true
+},
+{
+  "id": "RQ16",
+  "category": "istisna",
+  "query": "Elektronik ortamda anında ifa edilen hizmet ve hemen teslim edilen gayrimaddi mallar için hüküm nedir?",
+  "relevant_ids": [
+    "MSY-M15-ğ"
+  ],
+  "expected_empty": false,
+  "label_status": "ai_taslak",
+  "reviewer": null,
+  "synthetic": true
+},
+{
+  "id": "RQ17",
+  "category": "istisna",
+  "query": "Cayma süresi dolmadan tüketicinin onayıyla ifasına başlanan hizmetin istisnası nedir?",
+  "relevant_ids": [
+    "MSY-M15-h"
+  ],
+  "expected_empty": false,
+  "label_status": "ai_taslak",
+  "reviewer": null,
+  "synthetic": true
+},
+{
+  "id": "RQ18",
+  "category": "istisna",
+  "query": "Fiyatı satıcının kontrolü dışındaki finansal piyasa dalgalanmalarına bağlı mal için cayma istisnası nedir?",
+  "relevant_ids": [
+    "MSY-M15-a"
+  ],
+  "expected_empty": false,
+  "label_status": "ai_taslak",
+  "reviewer": null,
+  "synthetic": true
+},
+{
+  "id": "RQ19",
+  "category": "istisna",
+  "query": "Teslimden sonra başka ürünle karışan ve doğası gereği ayrılamayan mal hangi istisnaya girer?",
+  "relevant_ids": [
+    "MSY-M15-d"
+  ],
+  "expected_empty": false,
+  "label_status": "ai_taslak",
+  "reviewer": null,
+  "synthetic": true
+},
+{
+  "id": "RQ20",
+  "category": "rehber",
+  "query": "Teslim edilmiş cep telefonu ve bilgisayar cayma istisnası mı? Mutat kullanım hakkı ortadan kaldırır mı?",
+  "relevant_ids": [
+    "REHBER-ELEKTRONIK"
+  ],
+  "expected_empty": false,
+  "label_status": "ai_taslak",
+  "reviewer": null,
+  "synthetic": true
+},
+{
+  "id": "RQ21",
+  "category": "rehber",
+  "query": "Ön bilgilendirmede belirtilen kargo şirketiyle geri gönderirken iade kargo masrafından kim sorumludur?",
+  "relevant_ids": [
+    "REHBER-KARGO"
+  ],
+  "expected_empty": false,
+  "label_status": "ai_taslak",
+  "reviewer": null,
+  "synthetic": true
+},
+{
+  "id": "RQ22",
+  "category": "rehber",
+  "query": "Cayma sonrasında ürünü kaç günde geri göndermeliyim ve bedel iadesinin süresi kargoya teslimden mi başlar?",
+  "relevant_ids": [
+    "REHBER-IADE-SURE"
+  ],
+  "expected_empty": false,
+  "label_status": "ai_taslak",
+  "reviewer": null,
+  "synthetic": true
+},
+{
+  "id": "RQ23",
+  "category": "rehber",
+  "query": "Ön bilgilendirmede belirtilen kargoyla gelen ürün kırık çıktı. Teslime kadar kayıp ve hasardan kim sorumlu?",
+  "relevant_ids": [
+    "REHBER-HASAR"
+  ],
+  "expected_empty": false,
+  "label_status": "ai_taslak",
+  "reviewer": null,
+  "synthetic": true
+},
+{
+  "id": "RQ24",
+  "category": "ayip",
+  "query": "Ürün bozuktu ve reklamda söylenen özelliği yok. Ayıplı mal tanımı hangi hükümdedir?",
+  "relevant_ids": [
+    "6502-M8-F1",
+    "6502-M8-F2"
+  ],
+  "expected_empty": false,
+  "label_status": "ai_taslak",
+  "reviewer": null,
+  "synthetic": true
+},
+{
+  "id": "RQ25",
+  "category": "ayip",
+  "query": "Montaj talimatı eksik olduğu için ürün yanlış monte edildi. Sözleşmeye aykırı ifa sayılır mı?",
+  "relevant_ids": [
+    "6502-M8-F3"
+  ],
+  "expected_empty": false,
+  "label_status": "ai_taslak",
+  "reviewer": null,
+  "synthetic": true
+},
+{
+  "id": "RQ26",
+  "category": "ayip",
+  "query": "Satıcı reklamda yapılan açıklamayla hangi ispat koşullarında bağlı olmaz?",
+  "relevant_ids": [
+    "6502-M9-F2"
+  ],
+  "expected_empty": false,
+  "label_status": "ai_taslak",
+  "reviewer": null,
+  "synthetic": true
+},
+{
+  "id": "RQ27",
+  "category": "ayip",
+  "query": "Teslimden itibaren altı ay içinde çıkan ayıbın teslimde var olduğu karinesinde ispat yükü kimde?",
+  "relevant_ids": [
+    "6502-M10-F1"
+  ],
+  "expected_empty": false,
+  "label_status": "ai_taslak",
+  "reviewer": null,
+  "synthetic": true
+},
+{
+  "id": "RQ28",
+  "category": "ayip",
+  "query": "Satın alırken bildiğim ayıp ile bilmediğim başka ayıplar açısından seçimlik haklarım nasıl ayrılır?",
+  "relevant_ids": [
+    "6502-M10-F2"
+  ],
+  "expected_empty": false,
+  "label_status": "ai_taslak",
+  "reviewer": null,
+  "synthetic": true
+},
+{
+  "id": "RQ29",
+  "category": "ayip",
+  "query": "Ayıplı malda sözleşmeden dönme, indirim, ücretsiz onarım ve değişim seçimlik haklarını görmek istiyorum.",
+  "relevant_ids": [
+    "6502-M11-F1"
+  ],
+  "expected_empty": false,
+  "label_status": "ai_taslak",
+  "reviewer": null,
+  "synthetic": true
+},
+{
+  "id": "RQ30",
+  "category": "ayip",
+  "query": "Ayıplı malda sözleşmeden dönmeyi seçtiğimde ödediğim bedel derhal iade edilir mi?",
+  "relevant_ids": [
+    "6502-M11-F5"
+  ],
+  "expected_empty": false,
+  "label_status": "ai_taslak",
+  "reviewer": null,
+  "synthetic": true
+},
+{
+  "id": "RQ31",
+  "category": "ayip",
+  "query": "Ücretsiz onarım veya ayıpsız misliyle değişim talebinin azami otuz iş günü süresi hangi hükümde?",
+  "relevant_ids": [
+    "6502-M11-F4"
+  ],
+  "expected_empty": false,
+  "label_status": "ai_taslak",
+  "reviewer": null,
+  "synthetic": true
+},
+{
+  "id": "RQ32",
+  "category": "ayip",
+  "query": "Ayıplı mal daha sonra ortaya çıksa bile teslimden itibaren iki yıllık zamanaşımı kuralı nedir?",
+  "relevant_ids": [
+    "6502-M12-F1"
+  ],
+  "expected_empty": false,
+  "label_status": "ai_taslak",
+  "reviewer": null,
+  "synthetic": true
+},
+{
+  "id": "RQ33",
+  "category": "ayip",
+  "query": "İkinci el malda satıcının ayıplı mal sorumluluğu bir yıldan az olabilir mi?",
+  "relevant_ids": [
+    "6502-M12-F2"
+  ],
+  "expected_empty": false,
+  "label_status": "ai_taslak",
+  "reviewer": null,
+  "synthetic": true
+},
+{
+  "id": "RQ34",
+  "category": "ayip",
+  "query": "Ayıp ağır kusur veya hileyle gizlendiğinde zamanaşımı uygulanır mı?",
+  "relevant_ids": [
+    "6502-M12-F3"
+  ],
+  "expected_empty": false,
+  "label_status": "ai_taslak",
+  "reviewer": null,
+  "synthetic": true
+},
+{
+  "id": "RQ35",
+  "category": "sinir",
+  "query": "6502 Madde 987 kapsamında iki kat iade",
+  "relevant_ids": [],
+  "expected_empty": true,
+  "label_status": "ai_taslak",
+  "reviewer": null,
+  "synthetic": true
+},
+{
+  "id": "RQ36",
+  "category": "sinir",
+  "query": "Kuantum dolanıklık ve gravitasyonun birleşik alan denklemi",
+  "relevant_ids": [],
+  "expected_empty": true,
+  "label_status": "ai_taslak",
+  "reviewer": null,
+  "synthetic": true
+},
+{
+  "id": "RQ37",
+  "category": "sinir",
+  "query": "Madde 11",
+  "relevant_ids": [],
+  "expected_empty": true,
+  "label_status": "ai_taslak",
+  "reviewer": null,
+  "synthetic": true
+},
+{
+  "id": "RQ38",
+  "category": "sinir",
+  "query": "MSY Madde 9/99",
+  "relevant_ids": [],
+  "expected_empty": true,
+  "label_status": "ai_taslak",
+  "reviewer": null,
+  "synthetic": true
+},
+{
+  "id": "RQ39",
+  "category": "sinir",
+  "query": "6502 Madde 8 ve Madde 987",
+  "relevant_ids": [],
+  "expected_empty": true,
+  "label_status": "ai_taslak",
+  "reviewer": null,
+  "synthetic": true
+},
+{
+  "id": "RQ40",
+  "category": "sinir",
+  "query": "6502 Madde 11/1 ve MSY Madde 11/1",
+  "relevant_ids": [
+    "6502-M11-F1",
+    "MSY-M11-F1"
+  ],
+  "expected_empty": false,
+  "label_status": "ai_taslak",
+  "reviewer": null,
+  "synthetic": true
+},
+{
+  "id": "RQ41",
+  "category": "sinir",
+  "query": "Python dilinde Fibonacci dizisi üreten program yaz",
+  "relevant_ids": [],
+  "expected_empty": true,
+  "label_status": "ai_taslak",
+  "reviewer": null,
+  "synthetic": true
+},
+{
+  "id": "RQ42",
+  "category": "sinir",
+  "query": "Akşam yemeği için mercimek çorbası tarifi ve pişirme süresi",
+  "relevant_ids": [],
+  "expected_empty": true,
+  "label_status": "ai_taslak",
+  "reviewer": null,
+  "synthetic": true
+},
+{
+  "id": "RQ43",
+  "category": "sinir",
+  "query": "Mars gezegeninin atmosfer bileşimi ve yüzey sıcaklığı nedir?",
+  "relevant_ids": [],
+  "expected_empty": true,
+  "label_status": "ai_taslak",
+  "reviewer": null,
+  "synthetic": true
+},
+{
+  "id": "RQ44",
+  "category": "sinir",
+  "query": "Çocuklar için okul öncesi boyama etkinliği öner",
+  "relevant_ids": [],
+  "expected_empty": true,
+  "label_status": "ai_taslak",
+  "reviewer": null,
+  "synthetic": true
+}
+]

@@ -44,6 +44,17 @@ Varsayılan üst sınır dört araç ve iki model denemesidir; adım/süre/USD d
 Para Decimal ile işlenir; bilinmeyen maliyet sıfır sayılmaz. Kaynak kontrolü ve
 insan incelemesi başarısızsa güvenli durulur. Ham kişisel veri/sır yayımlanmaz.
 
+## Üye 1 RAG ölçüm kabulü — 1 Kasım 2026
+
+44 sentetik sorguluk geliştirme setinde yerel ve EVREN hibrit getirme aynı
+sorgularla ölçülür. İlgili kaynak ID'leri arayıcıya verilmez; hazırlık süresi,
+sorgu gecikmesi, hata paydaları ve bilinen/bilinmeyen token kullanımı ayrı tutulur.
+Madde koruması ile doğal konu dışı sorgular ayrı raporlanır. İnsan inceleme
+paketi yöntem, beklenen cevap ve skor göstermeden 10 ayrı sorguyu iki yöntemle
+sunar; puanlar boştur. Gerçek insan ve hakem etiketleri gelmeden kalibrasyon
+sonucu verilmez. Bu kabul, bağımsız vaka toplama ve tam ajan değerlendirmesinin
+yerine geçmez. Ölçüm ve açık hatalar [RAG raporundadır](docs/rag_olcumleri_v0.3.md).
+
 ## Teslim sırası
 
 Tek kanıt paketi ve doğru başvuru bağı → iki gerçek sağlayıcının sentetik denemesi →

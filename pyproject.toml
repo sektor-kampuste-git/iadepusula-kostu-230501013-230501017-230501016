@@ -35,7 +35,7 @@ iadepusula_data = "data"
 
 [tool.setuptools.package-data]
 iadepusula_data = ["*.json", "mevzuat_derlemi/*.json"]
-eval = ["evaller.json"]
+eval = ["evaller.json", "retrieval_cases.json"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

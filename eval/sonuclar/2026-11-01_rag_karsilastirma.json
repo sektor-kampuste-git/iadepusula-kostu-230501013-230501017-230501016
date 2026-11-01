@@ -1,0 +1,3392 @@
+{
+  "schema_version": 1,
+  "status": "complete",
+  "created_at_utc": "2026-11-01T18:49:16.578972+00:00",
+  "dataset_sha256": "2d974d31585a179d06de0d6103a4e1d685575f118f23b5dd2f4daaa85c100c02",
+  "selected_sha256": "2d974d31585a179d06de0d6103a4e1d685575f118f23b5dd2f4daaa85c100c02",
+  "dataset_n": 44,
+  "selected_n": 44,
+  "selected_ids": [
+    "RQ01",
+    "RQ02",
+    "RQ03",
+    "RQ04",
+    "RQ05",
+    "RQ06",
+    "RQ07",
+    "RQ08",
+    "RQ09",
+    "RQ10",
+    "RQ11",
+    "RQ12",
+    "RQ13",
+    "RQ14",
+    "RQ15",
+    "RQ16",
+    "RQ17",
+    "RQ18",
+    "RQ19",
+    "RQ20",
+    "RQ21",
+    "RQ22",
+    "RQ23",
+    "RQ24",
+    "RQ25",
+    "RQ26",
+    "RQ27",
+    "RQ28",
+    "RQ29",
+    "RQ30",
+    "RQ31",
+    "RQ32",
+    "RQ33",
+    "RQ34",
+    "RQ35",
+    "RQ36",
+    "RQ37",
+    "RQ38",
+    "RQ39",
+    "RQ40",
+    "RQ41",
+    "RQ42",
+    "RQ43",
+    "RQ44"
+  ],
+  "labels": {
+    "ai_taslak": 44
+  },
+  "scope": "RAG geliştirme ve karşılaştırma seti; nihai karar doğruluğu veya bağımsız insan testi değildir.",
+  "backends": {
+    "lexical": {
+      "name": "lexical",
+      "top_k": 3,
+      "corpus_sha256": "b5ca47edda890065211a5c2f89f3d930e6fa829dae7d644bb7d292ba206423a5",
+      "configuration": {
+        "version": 2,
+        "backend": "bm25"
+      },
+      "cache_status": "disabled",
+      "preparation": {
+        "status": "ok",
+        "elapsed_ms": 3.7333000000217,
+        "api": {
+          "request_count": 0,
+          "endpoints": {},
+          "http_errors": 0,
+          "prompt_tokens": 0,
+          "prompt_tokens_reported_requests": 0,
+          "completion_tokens": 0,
+          "completion_tokens_reported_requests": 0,
+          "total_tokens": 0,
+          "total_tokens_reported_requests": 0
+        }
+      },
+      "summary": {
+        "hit_at_k": 0.9714285714285714,
+        "recall_at_k": 0.9571428571428572,
+        "precision_at_k": 0.34285714285714286,
+        "mrr_at_k": 0.9142857142857143,
+        "ndcg_at_k": 0.9230449598966494,
+        "n": 44,
+        "positive_n": 35,
+        "negative_n": 9,
+        "completed": 44,
+        "errors": 0,
+        "not_run": 0,
+        "empty_accuracy": 0.7777777777777778,
+        "p50_completed_ms": 0.32285000270348974,
+        "p95_completed_ms": 0.4179350009508198,
+        "p50_executed_ms": 0.32285000270348974,
+        "p95_executed_ms": 0.4179350009508198,
+        "reference_negative_n": 4,
+        "natural_negative_n": 5,
+        "empty_accuracy_reference": 1.0,
+        "empty_accuracy_natural": 0.6
+      },
+      "api": {
+        "request_count": 0,
+        "endpoints": {},
+        "http_errors": 0,
+        "prompt_tokens": 0,
+        "prompt_tokens_reported_requests": 0,
+        "completion_tokens": 0,
+        "completion_tokens_reported_requests": 0,
+        "total_tokens": 0,
+        "total_tokens_reported_requests": 0
+      },
+      "usd_cost": null,
+      "rows": [
+        {
+          "id": "RQ01",
+          "category": "cayma",
+          "query": "İnternetten aldığım gömlekten vazgeçtim. Gerekçesiz cayma için kaç günlük süre var?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "MSY-M10-F2",
+            "MSY-M10-F1",
+            "MSY-M9-F1"
+          ],
+          "elapsed_ms": 0.5472999982885085,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 0.5,
+            "precision_at_k": 0.3333333333333333,
+            "mrr_at_k": 0.3333333333333333,
+            "ndcg_at_k": 0.3065735963827292
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 0,
+            "endpoints": {},
+            "http_errors": 0,
+            "prompt_tokens": 0,
+            "prompt_tokens_reported_requests": 0,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 0,
+            "total_tokens": 0,
+            "total_tokens_reported_requests": 0
+          }
+        },
+        {
+          "id": "RQ02",
+          "category": "cayma",
+          "query": "Siparişim henüz elime ulaşmadı. Teslim edilmeden cayma bildiriminde bulunabilir miyim?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "MSY-M9-F2",
+            "REHBER-IADE-SURE",
+            "MSY-M9-F1"
+          ],
+          "elapsed_ms": 0.48550000065006316,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.3333333333333333,
+            "mrr_at_k": 1.0,
+            "ndcg_at_k": 1.0
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 0,
+            "endpoints": {},
+            "http_errors": 0,
+            "prompt_tokens": 0,
+            "prompt_tokens_reported_requests": 0,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 0,
+            "total_tokens": 0,
+            "total_tokens_reported_requests": 0
+          }
+        },
+        {
+          "id": "RQ03",
+          "category": "cayma",
+          "query": "Aynı siparişin parçaları ayrı kargolarla geldi; cayma süresinde son parçanın teslimi mi esas alınır?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "MSY-M9-F3",
+            "MSY-M9-F1",
+            "MSY-M9-F4"
+          ],
+          "elapsed_ms": 0.3845999963232316,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.3333333333333333,
+            "mrr_at_k": 1.0,
+            "ndcg_at_k": 1.0
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 0,
+            "endpoints": {},
+            "http_errors": 0,
+            "prompt_tokens": 0,
+            "prompt_tokens_reported_requests": 0,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 0,
+            "total_tokens": 0,
+            "total_tokens_reported_requests": 0
+          }
+        },
+        {
+          "id": "RQ04",
+          "category": "cayma",
+          "query": "Satıcının ürünü kargo şirketine vermesi tüketiciye teslim sayılır mı?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "REHBER-KARGO",
+            "REHBER-HASAR",
+            "MSY-M9-F4"
+          ],
+          "elapsed_ms": 0.34950000554090366,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.3333333333333333,
+            "mrr_at_k": 0.3333333333333333,
+            "ndcg_at_k": 0.5
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 0,
+            "endpoints": {},
+            "http_errors": 0,
+            "prompt_tokens": 0,
+            "prompt_tokens_reported_requests": 0,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 0,
+            "total_tokens": 0,
+            "total_tokens_reported_requests": 0
+          }
+        },
+        {
+          "id": "RQ05",
+          "category": "cayma",
+          "query": "Mal teslimi ile hizmet ifasının birlikte olduğu sözleşmede hangi cayma hükümleri uygulanır?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "MSY-M9-F5",
+            "MSY-M9-F2",
+            "MSY-M15-h"
+          ],
+          "elapsed_ms": 0.36220000038156286,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.3333333333333333,
+            "mrr_at_k": 1.0,
+            "ndcg_at_k": 1.0
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 0,
+            "endpoints": {},
+            "http_errors": 0,
+            "prompt_tokens": 0,
+            "prompt_tokens_reported_requests": 0,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 0,
+            "total_tokens": 0,
+            "total_tokens_reported_requests": 0
+          }
+        },
+        {
+          "id": "RQ06",
+          "category": "cayma",
+          "query": "Cayma hakkı konusunda bilgilendirilmedim. On dört günlük süreyle bağlı mıyım, bir yıllık süre nedir?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "MSY-M10-F1",
+            "MSY-M10-F2",
+            "MSY-M9-F1"
+          ],
+          "elapsed_ms": 0.3739000021596439,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.3333333333333333,
+            "mrr_at_k": 1.0,
+            "ndcg_at_k": 1.0
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 0,
+            "endpoints": {},
+            "http_errors": 0,
+            "prompt_tokens": 0,
+            "prompt_tokens_reported_requests": 0,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 0,
+            "total_tokens": 0,
+            "total_tokens_reported_requests": 0
+          }
+        },
+        {
+          "id": "RQ07",
+          "category": "cayma",
+          "query": "Cayma bilgilendirmesi sonradan yapılırsa yeni on dört günlük süre hangi gün başlar?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "MSY-M10-F2",
+            "MSY-M10-F1",
+            "REHBER-IADE-SURE"
+          ],
+          "elapsed_ms": 0.32080000528367236,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.3333333333333333,
+            "mrr_at_k": 1.0,
+            "ndcg_at_k": 1.0
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 0,
+            "endpoints": {},
+            "http_errors": 0,
+            "prompt_tokens": 0,
+            "prompt_tokens_reported_requests": 0,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 0,
+            "total_tokens": 0,
+            "total_tokens_reported_requests": 0
+          }
+        },
+        {
+          "id": "RQ08",
+          "category": "cayma",
+          "query": "Cayma bildirimini yazılı olarak veya kalıcı veri saklayıcısıyla yöneltmek yeterli midir?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "MSY-M11-F1",
+            "MSY-M11-F4",
+            "REHBER-IADE-SURE"
+          ],
+          "elapsed_ms": 0.29799999902024865,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.3333333333333333,
+            "mrr_at_k": 1.0,
+            "ndcg_at_k": 1.0
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 0,
+            "endpoints": {},
+            "http_errors": 0,
+            "prompt_tokens": 0,
+            "prompt_tokens_reported_requests": 0,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 0,
+            "total_tokens": 0,
+            "total_tokens_reported_requests": 0
+          }
+        },
+        {
+          "id": "RQ09",
+          "category": "cayma",
+          "query": "Cayma hakkının kullanıldığını ispat etme yükümlülüğü tüketiciye mi aittir?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "MSY-M11-F4",
+            "MSY-M10-F1",
+            "MSY-M9-F1"
+          ],
+          "elapsed_ms": 0.28220000240253285,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.3333333333333333,
+            "mrr_at_k": 1.0,
+            "ndcg_at_k": 1.0
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 0,
+            "endpoints": {},
+            "http_errors": 0,
+            "prompt_tokens": 0,
+            "prompt_tokens_reported_requests": 0,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 0,
+            "total_tokens": 0,
+            "total_tokens_reported_requests": 0
+          }
+        },
+        {
+          "id": "RQ10",
+          "category": "istisna",
+          "query": "İsmime özel ölçü ve baskıyla hazırlanan ürünün cayma istisnası hangisidir?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "MSY-M15-b",
+            "REHBER-IADE-SURE",
+            "MSY-M9-F1"
+          ],
+          "elapsed_ms": 0.28339999698800966,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.3333333333333333,
+            "mrr_at_k": 1.0,
+            "ndcg_at_k": 1.0
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 0,
+            "endpoints": {},
+            "http_errors": 0,
+            "prompt_tokens": 0,
+            "prompt_tokens_reported_requests": 0,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 0,
+            "total_tokens": 0,
+            "total_tokens_reported_requests": 0
+          }
+        },
+        {
+          "id": "RQ11",
+          "category": "istisna",
+          "query": "Sağlık ve hijyen açısından geri alınamayan üründe koruyucu mühür açılmışsa hangi koşul uygulanır?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "MSY-M15-ç",
+            "MSY-M15-e",
+            "MSY-M9-F5"
+          ],
+          "elapsed_ms": 0.38830000266898423,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.3333333333333333,
+            "mrr_at_k": 1.0,
+            "ndcg_at_k": 1.0
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 0,
+            "endpoints": {},
+            "http_errors": 0,
+            "prompt_tokens": 0,
+            "prompt_tokens_reported_requests": 0,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 0,
+            "total_tokens": 0,
+            "total_tokens_reported_requests": 0
+          }
+        },
+        {
+          "id": "RQ12",
+          "category": "istisna",
+          "query": "Çabuk bozulabilen yaş pasta gibi gıdaların tesliminde cayma istisnası var mı?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "MSY-M15-c",
+            "MSY-M9-F1",
+            "MSY-M10-F2"
+          ],
+          "elapsed_ms": 0.3404000017326325,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.3333333333333333,
+            "mrr_at_k": 1.0,
+            "ndcg_at_k": 1.0
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 0,
+            "endpoints": {},
+            "http_errors": 0,
+            "prompt_tokens": 0,
+            "prompt_tokens_reported_requests": 0,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 0,
+            "total_tokens": 0,
+            "total_tokens_reported_requests": 0
+          }
+        },
+        {
+          "id": "RQ13",
+          "category": "istisna",
+          "query": "Ambalajı açılan kitap, maddi ortamda dijital içerik ve kartuş hangi istisna kapsamındadır?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "MSY-M15-e",
+            "MSY-M15-ğ",
+            "6502-M8-F2"
+          ],
+          "elapsed_ms": 0.3145000009681098,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.3333333333333333,
+            "mrr_at_k": 1.0,
+            "ndcg_at_k": 1.0
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 0,
+            "endpoints": {},
+            "http_errors": 0,
+            "prompt_tokens": 0,
+            "prompt_tokens_reported_requests": 0,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 0,
+            "total_tokens": 0,
+            "total_tokens_reported_requests": 0
+          }
+        },
+        {
+          "id": "RQ14",
+          "category": "istisna",
+          "query": "Abonelik kapsamında olmayan gazete ve dergilerin tesliminde cayma hakkı kullanılabilir mi?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "MSY-M15-f",
+            "REHBER-ELEKTRONIK",
+            "MSY-M9-F1"
+          ],
+          "elapsed_ms": 0.3116000007139519,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.3333333333333333,
+            "mrr_at_k": 1.0,
+            "ndcg_at_k": 1.0
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 0,
+            "endpoints": {},
+            "http_errors": 0,
+            "prompt_tokens": 0,
+            "prompt_tokens_reported_requests": 0,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 0,
+            "total_tokens": 0,
+            "total_tokens_reported_requests": 0
+          }
+        },
+        {
+          "id": "RQ15",
+          "category": "istisna",
+          "query": "Belirli tarihte otel konaklaması ve araba kiralama rezervasyonlarının cayma istisnasını arıyorum.",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "MSY-M15-g",
+            "REHBER-IADE-SURE",
+            "MSY-M9-F1"
+          ],
+          "elapsed_ms": 0.3193000011378899,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.3333333333333333,
+            "mrr_at_k": 1.0,
+            "ndcg_at_k": 1.0
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 0,
+            "endpoints": {},
+            "http_errors": 0,
+            "prompt_tokens": 0,
+            "prompt_tokens_reported_requests": 0,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 0,
+            "total_tokens": 0,
+            "total_tokens_reported_requests": 0
+          }
+        },
+        {
+          "id": "RQ16",
+          "category": "istisna",
+          "query": "Elektronik ortamda anında ifa edilen hizmet ve hemen teslim edilen gayrimaddi mallar için hüküm nedir?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "MSY-M15-ğ",
+            "6502-M8-F2",
+            "MSY-M9-F3"
+          ],
+          "elapsed_ms": 0.37339999835239723,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.3333333333333333,
+            "mrr_at_k": 1.0,
+            "ndcg_at_k": 1.0
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 0,
+            "endpoints": {},
+            "http_errors": 0,
+            "prompt_tokens": 0,
+            "prompt_tokens_reported_requests": 0,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 0,
+            "total_tokens": 0,
+            "total_tokens_reported_requests": 0
+          }
+        },
+        {
+          "id": "RQ17",
+          "category": "istisna",
+          "query": "Cayma süresi dolmadan tüketicinin onayıyla ifasına başlanan hizmetin istisnası nedir?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "MSY-M15-h",
+            "MSY-M9-F2",
+            "MSY-M11-F1"
+          ],
+          "elapsed_ms": 0.3466000052867457,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.3333333333333333,
+            "mrr_at_k": 1.0,
+            "ndcg_at_k": 1.0
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 0,
+            "endpoints": {},
+            "http_errors": 0,
+            "prompt_tokens": 0,
+            "prompt_tokens_reported_requests": 0,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 0,
+            "total_tokens": 0,
+            "total_tokens_reported_requests": 0
+          }
+        },
+        {
+          "id": "RQ18",
+          "category": "istisna",
+          "query": "Fiyatı satıcının kontrolü dışındaki finansal piyasa dalgalanmalarına bağlı mal için cayma istisnası nedir?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "MSY-M15-a",
+            "MSY-M10-F1",
+            "MSY-M9-F1"
+          ],
+          "elapsed_ms": 0.3851000001304783,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.3333333333333333,
+            "mrr_at_k": 1.0,
+            "ndcg_at_k": 1.0
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 0,
+            "endpoints": {},
+            "http_errors": 0,
+            "prompt_tokens": 0,
+            "prompt_tokens_reported_requests": 0,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 0,
+            "total_tokens": 0,
+            "total_tokens_reported_requests": 0
+          }
+        },
+        {
+          "id": "RQ19",
+          "category": "istisna",
+          "query": "Teslimden sonra başka ürünle karışan ve doğası gereği ayrılamayan mal hangi istisnaya girer?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "MSY-M15-d",
+            "6502-M8-F3",
+            "MSY-M10-F2"
+          ],
+          "elapsed_ms": 0.3443000023253262,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.3333333333333333,
+            "mrr_at_k": 1.0,
+            "ndcg_at_k": 1.0
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 0,
+            "endpoints": {},
+            "http_errors": 0,
+            "prompt_tokens": 0,
+            "prompt_tokens_reported_requests": 0,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 0,
+            "total_tokens": 0,
+            "total_tokens_reported_requests": 0
+          }
+        },
+        {
+          "id": "RQ20",
+          "category": "rehber",
+          "query": "Teslim edilmiş cep telefonu ve bilgisayar cayma istisnası mı? Mutat kullanım hakkı ortadan kaldırır mı?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "REHBER-ELEKTRONIK",
+            "MSY-M9-F1",
+            "REHBER-IADE-SURE"
+          ],
+          "elapsed_ms": 0.38550000317627564,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.3333333333333333,
+            "mrr_at_k": 1.0,
+            "ndcg_at_k": 1.0
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 0,
+            "endpoints": {},
+            "http_errors": 0,
+            "prompt_tokens": 0,
+            "prompt_tokens_reported_requests": 0,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 0,
+            "total_tokens": 0,
+            "total_tokens_reported_requests": 0
+          }
+        },
+        {
+          "id": "RQ21",
+          "category": "rehber",
+          "query": "Ön bilgilendirmede belirtilen kargo şirketiyle geri gönderirken iade kargo masrafından kim sorumludur?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "REHBER-KARGO",
+            "REHBER-HASAR",
+            "REHBER-IADE-SURE"
+          ],
+          "elapsed_ms": 0.3904000041075051,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.3333333333333333,
+            "mrr_at_k": 1.0,
+            "ndcg_at_k": 1.0
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 0,
+            "endpoints": {},
+            "http_errors": 0,
+            "prompt_tokens": 0,
+            "prompt_tokens_reported_requests": 0,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 0,
+            "total_tokens": 0,
+            "total_tokens_reported_requests": 0
+          }
+        },
+        {
+          "id": "RQ22",
+          "category": "rehber",
+          "query": "Cayma sonrasında ürünü kaç günde geri göndermeliyim ve bedel iadesinin süresi kargoya teslimden mi başlar?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "REHBER-IADE-SURE",
+            "MSY-M10-F2",
+            "REHBER-KARGO"
+          ],
+          "elapsed_ms": 0.4135999988648109,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.3333333333333333,
+            "mrr_at_k": 1.0,
+            "ndcg_at_k": 1.0
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 0,
+            "endpoints": {},
+            "http_errors": 0,
+            "prompt_tokens": 0,
+            "prompt_tokens_reported_requests": 0,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 0,
+            "total_tokens": 0,
+            "total_tokens_reported_requests": 0
+          }
+        },
+        {
+          "id": "RQ23",
+          "category": "rehber",
+          "query": "Ön bilgilendirmede belirtilen kargoyla gelen ürün kırık çıktı. Teslime kadar kayıp ve hasardan kim sorumlu?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "REHBER-HASAR",
+            "REHBER-KARGO",
+            "6502-M8-F1"
+          ],
+          "elapsed_ms": 0.41870000131893903,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.3333333333333333,
+            "mrr_at_k": 1.0,
+            "ndcg_at_k": 1.0
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 0,
+            "endpoints": {},
+            "http_errors": 0,
+            "prompt_tokens": 0,
+            "prompt_tokens_reported_requests": 0,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 0,
+            "total_tokens": 0,
+            "total_tokens_reported_requests": 0
+          }
+        },
+        {
+          "id": "RQ24",
+          "category": "ayip",
+          "query": "Ürün bozuktu ve reklamda söylenen özelliği yok. Ayıplı mal tanımı hangi hükümdedir?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "6502-M8-F1",
+            "6502-M8-F2",
+            "6502-M8-F3"
+          ],
+          "elapsed_ms": 0.28610000299522653,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.6666666666666666,
+            "mrr_at_k": 1.0,
+            "ndcg_at_k": 1.0
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 0,
+            "endpoints": {},
+            "http_errors": 0,
+            "prompt_tokens": 0,
+            "prompt_tokens_reported_requests": 0,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 0,
+            "total_tokens": 0,
+            "total_tokens_reported_requests": 0
+          }
+        },
+        {
+          "id": "RQ25",
+          "category": "ayip",
+          "query": "Montaj talimatı eksik olduğu için ürün yanlış monte edildi. Sözleşmeye aykırı ifa sayılır mı?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "6502-M8-F3",
+            "6502-M10-F2",
+            "6502-M8-F1"
+          ],
+          "elapsed_ms": 0.3249000001233071,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.3333333333333333,
+            "mrr_at_k": 1.0,
+            "ndcg_at_k": 1.0
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 0,
+            "endpoints": {},
+            "http_errors": 0,
+            "prompt_tokens": 0,
+            "prompt_tokens_reported_requests": 0,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 0,
+            "total_tokens": 0,
+            "total_tokens_reported_requests": 0
+          }
+        },
+        {
+          "id": "RQ26",
+          "category": "ayip",
+          "query": "Satıcı reklamda yapılan açıklamayla hangi ispat koşullarında bağlı olmaz?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "6502-M9-F2",
+            "6502-M10-F2",
+            "MSY-M10-F1"
+          ],
+          "elapsed_ms": 0.27269999554846436,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.3333333333333333,
+            "mrr_at_k": 1.0,
+            "ndcg_at_k": 1.0
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 0,
+            "endpoints": {},
+            "http_errors": 0,
+            "prompt_tokens": 0,
+            "prompt_tokens_reported_requests": 0,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 0,
+            "total_tokens": 0,
+            "total_tokens_reported_requests": 0
+          }
+        },
+        {
+          "id": "RQ27",
+          "category": "ayip",
+          "query": "Teslimden itibaren altı ay içinde çıkan ayıbın teslimde var olduğu karinesinde ispat yükü kimde?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "6502-M10-F1",
+            "6502-M10-F2",
+            "6502-M10-F3"
+          ],
+          "elapsed_ms": 0.3491000024951063,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.3333333333333333,
+            "mrr_at_k": 1.0,
+            "ndcg_at_k": 1.0
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 0,
+            "endpoints": {},
+            "http_errors": 0,
+            "prompt_tokens": 0,
+            "prompt_tokens_reported_requests": 0,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 0,
+            "total_tokens": 0,
+            "total_tokens_reported_requests": 0
+          }
+        },
+        {
+          "id": "RQ28",
+          "category": "ayip",
+          "query": "Satın alırken bildiğim ayıp ile bilmediğim başka ayıplar açısından seçimlik haklarım nasıl ayrılır?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "6502-M11-F3",
+            "6502-M11-F1",
+            "6502-M11-F5"
+          ],
+          "elapsed_ms": 0.3341999981785193,
+          "metrics": {
+            "hit_at_k": false,
+            "recall_at_k": 0.0,
+            "precision_at_k": 0.0,
+            "mrr_at_k": 0.0,
+            "ndcg_at_k": 0.0
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 0,
+            "endpoints": {},
+            "http_errors": 0,
+            "prompt_tokens": 0,
+            "prompt_tokens_reported_requests": 0,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 0,
+            "total_tokens": 0,
+            "total_tokens_reported_requests": 0
+          }
+        },
+        {
+          "id": "RQ29",
+          "category": "ayip",
+          "query": "Ayıplı malda sözleşmeden dönme, indirim, ücretsiz onarım ve değişim seçimlik haklarını görmek istiyorum.",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "6502-M11-F3",
+            "6502-M11-F5",
+            "6502-M11-F1"
+          ],
+          "elapsed_ms": 0.3480000013951212,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.3333333333333333,
+            "mrr_at_k": 0.3333333333333333,
+            "ndcg_at_k": 0.5
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 0,
+            "endpoints": {},
+            "http_errors": 0,
+            "prompt_tokens": 0,
+            "prompt_tokens_reported_requests": 0,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 0,
+            "total_tokens": 0,
+            "total_tokens_reported_requests": 0
+          }
+        },
+        {
+          "id": "RQ30",
+          "category": "ayip",
+          "query": "Ayıplı malda sözleşmeden dönmeyi seçtiğimde ödediğim bedel derhal iade edilir mi?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "6502-M11-F5",
+            "6502-M11-F1",
+            "6502-M11-F3"
+          ],
+          "elapsed_ms": 0.29290000384207815,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.3333333333333333,
+            "mrr_at_k": 1.0,
+            "ndcg_at_k": 1.0
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 0,
+            "endpoints": {},
+            "http_errors": 0,
+            "prompt_tokens": 0,
+            "prompt_tokens_reported_requests": 0,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 0,
+            "total_tokens": 0,
+            "total_tokens_reported_requests": 0
+          }
+        },
+        {
+          "id": "RQ31",
+          "category": "ayip",
+          "query": "Ücretsiz onarım veya ayıpsız misliyle değişim talebinin azami otuz iş günü süresi hangi hükümde?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "6502-M11-F4",
+            "6502-M11-F3",
+            "6502-M11-F2"
+          ],
+          "elapsed_ms": 0.3297000002930872,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.3333333333333333,
+            "mrr_at_k": 1.0,
+            "ndcg_at_k": 1.0
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 0,
+            "endpoints": {},
+            "http_errors": 0,
+            "prompt_tokens": 0,
+            "prompt_tokens_reported_requests": 0,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 0,
+            "total_tokens": 0,
+            "total_tokens_reported_requests": 0
+          }
+        },
+        {
+          "id": "RQ32",
+          "category": "ayip",
+          "query": "Ayıplı mal daha sonra ortaya çıksa bile teslimden itibaren iki yıllık zamanaşımı kuralı nedir?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "6502-M12-F1",
+            "6502-M12-F3",
+            "6502-M12-F2"
+          ],
+          "elapsed_ms": 0.35370000114198774,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.3333333333333333,
+            "mrr_at_k": 1.0,
+            "ndcg_at_k": 1.0
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 0,
+            "endpoints": {},
+            "http_errors": 0,
+            "prompt_tokens": 0,
+            "prompt_tokens_reported_requests": 0,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 0,
+            "total_tokens": 0,
+            "total_tokens_reported_requests": 0
+          }
+        },
+        {
+          "id": "RQ33",
+          "category": "ayip",
+          "query": "İkinci el malda satıcının ayıplı mal sorumluluğu bir yıldan az olabilir mi?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "6502-M12-F2",
+            "6502-M12-F1",
+            "6502-M9-F1"
+          ],
+          "elapsed_ms": 0.2666000000317581,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.3333333333333333,
+            "mrr_at_k": 1.0,
+            "ndcg_at_k": 1.0
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 0,
+            "endpoints": {},
+            "http_errors": 0,
+            "prompt_tokens": 0,
+            "prompt_tokens_reported_requests": 0,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 0,
+            "total_tokens": 0,
+            "total_tokens_reported_requests": 0
+          }
+        },
+        {
+          "id": "RQ34",
+          "category": "ayip",
+          "query": "Ayıp ağır kusur veya hileyle gizlendiğinde zamanaşımı uygulanır mı?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "6502-M12-F3",
+            "6502-M12-F1",
+            "6502-M12-F2"
+          ],
+          "elapsed_ms": 0.20209999638609588,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.3333333333333333,
+            "mrr_at_k": 1.0,
+            "ndcg_at_k": 1.0
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 0,
+            "endpoints": {},
+            "http_errors": 0,
+            "prompt_tokens": 0,
+            "prompt_tokens_reported_requests": 0,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 0,
+            "total_tokens": 0,
+            "total_tokens_reported_requests": 0
+          }
+        },
+        {
+          "id": "RQ35",
+          "category": "sinir",
+          "query": "6502 Madde 987 kapsamında iki kat iade",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [],
+          "elapsed_ms": 0.1899999988381751,
+          "metrics": {
+            "empty_correct": true
+          },
+          "reference_query": true,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 0,
+            "endpoints": {},
+            "http_errors": 0,
+            "prompt_tokens": 0,
+            "prompt_tokens_reported_requests": 0,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 0,
+            "total_tokens": 0,
+            "total_tokens_reported_requests": 0
+          }
+        },
+        {
+          "id": "RQ36",
+          "category": "sinir",
+          "query": "Kuantum dolanıklık ve gravitasyonun birleşik alan denklemi",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "6502-M8-F2",
+            "6502-M11-F4"
+          ],
+          "elapsed_ms": 0.18149999959859997,
+          "metrics": {
+            "empty_correct": false
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 0,
+            "endpoints": {},
+            "http_errors": 0,
+            "prompt_tokens": 0,
+            "prompt_tokens_reported_requests": 0,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 0,
+            "total_tokens": 0,
+            "total_tokens_reported_requests": 0
+          }
+        },
+        {
+          "id": "RQ37",
+          "category": "sinir",
+          "query": "Madde 11",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [],
+          "elapsed_ms": 0.06579999899258837,
+          "metrics": {
+            "empty_correct": true
+          },
+          "reference_query": true,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 0,
+            "endpoints": {},
+            "http_errors": 0,
+            "prompt_tokens": 0,
+            "prompt_tokens_reported_requests": 0,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 0,
+            "total_tokens": 0,
+            "total_tokens_reported_requests": 0
+          }
+        },
+        {
+          "id": "RQ38",
+          "category": "sinir",
+          "query": "MSY Madde 9/99",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [],
+          "elapsed_ms": 0.11649999942164868,
+          "metrics": {
+            "empty_correct": true
+          },
+          "reference_query": true,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 0,
+            "endpoints": {},
+            "http_errors": 0,
+            "prompt_tokens": 0,
+            "prompt_tokens_reported_requests": 0,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 0,
+            "total_tokens": 0,
+            "total_tokens_reported_requests": 0
+          }
+        },
+        {
+          "id": "RQ39",
+          "category": "sinir",
+          "query": "6502 Madde 8 ve Madde 987",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [],
+          "elapsed_ms": 0.16969999705906957,
+          "metrics": {
+            "empty_correct": true
+          },
+          "reference_query": true,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 0,
+            "endpoints": {},
+            "http_errors": 0,
+            "prompt_tokens": 0,
+            "prompt_tokens_reported_requests": 0,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 0,
+            "total_tokens": 0,
+            "total_tokens_reported_requests": 0
+          }
+        },
+        {
+          "id": "RQ40",
+          "category": "sinir",
+          "query": "6502 Madde 11/1 ve MSY Madde 11/1",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "6502-M11-F1",
+            "MSY-M11-F1"
+          ],
+          "elapsed_ms": 0.228899996727705,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.6666666666666666,
+            "mrr_at_k": 1.0,
+            "ndcg_at_k": 1.0
+          },
+          "reference_query": true,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 0,
+            "endpoints": {},
+            "http_errors": 0,
+            "prompt_tokens": 0,
+            "prompt_tokens_reported_requests": 0,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 0,
+            "total_tokens": 0,
+            "total_tokens_reported_requests": 0
+          }
+        },
+        {
+          "id": "RQ41",
+          "category": "sinir",
+          "query": "Python dilinde Fibonacci dizisi üreten program yaz",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [],
+          "elapsed_ms": 0.18840000120690092,
+          "metrics": {
+            "empty_correct": true
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 0,
+            "endpoints": {},
+            "http_errors": 0,
+            "prompt_tokens": 0,
+            "prompt_tokens_reported_requests": 0,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 0,
+            "total_tokens": 0,
+            "total_tokens_reported_requests": 0
+          }
+        },
+        {
+          "id": "RQ42",
+          "category": "sinir",
+          "query": "Akşam yemeği için mercimek çorbası tarifi ve pişirme süresi",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "REHBER-IADE-SURE",
+            "MSY-M11-F1",
+            "MSY-M15-h"
+          ],
+          "elapsed_ms": 0.21569999807979912,
+          "metrics": {
+            "empty_correct": false
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 0,
+            "endpoints": {},
+            "http_errors": 0,
+            "prompt_tokens": 0,
+            "prompt_tokens_reported_requests": 0,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 0,
+            "total_tokens": 0,
+            "total_tokens_reported_requests": 0
+          }
+        },
+        {
+          "id": "RQ43",
+          "category": "sinir",
+          "query": "Mars gezegeninin atmosfer bileşimi ve yüzey sıcaklığı nedir?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [],
+          "elapsed_ms": 0.1889000050141476,
+          "metrics": {
+            "empty_correct": true
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 0,
+            "endpoints": {},
+            "http_errors": 0,
+            "prompt_tokens": 0,
+            "prompt_tokens_reported_requests": 0,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 0,
+            "total_tokens": 0,
+            "total_tokens_reported_requests": 0
+          }
+        },
+        {
+          "id": "RQ44",
+          "category": "sinir",
+          "query": "Çocuklar için okul öncesi boyama etkinliği öner",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [],
+          "elapsed_ms": 0.15010000061010942,
+          "metrics": {
+            "empty_correct": true
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 0,
+            "endpoints": {},
+            "http_errors": 0,
+            "prompt_tokens": 0,
+            "prompt_tokens_reported_requests": 0,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 0,
+            "total_tokens": 0,
+            "total_tokens_reported_requests": 0
+          }
+        }
+      ]
+    },
+    "evren": {
+      "name": "evren",
+      "top_k": 3,
+      "corpus_sha256": "b5ca47edda890065211a5c2f89f3d930e6fa829dae7d644bb7d292ba206423a5",
+      "configuration": {
+        "version": 2,
+        "backend": "hybrid_rrf"
+      },
+      "cache_status": "stored",
+      "preparation": {
+        "status": "ok",
+        "elapsed_ms": 2738.2065999991028,
+        "api": {
+          "request_count": 1,
+          "endpoints": {
+            "embeddings": 1
+          },
+          "http_errors": 0,
+          "prompt_tokens": 4029,
+          "prompt_tokens_reported_requests": 1,
+          "completion_tokens": 0,
+          "completion_tokens_reported_requests": 1,
+          "total_tokens": 4029,
+          "total_tokens_reported_requests": 1
+        }
+      },
+      "summary": {
+        "hit_at_k": 0.9714285714285714,
+        "recall_at_k": 0.9714285714285714,
+        "precision_at_k": 0.35238095238095235,
+        "mrr_at_k": 0.9428571428571428,
+        "ndcg_at_k": 0.9480451513226029,
+        "n": 44,
+        "positive_n": 35,
+        "negative_n": 9,
+        "completed": 44,
+        "errors": 0,
+        "not_run": 0,
+        "empty_accuracy": 0.7777777777777778,
+        "p50_completed_ms": 152.93759999985923,
+        "p95_completed_ms": 245.94526999935624,
+        "p50_executed_ms": 152.93759999985923,
+        "p95_executed_ms": 245.94526999935624,
+        "reference_negative_n": 4,
+        "natural_negative_n": 5,
+        "empty_accuracy_reference": 1.0,
+        "empty_accuracy_natural": 0.6
+      },
+      "api": {
+        "request_count": 41,
+        "endpoints": {
+          "embeddings": 41
+        },
+        "http_errors": 0,
+        "prompt_tokens": 5208,
+        "prompt_tokens_reported_requests": 41,
+        "completion_tokens": 0,
+        "completion_tokens_reported_requests": 41,
+        "total_tokens": 5208,
+        "total_tokens_reported_requests": 41
+      },
+      "usd_cost": null,
+      "rows": [
+        {
+          "id": "RQ01",
+          "category": "cayma",
+          "query": "İnternetten aldığım gömlekten vazgeçtim. Gerekçesiz cayma için kaç günlük süre var?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "MSY-M9-F1",
+            "MSY-M10-F1",
+            "MSY-M9-F2"
+          ],
+          "elapsed_ms": 174.073900001531,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.6666666666666666,
+            "mrr_at_k": 1.0,
+            "ndcg_at_k": 0.9197207891481876
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 1,
+            "endpoints": {
+              "embeddings": 1
+            },
+            "http_errors": 0,
+            "prompt_tokens": 29,
+            "prompt_tokens_reported_requests": 1,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 1,
+            "total_tokens": 29,
+            "total_tokens_reported_requests": 1
+          }
+        },
+        {
+          "id": "RQ02",
+          "category": "cayma",
+          "query": "Siparişim henüz elime ulaşmadı. Teslim edilmeden cayma bildiriminde bulunabilir miyim?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "MSY-M9-F1",
+            "MSY-M9-F2",
+            "MSY-M11-F1"
+          ],
+          "elapsed_ms": 160.09029999986524,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.3333333333333333,
+            "mrr_at_k": 0.5,
+            "ndcg_at_k": 0.6309297535714575
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 1,
+            "endpoints": {
+              "embeddings": 1
+            },
+            "http_errors": 0,
+            "prompt_tokens": 30,
+            "prompt_tokens_reported_requests": 1,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 1,
+            "total_tokens": 30,
+            "total_tokens_reported_requests": 1
+          }
+        },
+        {
+          "id": "RQ03",
+          "category": "cayma",
+          "query": "Aynı siparişin parçaları ayrı kargolarla geldi; cayma süresinde son parçanın teslimi mi esas alınır?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "MSY-M9-F3",
+            "MSY-M9-F2",
+            "MSY-M15-d"
+          ],
+          "elapsed_ms": 192.49259999924107,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.3333333333333333,
+            "mrr_at_k": 1.0,
+            "ndcg_at_k": 1.0
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 1,
+            "endpoints": {
+              "embeddings": 1
+            },
+            "http_errors": 0,
+            "prompt_tokens": 39,
+            "prompt_tokens_reported_requests": 1,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 1,
+            "total_tokens": 39,
+            "total_tokens_reported_requests": 1
+          }
+        },
+        {
+          "id": "RQ04",
+          "category": "cayma",
+          "query": "Satıcının ürünü kargo şirketine vermesi tüketiciye teslim sayılır mı?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "MSY-M9-F4",
+            "REHBER-HASAR",
+            "6502-M9-F1"
+          ],
+          "elapsed_ms": 136.91340000514174,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.3333333333333333,
+            "mrr_at_k": 1.0,
+            "ndcg_at_k": 1.0
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 1,
+            "endpoints": {
+              "embeddings": 1
+            },
+            "http_errors": 0,
+            "prompt_tokens": 21,
+            "prompt_tokens_reported_requests": 1,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 1,
+            "total_tokens": 21,
+            "total_tokens_reported_requests": 1
+          }
+        },
+        {
+          "id": "RQ05",
+          "category": "cayma",
+          "query": "Mal teslimi ile hizmet ifasının birlikte olduğu sözleşmede hangi cayma hükümleri uygulanır?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "MSY-M9-F5",
+            "MSY-M15-h",
+            "MSY-M9-F2"
+          ],
+          "elapsed_ms": 146.0475000058068,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.3333333333333333,
+            "mrr_at_k": 1.0,
+            "ndcg_at_k": 1.0
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 1,
+            "endpoints": {
+              "embeddings": 1
+            },
+            "http_errors": 0,
+            "prompt_tokens": 33,
+            "prompt_tokens_reported_requests": 1,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 1,
+            "total_tokens": 33,
+            "total_tokens_reported_requests": 1
+          }
+        },
+        {
+          "id": "RQ06",
+          "category": "cayma",
+          "query": "Cayma hakkı konusunda bilgilendirilmedim. On dört günlük süreyle bağlı mıyım, bir yıllık süre nedir?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "MSY-M10-F1",
+            "MSY-M10-F2",
+            "MSY-M9-F1"
+          ],
+          "elapsed_ms": 151.98760000203038,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.3333333333333333,
+            "mrr_at_k": 1.0,
+            "ndcg_at_k": 1.0
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 1,
+            "endpoints": {
+              "embeddings": 1
+            },
+            "http_errors": 0,
+            "prompt_tokens": 32,
+            "prompt_tokens_reported_requests": 1,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 1,
+            "total_tokens": 32,
+            "total_tokens_reported_requests": 1
+          }
+        },
+        {
+          "id": "RQ07",
+          "category": "cayma",
+          "query": "Cayma bilgilendirmesi sonradan yapılırsa yeni on dört günlük süre hangi gün başlar?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "MSY-M10-F2",
+            "MSY-M10-F1",
+            "MSY-M9-F1"
+          ],
+          "elapsed_ms": 151.37659999891184,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.3333333333333333,
+            "mrr_at_k": 1.0,
+            "ndcg_at_k": 1.0
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 1,
+            "endpoints": {
+              "embeddings": 1
+            },
+            "http_errors": 0,
+            "prompt_tokens": 27,
+            "prompt_tokens_reported_requests": 1,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 1,
+            "total_tokens": 27,
+            "total_tokens_reported_requests": 1
+          }
+        },
+        {
+          "id": "RQ08",
+          "category": "cayma",
+          "query": "Cayma bildirimini yazılı olarak veya kalıcı veri saklayıcısıyla yöneltmek yeterli midir?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "MSY-M11-F1",
+            "MSY-M11-F4",
+            "REHBER-IADE-SURE"
+          ],
+          "elapsed_ms": 143.84640000207582,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.3333333333333333,
+            "mrr_at_k": 1.0,
+            "ndcg_at_k": 1.0
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 1,
+            "endpoints": {
+              "embeddings": 1
+            },
+            "http_errors": 0,
+            "prompt_tokens": 28,
+            "prompt_tokens_reported_requests": 1,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 1,
+            "total_tokens": 28,
+            "total_tokens_reported_requests": 1
+          }
+        },
+        {
+          "id": "RQ09",
+          "category": "cayma",
+          "query": "Cayma hakkının kullanıldığını ispat etme yükümlülüğü tüketiciye mi aittir?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "MSY-M11-F4",
+            "MSY-M9-F4",
+            "6502-M10-F1"
+          ],
+          "elapsed_ms": 172.8877999994438,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.3333333333333333,
+            "mrr_at_k": 1.0,
+            "ndcg_at_k": 1.0
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 1,
+            "endpoints": {
+              "embeddings": 1
+            },
+            "http_errors": 0,
+            "prompt_tokens": 27,
+            "prompt_tokens_reported_requests": 1,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 1,
+            "total_tokens": 27,
+            "total_tokens_reported_requests": 1
+          }
+        },
+        {
+          "id": "RQ10",
+          "category": "istisna",
+          "query": "İsmime özel ölçü ve baskıyla hazırlanan ürünün cayma istisnası hangisidir?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "MSY-M15-b",
+            "MSY-M15-d",
+            "MSY-M15-e"
+          ],
+          "elapsed_ms": 153.5911999962991,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.3333333333333333,
+            "mrr_at_k": 1.0,
+            "ndcg_at_k": 1.0
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 1,
+            "endpoints": {
+              "embeddings": 1
+            },
+            "http_errors": 0,
+            "prompt_tokens": 25,
+            "prompt_tokens_reported_requests": 1,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 1,
+            "total_tokens": 25,
+            "total_tokens_reported_requests": 1
+          }
+        },
+        {
+          "id": "RQ11",
+          "category": "istisna",
+          "query": "Sağlık ve hijyen açısından geri alınamayan üründe koruyucu mühür açılmışsa hangi koşul uygulanır?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "MSY-M15-ç",
+            "MSY-M15-e",
+            "MSY-M9-F5"
+          ],
+          "elapsed_ms": 145.06479999545263,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.3333333333333333,
+            "mrr_at_k": 1.0,
+            "ndcg_at_k": 1.0
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 1,
+            "endpoints": {
+              "embeddings": 1
+            },
+            "http_errors": 0,
+            "prompt_tokens": 36,
+            "prompt_tokens_reported_requests": 1,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 1,
+            "total_tokens": 36,
+            "total_tokens_reported_requests": 1
+          }
+        },
+        {
+          "id": "RQ12",
+          "category": "istisna",
+          "query": "Çabuk bozulabilen yaş pasta gibi gıdaların tesliminde cayma istisnası var mı?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "MSY-M15-c",
+            "MSY-M15-ç",
+            "MSY-M9-F1"
+          ],
+          "elapsed_ms": 211.94539999851258,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.3333333333333333,
+            "mrr_at_k": 1.0,
+            "ndcg_at_k": 1.0
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 1,
+            "endpoints": {
+              "embeddings": 1
+            },
+            "http_errors": 0,
+            "prompt_tokens": 29,
+            "prompt_tokens_reported_requests": 1,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 1,
+            "total_tokens": 29,
+            "total_tokens_reported_requests": 1
+          }
+        },
+        {
+          "id": "RQ13",
+          "category": "istisna",
+          "query": "Ambalajı açılan kitap, maddi ortamda dijital içerik ve kartuş hangi istisna kapsamındadır?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "MSY-M15-e",
+            "MSY-M15-ç",
+            "MSY-M15-ğ"
+          ],
+          "elapsed_ms": 175.8140000019921,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.3333333333333333,
+            "mrr_at_k": 1.0,
+            "ndcg_at_k": 1.0
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 1,
+            "endpoints": {
+              "embeddings": 1
+            },
+            "http_errors": 0,
+            "prompt_tokens": 33,
+            "prompt_tokens_reported_requests": 1,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 1,
+            "total_tokens": 33,
+            "total_tokens_reported_requests": 1
+          }
+        },
+        {
+          "id": "RQ14",
+          "category": "istisna",
+          "query": "Abonelik kapsamında olmayan gazete ve dergilerin tesliminde cayma hakkı kullanılabilir mi?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "MSY-M15-f",
+            "MSY-M15-d",
+            "MSY-M9-F1"
+          ],
+          "elapsed_ms": 148.00100000138627,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.3333333333333333,
+            "mrr_at_k": 1.0,
+            "ndcg_at_k": 1.0
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 1,
+            "endpoints": {
+              "embeddings": 1
+            },
+            "http_errors": 0,
+            "prompt_tokens": 27,
+            "prompt_tokens_reported_requests": 1,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 1,
+            "total_tokens": 27,
+            "total_tokens_reported_requests": 1
+          }
+        },
+        {
+          "id": "RQ15",
+          "category": "istisna",
+          "query": "Belirli tarihte otel konaklaması ve araba kiralama rezervasyonlarının cayma istisnasını arıyorum.",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "MSY-M15-g",
+            "MSY-M15-h",
+            "MSY-M15-b"
+          ],
+          "elapsed_ms": 199.23569999809843,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.3333333333333333,
+            "mrr_at_k": 1.0,
+            "ndcg_at_k": 1.0
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 1,
+            "endpoints": {
+              "embeddings": 1
+            },
+            "http_errors": 0,
+            "prompt_tokens": 34,
+            "prompt_tokens_reported_requests": 1,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 1,
+            "total_tokens": 34,
+            "total_tokens_reported_requests": 1
+          }
+        },
+        {
+          "id": "RQ16",
+          "category": "istisna",
+          "query": "Elektronik ortamda anında ifa edilen hizmet ve hemen teslim edilen gayrimaddi mallar için hüküm nedir?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "MSY-M15-ğ",
+            "6502-M8-F2",
+            "MSY-M9-F3"
+          ],
+          "elapsed_ms": 158.80530000140425,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.3333333333333333,
+            "mrr_at_k": 1.0,
+            "ndcg_at_k": 1.0
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 1,
+            "endpoints": {
+              "embeddings": 1
+            },
+            "http_errors": 0,
+            "prompt_tokens": 35,
+            "prompt_tokens_reported_requests": 1,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 1,
+            "total_tokens": 35,
+            "total_tokens_reported_requests": 1
+          }
+        },
+        {
+          "id": "RQ17",
+          "category": "istisna",
+          "query": "Cayma süresi dolmadan tüketicinin onayıyla ifasına başlanan hizmetin istisnası nedir?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "MSY-M15-h",
+            "MSY-M9-F2",
+            "MSY-M15-ğ"
+          ],
+          "elapsed_ms": 147.01789999526227,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.3333333333333333,
+            "mrr_at_k": 1.0,
+            "ndcg_at_k": 1.0
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 1,
+            "endpoints": {
+              "embeddings": 1
+            },
+            "http_errors": 0,
+            "prompt_tokens": 34,
+            "prompt_tokens_reported_requests": 1,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 1,
+            "total_tokens": 34,
+            "total_tokens_reported_requests": 1
+          }
+        },
+        {
+          "id": "RQ18",
+          "category": "istisna",
+          "query": "Fiyatı satıcının kontrolü dışındaki finansal piyasa dalgalanmalarına bağlı mal için cayma istisnası nedir?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "MSY-M15-a",
+            "MSY-M15-f",
+            "MSY-M15-b"
+          ],
+          "elapsed_ms": 152.28400000341935,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.3333333333333333,
+            "mrr_at_k": 1.0,
+            "ndcg_at_k": 1.0
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 1,
+            "endpoints": {
+              "embeddings": 1
+            },
+            "http_errors": 0,
+            "prompt_tokens": 37,
+            "prompt_tokens_reported_requests": 1,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 1,
+            "total_tokens": 37,
+            "total_tokens_reported_requests": 1
+          }
+        },
+        {
+          "id": "RQ19",
+          "category": "istisna",
+          "query": "Teslimden sonra başka ürünle karışan ve doğası gereği ayrılamayan mal hangi istisnaya girer?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "MSY-M15-d",
+            "MSY-M15-ç",
+            "MSY-M15-e"
+          ],
+          "elapsed_ms": 145.59989999543177,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.3333333333333333,
+            "mrr_at_k": 1.0,
+            "ndcg_at_k": 1.0
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 1,
+            "endpoints": {
+              "embeddings": 1
+            },
+            "http_errors": 0,
+            "prompt_tokens": 28,
+            "prompt_tokens_reported_requests": 1,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 1,
+            "total_tokens": 28,
+            "total_tokens_reported_requests": 1
+          }
+        },
+        {
+          "id": "RQ20",
+          "category": "rehber",
+          "query": "Teslim edilmiş cep telefonu ve bilgisayar cayma istisnası mı? Mutat kullanım hakkı ortadan kaldırır mı?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "REHBER-ELEKTRONIK",
+            "MSY-M15-e",
+            "MSY-M15-c"
+          ],
+          "elapsed_ms": 151.28959999856306,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.3333333333333333,
+            "mrr_at_k": 1.0,
+            "ndcg_at_k": 1.0
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 1,
+            "endpoints": {
+              "embeddings": 1
+            },
+            "http_errors": 0,
+            "prompt_tokens": 31,
+            "prompt_tokens_reported_requests": 1,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 1,
+            "total_tokens": 31,
+            "total_tokens_reported_requests": 1
+          }
+        },
+        {
+          "id": "RQ21",
+          "category": "rehber",
+          "query": "Ön bilgilendirmede belirtilen kargo şirketiyle geri gönderirken iade kargo masrafından kim sorumludur?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "REHBER-KARGO",
+            "REHBER-HASAR",
+            "REHBER-IADE-SURE"
+          ],
+          "elapsed_ms": 155.0712000025669,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.3333333333333333,
+            "mrr_at_k": 1.0,
+            "ndcg_at_k": 1.0
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 1,
+            "endpoints": {
+              "embeddings": 1
+            },
+            "http_errors": 0,
+            "prompt_tokens": 35,
+            "prompt_tokens_reported_requests": 1,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 1,
+            "total_tokens": 35,
+            "total_tokens_reported_requests": 1
+          }
+        },
+        {
+          "id": "RQ22",
+          "category": "rehber",
+          "query": "Cayma sonrasında ürünü kaç günde geri göndermeliyim ve bedel iadesinin süresi kargoya teslimden mi başlar?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "REHBER-IADE-SURE",
+            "MSY-M9-F2",
+            "MSY-M9-F1"
+          ],
+          "elapsed_ms": 158.83259999827715,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.3333333333333333,
+            "mrr_at_k": 1.0,
+            "ndcg_at_k": 1.0
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 1,
+            "endpoints": {
+              "embeddings": 1
+            },
+            "http_errors": 0,
+            "prompt_tokens": 35,
+            "prompt_tokens_reported_requests": 1,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 1,
+            "total_tokens": 35,
+            "total_tokens_reported_requests": 1
+          }
+        },
+        {
+          "id": "RQ23",
+          "category": "rehber",
+          "query": "Ön bilgilendirmede belirtilen kargoyla gelen ürün kırık çıktı. Teslime kadar kayıp ve hasardan kim sorumlu?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "REHBER-HASAR",
+            "REHBER-KARGO",
+            "6502-M8-F1"
+          ],
+          "elapsed_ms": 247.16389999957755,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.3333333333333333,
+            "mrr_at_k": 1.0,
+            "ndcg_at_k": 1.0
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 1,
+            "endpoints": {
+              "embeddings": 1
+            },
+            "http_errors": 0,
+            "prompt_tokens": 38,
+            "prompt_tokens_reported_requests": 1,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 1,
+            "total_tokens": 38,
+            "total_tokens_reported_requests": 1
+          }
+        },
+        {
+          "id": "RQ24",
+          "category": "ayip",
+          "query": "Ürün bozuktu ve reklamda söylenen özelliği yok. Ayıplı mal tanımı hangi hükümdedir?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "6502-M8-F1",
+            "6502-M8-F2",
+            "6502-M8-F3"
+          ],
+          "elapsed_ms": 149.95530000305735,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.6666666666666666,
+            "mrr_at_k": 1.0,
+            "ndcg_at_k": 1.0
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 1,
+            "endpoints": {
+              "embeddings": 1
+            },
+            "http_errors": 0,
+            "prompt_tokens": 32,
+            "prompt_tokens_reported_requests": 1,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 1,
+            "total_tokens": 32,
+            "total_tokens_reported_requests": 1
+          }
+        },
+        {
+          "id": "RQ25",
+          "category": "ayip",
+          "query": "Montaj talimatı eksik olduğu için ürün yanlış monte edildi. Sözleşmeye aykırı ifa sayılır mı?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "6502-M8-F3",
+            "6502-M8-F1",
+            "6502-M10-F2"
+          ],
+          "elapsed_ms": 154.71319999778643,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.3333333333333333,
+            "mrr_at_k": 1.0,
+            "ndcg_at_k": 1.0
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 1,
+            "endpoints": {
+              "embeddings": 1
+            },
+            "http_errors": 0,
+            "prompt_tokens": 30,
+            "prompt_tokens_reported_requests": 1,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 1,
+            "total_tokens": 30,
+            "total_tokens_reported_requests": 1
+          }
+        },
+        {
+          "id": "RQ26",
+          "category": "ayip",
+          "query": "Satıcı reklamda yapılan açıklamayla hangi ispat koşullarında bağlı olmaz?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "6502-M9-F2",
+            "6502-M10-F2",
+            "6502-M10-F3"
+          ],
+          "elapsed_ms": 197.7882999999565,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.3333333333333333,
+            "mrr_at_k": 1.0,
+            "ndcg_at_k": 1.0
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 1,
+            "endpoints": {
+              "embeddings": 1
+            },
+            "http_errors": 0,
+            "prompt_tokens": 24,
+            "prompt_tokens_reported_requests": 1,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 1,
+            "total_tokens": 24,
+            "total_tokens_reported_requests": 1
+          }
+        },
+        {
+          "id": "RQ27",
+          "category": "ayip",
+          "query": "Teslimden itibaren altı ay içinde çıkan ayıbın teslimde var olduğu karinesinde ispat yükü kimde?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "6502-M10-F1",
+            "6502-M10-F2",
+            "6502-M10-F3"
+          ],
+          "elapsed_ms": 143.11810000072,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.3333333333333333,
+            "mrr_at_k": 1.0,
+            "ndcg_at_k": 1.0
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 1,
+            "endpoints": {
+              "embeddings": 1
+            },
+            "http_errors": 0,
+            "prompt_tokens": 31,
+            "prompt_tokens_reported_requests": 1,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 1,
+            "total_tokens": 31,
+            "total_tokens_reported_requests": 1
+          }
+        },
+        {
+          "id": "RQ28",
+          "category": "ayip",
+          "query": "Satın alırken bildiğim ayıp ile bilmediğim başka ayıplar açısından seçimlik haklarım nasıl ayrılır?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "6502-M11-F1",
+            "6502-M11-F3",
+            "6502-M11-F6"
+          ],
+          "elapsed_ms": 159.1788000005181,
+          "metrics": {
+            "hit_at_k": false,
+            "recall_at_k": 0.0,
+            "precision_at_k": 0.0,
+            "mrr_at_k": 0.0,
+            "ndcg_at_k": 0.0
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 1,
+            "endpoints": {
+              "embeddings": 1
+            },
+            "http_errors": 0,
+            "prompt_tokens": 31,
+            "prompt_tokens_reported_requests": 1,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 1,
+            "total_tokens": 31,
+            "total_tokens_reported_requests": 1
+          }
+        },
+        {
+          "id": "RQ29",
+          "category": "ayip",
+          "query": "Ayıplı malda sözleşmeden dönme, indirim, ücretsiz onarım ve değişim seçimlik haklarını görmek istiyorum.",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "6502-M11-F3",
+            "6502-M11-F1",
+            "6502-M11-F5"
+          ],
+          "elapsed_ms": 214.34450000379002,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.3333333333333333,
+            "mrr_at_k": 0.5,
+            "ndcg_at_k": 0.6309297535714575
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 1,
+            "endpoints": {
+              "embeddings": 1
+            },
+            "http_errors": 0,
+            "prompt_tokens": 33,
+            "prompt_tokens_reported_requests": 1,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 1,
+            "total_tokens": 33,
+            "total_tokens_reported_requests": 1
+          }
+        },
+        {
+          "id": "RQ30",
+          "category": "ayip",
+          "query": "Ayıplı malda sözleşmeden dönmeyi seçtiğimde ödediğim bedel derhal iade edilir mi?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "6502-M11-F5",
+            "6502-M11-F1",
+            "6502-M11-F3"
+          ],
+          "elapsed_ms": 254.01670000428567,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.3333333333333333,
+            "mrr_at_k": 1.0,
+            "ndcg_at_k": 1.0
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 1,
+            "endpoints": {
+              "embeddings": 1
+            },
+            "http_errors": 0,
+            "prompt_tokens": 37,
+            "prompt_tokens_reported_requests": 1,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 1,
+            "total_tokens": 37,
+            "total_tokens_reported_requests": 1
+          }
+        },
+        {
+          "id": "RQ31",
+          "category": "ayip",
+          "query": "Ücretsiz onarım veya ayıpsız misliyle değişim talebinin azami otuz iş günü süresi hangi hükümde?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "6502-M11-F4",
+            "6502-M11-F3",
+            "6502-M11-F2"
+          ],
+          "elapsed_ms": 180.9542999981204,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.3333333333333333,
+            "mrr_at_k": 1.0,
+            "ndcg_at_k": 1.0
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 1,
+            "endpoints": {
+              "embeddings": 1
+            },
+            "http_errors": 0,
+            "prompt_tokens": 34,
+            "prompt_tokens_reported_requests": 1,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 1,
+            "total_tokens": 34,
+            "total_tokens_reported_requests": 1
+          }
+        },
+        {
+          "id": "RQ32",
+          "category": "ayip",
+          "query": "Ayıplı mal daha sonra ortaya çıksa bile teslimden itibaren iki yıllık zamanaşımı kuralı nedir?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "6502-M12-F1",
+            "6502-M10-F1",
+            "6502-M12-F2"
+          ],
+          "elapsed_ms": 154.846000004909,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.3333333333333333,
+            "mrr_at_k": 1.0,
+            "ndcg_at_k": 1.0
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 1,
+            "endpoints": {
+              "embeddings": 1
+            },
+            "http_errors": 0,
+            "prompt_tokens": 33,
+            "prompt_tokens_reported_requests": 1,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 1,
+            "total_tokens": 33,
+            "total_tokens_reported_requests": 1
+          }
+        },
+        {
+          "id": "RQ33",
+          "category": "ayip",
+          "query": "İkinci el malda satıcının ayıplı mal sorumluluğu bir yıldan az olabilir mi?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "6502-M12-F2",
+            "6502-M12-F1",
+            "6502-M9-F1"
+          ],
+          "elapsed_ms": 239.03969999810215,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.3333333333333333,
+            "mrr_at_k": 1.0,
+            "ndcg_at_k": 1.0
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 1,
+            "endpoints": {
+              "embeddings": 1
+            },
+            "http_errors": 0,
+            "prompt_tokens": 28,
+            "prompt_tokens_reported_requests": 1,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 1,
+            "total_tokens": 28,
+            "total_tokens_reported_requests": 1
+          }
+        },
+        {
+          "id": "RQ34",
+          "category": "ayip",
+          "query": "Ayıp ağır kusur veya hileyle gizlendiğinde zamanaşımı uygulanır mı?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "6502-M12-F3",
+            "6502-M12-F1",
+            "6502-M12-F2"
+          ],
+          "elapsed_ms": 151.43069999612635,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.3333333333333333,
+            "mrr_at_k": 1.0,
+            "ndcg_at_k": 1.0
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 1,
+            "endpoints": {
+              "embeddings": 1
+            },
+            "http_errors": 0,
+            "prompt_tokens": 27,
+            "prompt_tokens_reported_requests": 1,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 1,
+            "total_tokens": 27,
+            "total_tokens_reported_requests": 1
+          }
+        },
+        {
+          "id": "RQ35",
+          "category": "sinir",
+          "query": "6502 Madde 987 kapsamında iki kat iade",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [],
+          "elapsed_ms": 0.22929999977350235,
+          "metrics": {
+            "empty_correct": true
+          },
+          "reference_query": true,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 0,
+            "endpoints": {},
+            "http_errors": 0,
+            "prompt_tokens": 0,
+            "prompt_tokens_reported_requests": 0,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 0,
+            "total_tokens": 0,
+            "total_tokens_reported_requests": 0
+          }
+        },
+        {
+          "id": "RQ36",
+          "category": "sinir",
+          "query": "Kuantum dolanıklık ve gravitasyonun birleşik alan denklemi",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "6502-M8-F2",
+            "6502-M11-F4"
+          ],
+          "elapsed_ms": 144.15500000177417,
+          "metrics": {
+            "empty_correct": false
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 1,
+            "endpoints": {
+              "embeddings": 1
+            },
+            "http_errors": 0,
+            "prompt_tokens": 22,
+            "prompt_tokens_reported_requests": 1,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 1,
+            "total_tokens": 22,
+            "total_tokens_reported_requests": 1
+          }
+        },
+        {
+          "id": "RQ37",
+          "category": "sinir",
+          "query": "Madde 11",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [],
+          "elapsed_ms": 0.09910000517265871,
+          "metrics": {
+            "empty_correct": true
+          },
+          "reference_query": true,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 0,
+            "endpoints": {},
+            "http_errors": 0,
+            "prompt_tokens": 0,
+            "prompt_tokens_reported_requests": 0,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 0,
+            "total_tokens": 0,
+            "total_tokens_reported_requests": 0
+          }
+        },
+        {
+          "id": "RQ38",
+          "category": "sinir",
+          "query": "MSY Madde 9/99",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [],
+          "elapsed_ms": 0.12479999713832512,
+          "metrics": {
+            "empty_correct": true
+          },
+          "reference_query": true,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 0,
+            "endpoints": {},
+            "http_errors": 0,
+            "prompt_tokens": 0,
+            "prompt_tokens_reported_requests": 0,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 0,
+            "total_tokens": 0,
+            "total_tokens_reported_requests": 0
+          }
+        },
+        {
+          "id": "RQ39",
+          "category": "sinir",
+          "query": "6502 Madde 8 ve Madde 987",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [],
+          "elapsed_ms": 0.16660000255797058,
+          "metrics": {
+            "empty_correct": true
+          },
+          "reference_query": true,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 0,
+            "endpoints": {},
+            "http_errors": 0,
+            "prompt_tokens": 0,
+            "prompt_tokens_reported_requests": 0,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 0,
+            "total_tokens": 0,
+            "total_tokens_reported_requests": 0
+          }
+        },
+        {
+          "id": "RQ40",
+          "category": "sinir",
+          "query": "6502 Madde 11/1 ve MSY Madde 11/1",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "6502-M11-F1",
+            "MSY-M11-F1"
+          ],
+          "elapsed_ms": 149.9850000036531,
+          "metrics": {
+            "hit_at_k": true,
+            "recall_at_k": 1.0,
+            "precision_at_k": 0.6666666666666666,
+            "mrr_at_k": 1.0,
+            "ndcg_at_k": 1.0
+          },
+          "reference_query": true,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 1,
+            "endpoints": {
+              "embeddings": 1
+            },
+            "http_errors": 0,
+            "prompt_tokens": 22,
+            "prompt_tokens_reported_requests": 1,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 1,
+            "total_tokens": 22,
+            "total_tokens_reported_requests": 1
+          }
+        },
+        {
+          "id": "RQ41",
+          "category": "sinir",
+          "query": "Python dilinde Fibonacci dizisi üreten program yaz",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [],
+          "elapsed_ms": 147.40619999793125,
+          "metrics": {
+            "empty_correct": true
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 1,
+            "endpoints": {
+              "embeddings": 1
+            },
+            "http_errors": 0,
+            "prompt_tokens": 11,
+            "prompt_tokens_reported_requests": 1,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 1,
+            "total_tokens": 11,
+            "total_tokens_reported_requests": 1
+          }
+        },
+        {
+          "id": "RQ42",
+          "category": "sinir",
+          "query": "Akşam yemeği için mercimek çorbası tarifi ve pişirme süresi",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [
+            "REHBER-IADE-SURE",
+            "MSY-M11-F1",
+            "MSY-M15-h"
+          ],
+          "elapsed_ms": 149.43180000409484,
+          "metrics": {
+            "empty_correct": false
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 1,
+            "endpoints": {
+              "embeddings": 1
+            },
+            "http_errors": 0,
+            "prompt_tokens": 25,
+            "prompt_tokens_reported_requests": 1,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 1,
+            "total_tokens": 25,
+            "total_tokens_reported_requests": 1
+          }
+        },
+        {
+          "id": "RQ43",
+          "category": "sinir",
+          "query": "Mars gezegeninin atmosfer bileşimi ve yüzey sıcaklığı nedir?",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [],
+          "elapsed_ms": 226.4761999977054,
+          "metrics": {
+            "empty_correct": true
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 1,
+            "endpoints": {
+              "embeddings": 1
+            },
+            "http_errors": 0,
+            "prompt_tokens": 19,
+            "prompt_tokens_reported_requests": 1,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 1,
+            "total_tokens": 19,
+            "total_tokens_reported_requests": 1
+          }
+        },
+        {
+          "id": "RQ44",
+          "category": "sinir",
+          "query": "Çocuklar için okul öncesi boyama etkinliği öner",
+          "label_status": "ai_taslak",
+          "status": "ok",
+          "ranked_ids": [],
+          "elapsed_ms": 284.7163999977056,
+          "metrics": {
+            "empty_correct": true
+          },
+          "reference_query": false,
+          "query_filters": {
+            "belge_ids": null,
+            "tarih": null
+          },
+          "requested_truncated": false,
+          "api": {
+            "request_count": 1,
+            "endpoints": {
+              "embeddings": 1
+            },
+            "http_errors": 0,
+            "prompt_tokens": 17,
+            "prompt_tokens_reported_requests": 1,
+            "completion_tokens": 0,
+            "completion_tokens_reported_requests": 1,
+            "total_tokens": 17,
+            "total_tokens_reported_requests": 1
+          }
+        }
+      ],
+      "embedding_model": "qwen3-embedding-8b"
+    }
+  }
+}

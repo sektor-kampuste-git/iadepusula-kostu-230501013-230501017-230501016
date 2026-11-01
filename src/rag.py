@@ -131,6 +131,11 @@ class MevzuatRetriever:
         self.cache_status = "disabled"
         self.configuration = {"version": 2, "backend": "hybrid_rrf" if embedder else "bm25"}
 
+    def prepare(self) -> None:
+        """Explicitly prepare the dense index, e.g. to measure startup separately."""
+        if self._embedder is not None:
+            self._ensure_vectors()
+
     def _ensure_vectors(self):
         if self._qdrant is not None:
             return
