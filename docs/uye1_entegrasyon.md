@@ -1,7 +1,9 @@
 # Üye 1 entegrasyon sözleşmesi
 
-Sürüm: `0.2.0`. İadePusula adı kullanılır; PDF'teki İadeHakem AI aynı proje fikrinin adıdır.
-Bu sürüm **kanıt paketi** üretir. Nihai karar, ödeme, tebligat veya onay işlemi uygulamaz.
+Üye 1 RAG artışı: `0.3`; ortak ürün: `0.3.2`. İadePusula adı kullanılır;
+PDF'teki İadeHakem AI aynı proje fikrinin adıdır. Bu katman **kanıt paketi** üretir.
+Ortak sürümde ajan taslağı ve insan inceleme arayüzü vardır; kesin hukuki karar,
+ödeme ve tebligat uygulanmaz. Güncel ortak akış [mimaridedir](mimari.md).
 
 ## Python giriş noktaları
 
@@ -24,7 +26,9 @@ paket = hazirla_inceleme(
 ```
 
 `src/contracts.py`, Üye 1'in tipli veri sözleşmeleridir. Üye 2'nin
-`src/schemas.py` karar şeması için ayrılan dosya henüz oluşturulmadı.
+`src/schemas.py` taslak karar şeması ortak sürümde bu pakete bağlıdır.
+`IncelemePaketi.basvuru_tarihi` yeni üretimde doldurulur; eski pakette tarih
+yoksa ajan model yoluna geçmez.
 
 | İşlev | Dönen tip | Önemli sözleşme |
 | --- | --- | --- |
@@ -96,6 +100,13 @@ adın arkasındaki ağırlıkları değiştirirse önbellek de yenilenmelidir. S
 her aramada API'ye gider; sıfır API maliyeti veya tam yanıt önbelleği iddiası yoktur.
 Kütüphane çağrısında önbellek `cache_dir=...` ile açıkça seçilir.
 
+`MevzuatRetriever.prepare()`, gömme yolunda indeksi zamanlı sorgudan önce hazırlar;
+yerel yolda API çağırmaz. [44 sorguluk karşılaştırma](rag_olcumleri_v0.3.md)
+hazırlık ve sorgu sürelerini ayrı tutar. `ProviderError.status_code`, yetki/kota
+hatalarında ölçümü durdurmak içindir; ham sağlayıcı yanıtı taşımaz. API gözlemleri
+yalnız süre, HTTP durum ve izinli token alanlarını taşır. Bu ölçümler Üye 2'nin
+taslak üretim maliyetine kendiliğinden eklenmez.
+
 ## MCP
 
 ```json
@@ -115,18 +126,20 @@ Diğer makinelerde yollar değiştirilmelidir. `stdio` sunucu dört araç yayın
 Dinlenen ağ portu yoktur. Sipariş aracı gerçek sistemlere bağlı değildir.
 Gerçek kayıtlarda kimlik ve sipariş sahipliği kontrolü ayrıca zorunludur.
 
-## Üye 2 ve Üye 3 için devam noktaları
+## Üye 2 ve Üye 3 bağlantıları
 
-Üye 2; sağlayıcıdan bağımsız tam LLM istemcisini, bütçeli araç çağıran ajanı,
-nihai karar şemasını, en az üç karar doğrulayıcısını, güvenlik ve maliyet katmanını
-ekleyecek. `src/evren.py`, Üye 1 için dar kapsamlı gömme/bağlantı adaptörüdür;
-tam ajan veya bütçe altyapısı olarak sunulmamalıdır. Mevcut CI, ağsız temel
-doğrulamayı sağlar; Üye 2 bunu genişletebilir.
+Üye 2'nin istemci, sınırlı ajan, taslak doğrulama, güvenlik ve maliyet katmanı
+ortak sürümdedir; ayrıntı [Üye 2 sözleşmesindedir](uye2_entegrasyon.md).
+UI/eval hazır kanıtı `run_packet()` ile tekrar üretmeden kullanır.
+`src/evren.py`, Üye 1'in dar kapsamlı gömme/bağlantı adaptörüdür;
+tam ajan veya bütçe altyapısı olarak sunulmamalıdır.
 
-Üye 3; Streamlit'te paketin kaynaklarını, araç izlerini ve uyarılarını gösterecek;
-insan onayı/değişiklik gerekçesi ve denetim kaydını kendi katmanında uygulayacak.
-Paket içindeki `True` bayrağı, tamamlanmış bir onay iş akışı değildir.
+Üye 3'ün Streamlit ekranı kaynak/uyarıları ve başvuruya bağlı taslağı gösterir;
+insan inceleme kaydı vardır. Bu yerel demo, gerçek kimlik/RBAC veya kalıcı kurumsal
+onay değildir. Paket içindeki `True` bayrağı tek başına insanın onay verdiği
+anlamına gelmez. [RAG inceleme paketi](../eval/insan_incelemesi.md) etiket toplama
+hazırlığıdır; uygulamadaki başvuru onayından ayrı bir ölçüm işidir.
 
 `src/privacy.py` yalnız başlangıç sınırıdır. İsim/adres tespiti, kapsamlı KVKK,
 bağlamsal dolaylı enjeksiyon savunması ve gerçek RBAC tamamlanmış değildir.
-Bu entegrasyonlar bitene kadar sağlayıcı denemeleri sentetik başvurularla yapılmalıdır.
+Sağlayıcı denemeleri mevcut kapsamda sentetik başvurularla yapılmalıdır.

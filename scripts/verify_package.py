@@ -1,6 +1,6 @@
 """Build verification companion: exercise installed wheel resources outside checkout.
 
-Usage: python scripts/verify_package.py artifacts/wheels/iadepusula-0.2.0-py3-none-any.whl
+Usage: python scripts/verify_package.py artifacts/wheels
 The subprocess uses existing runtime dependencies, but imports app code and data
 only from the extracted wheel. It never loads .env or makes provider calls.
 """
@@ -37,13 +37,18 @@ assert parasal_sinir_kontrol('186000.00', 2026).durum == 'HEYET_SINIRI_DISINDA'
 assert MevzuatRetriever().search('14 günlük cayma hakkı')
 assert len(load_cases()) == 30
 assert evaluate(load_cases())['gecme_orani'] >= .85
+from eval.retrieval import load_retrieval_cases, benchmark
+assert len(load_retrieval_cases()) == 44
+retrieval_report = benchmark(load_retrieval_cases(), MevzuatRetriever, name='lexical')
+assert retrieval_report['summary']['completed'] == 44
+assert retrieval_report['api']['request_count'] == 0
 import contextlib, io, json
 from src.cli import main
 sys.argv = ['iadepusula', 'search', 'MSY Madde 15/1-ç']
 with contextlib.redirect_stdout(io.StringIO()) as output:
     main()
 assert [item['parca']['chunk_id'] for item in json.loads(output.getvalue())] == ['MSY-M15-ç']
-print('Wheel verified outside checkout: CLI, orders, corpus, threshold and evaluation.')
+print('Wheel verified outside checkout: CLI, orders, corpus, threshold, evaluation and retrieval benchmark.')
 assert AgentLimits().max_model_calls == 2
 assert Path(maliyet_hesapla.__file__).resolve().is_relative_to(installed_root)
 print('Member 2 modules and cost entrypoint verified without credentials or API requests.')

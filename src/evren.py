@@ -1,6 +1,6 @@
 """Bounded provider adapter for Member 1 embeddings and synthetic smoke tests.
 
-Member 2 will own the complete agent/LLM client, budgets and output security.
+Member 2 owns the complete agent/LLM client, budgets and output security.
 No request is made merely by importing this module or constructing settings.
 """
 
@@ -21,6 +21,30 @@ from src.vector_cache import valid_vectors
 
 class ProviderError(RuntimeError):
     """Public safe error: no headers, credential, or response body is included."""
+
+    def __init__(self, message: str, *, status_code: int | None = None):
+        super().__init__(message)
+        self.status_code = status_code
+
+
+class RequestObservation(Contract):
+    endpoint: str
+    status_code: int | None
+    elapsed_ms: float = Field(ge=0)
+    prompt_tokens: int | None = Field(default=None, ge=0)
+    completion_tokens: int | None = Field(default=None, ge=0)
+    total_tokens: int | None = Field(default=None, ge=0)
+    error_code: str | None = None
+
+
+def safe_usage(usage) -> dict[str, int]:
+    if not isinstance(usage, dict):
+        return {}
+    return {
+        key: value
+        for key in ("prompt_tokens", "completion_tokens", "total_tokens")
+        if type(value := usage.get(key)) is int and value >= 0
+    }
 
 
 class ProviderSettings(Contract):
@@ -68,6 +92,7 @@ class EvrenAdapter:
         )
         self.last_usage = {}
         self.request_counts = {}
+        self.observations: list[RequestObservation] = []
 
     @property
     def cache_identity(self) -> str:
@@ -75,20 +100,45 @@ class EvrenAdapter:
 
     def _request(self, path: str, body: dict | None = None) -> dict:
         self.request_counts[path] = self.request_counts.get(path, 0) + 1
+        start = perf_counter()
+
+        def record(status_code, *, usage=None, error_code=None):
+            usage = usage if isinstance(usage, dict) else {}
+            tokens = {
+                key: value if type(value := usage.get(key)) is int and value >= 0 else None
+                for key in ("prompt_tokens", "completion_tokens", "total_tokens")
+            }
+            self.observations.append(
+                RequestObservation(
+                    endpoint=path,
+                    status_code=status_code,
+                    elapsed_ms=(perf_counter() - start) * 1000,
+                    error_code=error_code,
+                    **tokens,
+                )
+            )
+
         try:
             response = (
                 self._client.get(path) if body is None else self._client.post(path, json=body)
             )
         except httpx.HTTPError:
+            record(None, error_code="network")
             raise ProviderError("Sağlayıcıya erişilemedi veya istek zaman aşımına uğradı") from None
         if response.status_code != 200:
-            raise ProviderError(f"Sağlayıcı HTTP {response.status_code} döndürdü")
+            record(response.status_code, error_code="http")
+            raise ProviderError(
+                f"Sağlayıcı HTTP {response.status_code} döndürdü", status_code=response.status_code
+            )
         try:
             data = response.json()
         except ValueError:
+            record(response.status_code, error_code="invalid_json")
             raise ProviderError("Sağlayıcı geçerli JSON döndürmedi") from None
         if not isinstance(data, dict):
+            record(response.status_code, error_code="invalid_shape")
             raise ProviderError("Beklenmeyen sağlayıcı yanıtı")
+        record(response.status_code, usage=data.get("usage"))
         return data
 
     def models(self) -> tuple[str, ...]:
@@ -133,7 +183,7 @@ class EvrenAdapter:
                 raise ValueError("Invalid embedding")
         except (KeyError, TypeError, ValueError, IndexError, OverflowError):
             raise ProviderError("Geçersiz veya eksik gömme yanıtı") from None
-        self.last_usage = data.get("usage", {})
+        self.last_usage = safe_usage(data.get("usage"))
         return vectors
 
     def synthetic_completion(self, sources: list[dict]) -> dict:
@@ -188,7 +238,7 @@ class EvrenAdapter:
         return {
             "output": parsed,
             "model": data.get("model", self.settings.model),
-            "usage": data.get("usage", {}),
+            "usage": safe_usage(data.get("usage")),
             "latency_ms": round((perf_counter() - start) * 1000, 2),
         }
 

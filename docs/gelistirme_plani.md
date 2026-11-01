@@ -23,16 +23,29 @@
    skorlarıyla uyum/kappa hesaplama. Henüz insan etiketlemesi yapılmadı.
 4. Geliştirmede kullanılmamış yeni bir test seti hazırlama. Mevcut 30 vaka
    geliştirme sırasında kullanıldı; bağımsız genelleme ölçüsü değildir.
-5. Yerel/EVREN RAG karşılaştırması: hit@3, yanlış kaynak, anlamsal hata,
-   tüm isteklerin token kullanımı ve gecikme dağılımı.
-6. Üye 2 ajanı bağlandıktan sonra tam karar doğruluğu ve gerekçe sadakati eval'i.
+5. [İlk yerel/EVREN karşılaştırmasının](rag_olcumleri_v0.3.md) ardından yeni,
+   bağımsız vakalarla konu dışı getirme ve bilinen ayıp ayrımını inceleme.
+6. Bağlı Üye 2 ajanında gerçek insan etiketleriyle karar doğruluğu ve gerekçe sadakati eval'i.
+
+## v0.3 ile eklenen hazırlık ve ölçüm
+
+- [x] Mevcut 30 vakadan ayrı, 35 pozitif + 9 boş sonuç sorgusuyla RAG karşılaştırma seti.
+- [x] Yerel/EVREN için hit, recall, precision, MRR ve nDCG; API kullanımı ve p50/p95 gecikme.
+- [x] İndeks hazırlığı ve sorgu ölçümünün ayrılması; hata vakalarının paydada tutulması.
+- [x] 10 farklı sorgu × 2 yöntem için beklenen cevabı/yöntemi göstermeyen inceleme dosyaları.
+- [x] Gerçek puanlar girildiğinde kanıt değişikliğini ve eksik etiketleri kontrol eden kalibrasyon akışı.
+
+Bu ek set de geliştirme amacıyla hazırlanmıştır. İnsan etiketleri ve görülmemiş,
+ekipçe bağımsız hazırlanmış test seti gereksinimi devam eder. Ölçülen konu dışı
+yanlış getirmeler ve bilinen ayıp/seçimlik hak ayrımındaki eksik kaynak, sonraki
+iyileştirme için kayıtlıdır; bu turda aynı sorgulara özel sıralama kuralı eklenmedi.
 
 ## Takım entegrasyonu
 
 | Sorumlu | Yapılacaklar | Kabul kanıtı |
 | --- | --- | --- |
-| Üye 2 | Tam ajan, istek/adım/maliyet sınırı, karar şeması, güvenlik ve maliyet | Ağsız hata/bütçe testleri ve gerçek token ölçümü |
-| Üye 3 | Streamlit, insan onayı/değiştirme kaydı, yönetişim ve sunum | Çalışan kullanıcı akışı, red team ve demo |
+| Üye 2 | Mevcut sınırlı ajan/şema/maliyet katmanını iki gerçek sağlayıcıda ölçme | Ağsız testlere ek olarak gerçek token/tarife ölçümü |
+| Üye 3 | Mevcut Streamlit/inceleme akışında insan etiketleri, yönetişim ve sunum | Gerçek etiketler, dış red team ve demo |
 | Birlikte | İnsan etiketleri, mevzuat denetimi, gerçek red team eşleşmesi | Tarihli ve örnek sayılı rapor |
 | Birlikte | Yayınlama ve video | Gerçek canlı adres ve erişim kontrolü |
 

@@ -49,6 +49,9 @@
         "eval/evaller.json",
         "eval/eval_kosucu.py",
         "eval/calibration.py",
+        "eval/retrieval_benchmark.py",
+        "eval/review_pack.py",
+        "docs/rag_olcumleri_v0.3.md",
         "eval/redteam.md",
         "src/tracing.py",
         ".github/workflows/ci.yml"
